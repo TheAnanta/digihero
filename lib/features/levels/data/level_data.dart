@@ -66,11 +66,11 @@ class LevelData {
       title: 'Device Explorer',
       theme: 'Meet Your Digital Device',
       description:
-          'Learn about different types of devices and identify their main parts.',
+          'Learn about different types of devices and identify their main parts through interactive games.',
       backgroundImagePath: 'assets/images/backgrounds/device_bg.png',
       characterImagePath: 'assets/images/characters/explorer_hero.png',
-      targetScore: 250,
-      timeLimit: 150,
+      targetScore: 280,
+      timeLimit: 180,
       learningObjective:
           'Students will identify different types of devices and understand their main parts.',
       tips: [
@@ -81,43 +81,55 @@ class LevelData {
       ],
       challenges: [
         GameChallenge(
-          id: 'device_1',
-          type: ChallengeType.multipleChoice,
-          question: 'Which of these is NOT a main part of a computer?',
-          options: ['Monitor', 'Keyboard', 'Refrigerator', 'Mouse'],
-          correctAnswerIndex: 2,
+          id: 'device_builder_1',
+          type: ChallengeType.deviceBuilder,
+          question: 'Device Builder: Drag and drop the labels onto the correct parts of this computer!',
+          options: ['Monitor', 'CPU', 'Keyboard', 'Mouse'],
+          correctAnswerIndex: 0, // All correct when properly placed
           explanation:
-              'Computers have monitors, keyboards, and mice, but not refrigerators!',
+              'Great job! You correctly identified the main parts of a computer: Monitor (screen), CPU (main unit), Keyboard (for typing), and Mouse (for pointing).',
+          points: 80,
+          interactiveData: {
+            'gameType': 'deviceBuilder',
+            'deviceType': 'computer',
+            'parts': ['Monitor', 'CPU', 'Keyboard', 'Mouse'],
+            'instructions': 'Drag each label to the matching part of the computer'
+          },
+        ),
+        GameChallenge(
+          id: 'power_up_1',
+          type: ChallengeType.sequencing,
+          question: 'Power Up! Put these steps in the correct order to turn on a computer safely:',
+          options: ['Plug in power cable', 'Press CPU power button', 'Press monitor power button', 'Wait for startup'],
+          correctAnswerIndex: 0, // Sequence starts with plugging in power
+          explanation:
+              'Perfect! The correct order is: 1. Plug in power, 2. Press CPU power button, 3. Press monitor power button, 4. Wait for startup.',
+          points: 70,
+          interactiveData: {
+            'gameType': 'sequencing',
+            'correctOrder': [0, 1, 2, 3],
+            'instructions': 'Arrange the steps in the right order'
+          },
+        ),
+        GameChallenge(
+          id: 'device_types_1',
+          type: ChallengeType.multipleChoice,
+          question: 'Which device is best for making phone calls while traveling?',
+          options: ['Desktop Computer', 'Smartphone', 'Television', 'Printer'],
+          correctAnswerIndex: 1,
+          explanation:
+              'Smartphones are portable and designed for communication, making them perfect for calls while traveling.',
           points: 50,
         ),
         GameChallenge(
-          id: 'device_2',
-          type: ChallengeType.dragAndDrop,
-          question: 'Match each device with its main use:',
-          options: ['Smartphone - Communication', 'Tablet - Reading', 'Computer - Work', 'TV - Entertainment'],
-          correctAnswerIndex: 0,
+          id: 'device_shutdown_1',
+          type: ChallengeType.scenario,
+          question: 'You finished your work on a tablet. What is the safest way to turn it off?',
+          options: ['Just close the cover', 'Use the power button to shut down properly', 'Remove the battery', 'Wait for it to turn off automatically'],
+          correctAnswerIndex: 1,
           explanation:
-              'Different devices are designed for different purposes, though many can do multiple things.',
-          points: 75,
-        ),
-        GameChallenge(
-          id: 'device_3',
-          type: ChallengeType.trueFalse,
-          question: 'You should always turn off a device properly instead of just unplugging it.',
-          options: ['True', 'False'],
-          correctAnswerIndex: 0,
-          explanation:
-              'Proper shutdown saves your work and protects the device from damage.',
+              'Always use the proper shutdown process to save your work and protect the device.',
           points: 60,
-        ),
-        GameChallenge(
-          id: 'device_4',
-          type: ChallengeType.interactive,
-          question: 'Identify the parts of this computer setup!',
-          options: ['Parts Identified'],
-          correctAnswerIndex: 0,
-          explanation: 'Great job learning about device parts!',
-          points: 65,
         ),
       ],
     );
@@ -129,58 +141,86 @@ class LevelData {
       title: 'Screen Navigator',
       theme: 'Understanding Your Screen',
       description:
-          'Discover desktop icons, menus, and learn basic mouse and touch navigation.',
+          'Master desktop navigation through Icon Hunt and Cursor Maestro mini-games!',
       backgroundImagePath: 'assets/images/backgrounds/screen_bg.png',
       characterImagePath: 'assets/images/characters/navigator_hero.png',
-      targetScore: 300,
-      timeLimit: 180,
+      targetScore: 320,
+      timeLimit: 200,
       learningObjective:
-          'Students will understand desktop elements and basic navigation using mouse or touch.',
+          'Students will identify common desktop icons and master basic mouse/touch navigation.',
       tips: [
         'Icons are small pictures that represent apps or files',
-        'Click once to select, double-click to open',
-        'On touch screens, tap once to select',
-        'Menus show you different options'
+        'Look carefully - each icon has a unique shape and meaning',
+        'Practice different mouse actions: click, double-click, drag',
+        'On touch screens, tap and swipe with confidence'
       ],
       challenges: [
         GameChallenge(
-          id: 'screen_1',
-          type: ChallengeType.multipleChoice,
-          question: 'What do icons on a screen represent?',
-          options: ['Decorations', 'Apps and files', 'Nothing important', 'Screen protectors'],
-          correctAnswerIndex: 1,
-          explanation:
-              'Icons are small pictures that help you find and open apps and files.',
-          points: 60,
-        ),
-        GameChallenge(
-          id: 'screen_2',
-          type: ChallengeType.scenario,
-          question: 'You want to open a calculator app. What should you do?',
-          options: ['Double-click the calculator icon', 'Shake the device', 'Press any key', 'Turn off the device'],
+          id: 'icon_hunt_1',
+          type: ChallengeType.iconHunt,
+          question: 'Icon Hunt: Find and tap the Folder icon on this desktop!',
+          options: ['Folder found!', 'Try again', 'Need a hint?', 'Time up!'],
           correctAnswerIndex: 0,
           explanation:
-              'Double-clicking (or tapping on touch screens) opens apps and files.',
+              'Perfect! Folder icons usually look like manila file folders and help organize your files.',
           points: 80,
+          interactiveData: {
+            'gameType': 'iconHunt',
+            'targetIcon': 'folder',
+            'timeLimit': 30,
+            'desktopIcons': ['folder', 'recycle_bin', 'computer', 'documents', 'pictures'],
+            'instructions': 'Tap the folder icon as quickly as you can!'
+          },
         ),
         GameChallenge(
-          id: 'screen_3',
-          type: ChallengeType.dragAndDrop,
-          question: 'Put these mouse actions in order to open a file:',
-          options: ['Point to icon', 'Move mouse', 'Double-click', 'File opens'],
+          id: 'icon_hunt_2',
+          type: ChallengeType.iconHunt,
+          question: 'Icon Hunt: Quick! Tap the Recycle Bin before time runs out!',
+          options: ['Recycle Bin found!', 'Try again', 'Need a hint?', 'Time up!'],
           correctAnswerIndex: 0,
           explanation:
-              'First move the mouse to point at the icon, then double-click to open it.',
-          points: 90,
+              'Excellent! The Recycle Bin holds deleted files and usually looks like a trash can.',
+          points: 70,
+          interactiveData: {
+            'gameType': 'iconHunt',
+            'targetIcon': 'recycle_bin',
+            'timeLimit': 25,
+            'desktopIcons': ['folder', 'recycle_bin', 'computer', 'documents', 'pictures', 'calculator'],
+            'instructions': 'Find the Recycle Bin icon!'
+          },
         ),
         GameChallenge(
-          id: 'screen_4',
-          type: ChallengeType.interactive,
-          question: 'Practice navigating this desktop!',
-          options: ['Navigation Complete'],
+          id: 'cursor_maestro_1',
+          type: ChallengeType.cursorMaestro,
+          question: 'Cursor Maestro: Drag the file into the folder!',
+          options: ['Successfully moved!', 'Try again', 'Almost there!', 'Perfect technique!'],
           correctAnswerIndex: 0,
-          explanation: 'Excellent navigation skills!',
-          points: 70,
+          explanation:
+              'Great dragging technique! Click and hold, then move the mouse to drag files into folders.',
+          points: 90,
+          interactiveData: {
+            'gameType': 'cursorMaestro',
+            'action': 'drag_to_folder',
+            'sourceItem': 'document_file',
+            'targetLocation': 'my_folder',
+            'instructions': 'Click and drag the document into the folder'
+          },
+        ),
+        GameChallenge(
+          id: 'cursor_maestro_2',
+          type: ChallengeType.cursorMaestro,
+          question: 'Cursor Maestro: Double-click to open the picture!',
+          options: ['Picture opened!', 'Try again', 'Single click detected', 'Perfect timing!'],
+          correctAnswerIndex: 0,
+          explanation:
+              'Perfect double-click! Two quick clicks in the same spot opens files and programs.',
+          points: 75,
+          interactiveData: {
+            'gameType': 'cursorMaestro',
+            'action': 'double_click',
+            'targetItem': 'picture_file',
+            'instructions': 'Double-click the picture to open it'
+          },
         ),
       ],
     );
@@ -192,63 +232,82 @@ class LevelData {
       title: 'App Master',
       theme: 'Working with Apps',
       description:
-          'Learn what software and apps are, and how to open and close them safely.',
+          'Learn about software types and become an App Sorter expert!',
       backgroundImagePath: 'assets/images/backgrounds/apps_bg.png',
       characterImagePath: 'assets/images/characters/app_hero.png',
-      targetScore: 280,
-      timeLimit: 160,
+      targetScore: 300,
+      timeLimit: 180,
       learningObjective:
-          'Students will understand the difference between system and application software and learn to use apps safely.',
+          'Students will distinguish between system and application software and practice safe app management.',
       tips: [
-        'Apps are programs that help you do specific tasks',
-        'Always close apps properly when done',
-        'System software runs the device itself',
-        'Try basic apps like calculator and notepad first'
+        'System software runs your device (like Android or Windows)',
+        'Application software helps you do specific tasks',
+        'Always close apps properly when finished',
+        'Learn to recognize different types of apps'
       ],
       challenges: [
         GameChallenge(
-          id: 'apps_1',
-          type: ChallengeType.multipleChoice,
-          question: 'What is the difference between system software and application software?',
-          options: [
-            'There is no difference',
-            'System software runs the device, apps do specific tasks',
-            'Apps are always free, system software costs money',
-            'System software is newer than apps'
-          ],
+          id: 'app_sorter_1',
+          type: ChallengeType.appSorter,
+          question: 'App Sorter: Drag these apps into the correct boxes - System Software or Application Software!',
+          options: ['Calculator', 'Android OS', 'Paint', 'Windows', 'Notes App', 'iOS'],
+          correctAnswerIndex: 0, // All correctly sorted
+          explanation:
+              'Perfect sorting! System Software (Android, Windows, iOS) runs the device. Application Software (Calculator, Paint, Notes) does specific tasks.',
+          points: 100,
+          interactiveData: {
+            'gameType': 'appSorter',
+            'categories': ['System Software', 'Application Software'],
+            'items': [
+              {'name': 'Calculator', 'type': 'application', 'icon': 'calculator.png'},
+              {'name': 'Android OS', 'type': 'system', 'icon': 'android.png'},
+              {'name': 'Paint', 'type': 'application', 'icon': 'paint.png'},
+              {'name': 'Windows', 'type': 'system', 'icon': 'windows.png'},
+              {'name': 'Notes App', 'type': 'application', 'icon': 'notes.png'},
+              {'name': 'iOS', 'type': 'system', 'icon': 'ios.png'}
+            ],
+            'instructions': 'Drag each app icon to the correct category box'
+          },
+        ),
+        GameChallenge(
+          id: 'app_management_1',
+          type: ChallengeType.scenario,
+          question: 'You opened a drawing app and finished your artwork. What should you do next?',
+          options: ['Leave it running in the background', 'Save your work and close the app properly', 'Turn off the device immediately', 'Open more apps'],
           correctAnswerIndex: 1,
           explanation:
-              'System software (like Android or Windows) runs your device, while apps do specific tasks like calculating or drawing.',
+              'Always save your work first, then close apps properly to keep your device running smoothly.',
           points: 70,
         ),
         GameChallenge(
-          id: 'apps_2',
-          type: ChallengeType.scenario,
-          question: 'You finished using a drawing app. What should you do?',
-          options: ['Leave it open', 'Close it properly', 'Turn off the device', 'Delete the app'],
+          id: 'app_safety_1',
+          type: ChallengeType.multipleChoice,
+          question: 'Which of these is the safest way to get new apps for your device?',
+          options: ['Download from unknown websites', 'Use official app stores like Google Play or App Store', 'Get apps from friends via email', 'Download from any website'],
           correctAnswerIndex: 1,
           explanation:
-              'Closing apps properly saves memory and keeps your device running smoothly.',
-          points: 60,
+              'Official app stores check apps for safety before making them available to download.',
+          points: 80,
         ),
         GameChallenge(
-          id: 'apps_3',
-          type: ChallengeType.trueFalse,
-          question: 'A calculator app is an example of application software.',
-          options: ['True', 'False'],
-          correctAnswerIndex: 0,
+          id: 'app_types_1',
+          type: ChallengeType.matchUp,
+          question: 'Match each app type with its purpose:',
+          options: ['Calculator - Math tasks', 'Music Player - Playing songs', 'Notes - Writing reminders', 'Camera - Taking photos'],
+          correctAnswerIndex: 0, // All matched correctly
           explanation:
-              'Calculator apps help you do specific tasks, making them application software.',
-          points: 50,
-        ),
-        GameChallenge(
-          id: 'apps_4',
-          type: ChallengeType.interactive,
-          question: 'Practice opening and closing these basic apps!',
-          options: ['Practice Complete'],
-          correctAnswerIndex: 0,
-          explanation: 'Great job managing apps safely!',
-          points: 100,
+              'Great job! Each app is designed for a specific purpose to help you with different tasks.',
+          points: 60,
+          interactiveData: {
+            'gameType': 'matchUp',
+            'pairs': [
+              {'left': 'Calculator', 'right': 'Math tasks'},
+              {'left': 'Music Player', 'right': 'Playing songs'},
+              {'left': 'Notes', 'right': 'Writing reminders'},
+              {'left': 'Camera', 'right': 'Taking photos'}
+            ],
+            'instructions': 'Draw lines to connect each app with its main purpose'
+          },
         ),
       ],
     );
@@ -260,68 +319,101 @@ class LevelData {
       title: 'Future Hero',
       theme: 'Why Digital Skills Matter',
       description:
-          'Discover how digital tools help in education, jobs, and daily life for your future success.',
+          'Discover how digital heroes in your community use technology to improve their lives!',
       backgroundImagePath: 'assets/images/backgrounds/future_bg.png',
       characterImagePath: 'assets/images/characters/future_hero.png',
-      targetScore: 320,
-      timeLimit: 180,
+      targetScore: 350,
+      timeLimit: 200,
       learningObjective:
-          'Students will understand the importance of digital skills for their education and future careers.',
+          'Students will understand how digital skills benefit real people in their community and future careers.',
       tips: [
-        'Digital skills help in almost every job today',
-        'Technology makes learning more fun and interactive',
-        'Digital tools connect you with people worldwide',
-        'These skills will grow more important over time'
+        'Digital skills help people in every profession',
+        'Technology connects rural communities to the world',
+        'These skills open doors to new opportunities',
+        'Start learning now to prepare for your future'
       ],
       challenges: [
         GameChallenge(
-          id: 'future_1',
-          type: ChallengeType.multipleChoice,
-          question: 'How do digital skills help in education?',
+          id: 'digital_heroes_1',
+          type: ChallengeType.matchUp,
+          question: 'Digital Heroes Match-Up: Connect each person with how digital skills help them!',
           options: [
-            'They make homework harder',
-            'They allow access to online learning and research',
-            'They are only for entertainment',
-            'They replace the need for teachers'
+            'Farmer using weather app',
+            'Shopkeeper with payment QR code', 
+            'Student learning online',
+            'Doctor using digital records'
+          ],
+          correctAnswerIndex: 0, // All matched correctly
+          explanation:
+              'Amazing! You connected each digital hero with their tools: Farmers check weather, shopkeepers accept digital payments, students learn online, and doctors keep digital records.',
+          points: 100,
+          interactiveData: {
+            'gameType': 'matchUp',
+            'pairs': [
+              {
+                'image': 'farmer_weather.png',
+                'description': 'Farmer checks weather forecast to plan planting and harvesting'
+              },
+              {
+                'image': 'shopkeeper_qr.png', 
+                'description': 'Local shopkeeper accepts digital payments for customer convenience'
+              },
+              {
+                'image': 'student_online.png',
+                'description': 'Student accesses online lessons and educational resources'
+              },
+              {
+                'image': 'doctor_records.png',
+                'description': 'Doctor maintains digital patient records for better healthcare'
+              }
+            ],
+            'instructions': 'Match each picture with the correct description of how they use digital skills'
+          },
+        ),
+        GameChallenge(
+          id: 'career_benefits_1',
+          type: ChallengeType.multipleChoice,
+          question: 'How do digital skills help a rural teacher improve their teaching?',
+          options: [
+            'They make teaching harder',
+            'They allow access to online resources, educational videos, and virtual classrooms',
+            'They are only useful for entertainment',
+            'They replace the need for students'
           ],
           correctAnswerIndex: 1,
           explanation:
-              'Digital skills open up endless learning opportunities through online resources, educational apps, and research tools.',
+              'Digital skills help teachers find better educational resources, create engaging lessons, and even teach students remotely when needed.',
           points: 80,
         ),
         GameChallenge(
-          id: 'future_2',
+          id: 'community_impact_1',
           type: ChallengeType.scenario,
-          question: 'A farmer wants to check weather forecasts and crop prices. How do digital skills help?',
+          question: 'A village needs to apply for a government program online. Who can help using digital skills?',
           options: [
-            'Digital skills are not useful for farmers',
-            'They can access weather apps and market information online',
-            'They only help with entertainment',
-            'They make farming more difficult'
+            'No one - rural people cannot use technology',
+            'Anyone who has learned basic computer and internet skills',
+            'Only city people can do this',
+            'It is impossible to do from a village'
           ],
           correctAnswerIndex: 1,
           explanation:
-              'Digital tools help farmers make better decisions with weather forecasts, market prices, and farming techniques.',
+              'With basic digital skills, anyone can help their community access government services, apply for programs, and connect with resources online.',
           points: 90,
         ),
         GameChallenge(
-          id: 'future_3',
+          id: 'future_opportunities_1',
           type: ChallengeType.dragAndDrop,
-          question: 'Match these careers with how they use digital skills:',
-          options: ['Teacher - Online lessons', 'Doctor - Digital records', 'Artist - Digital design', 'Shopkeeper - Digital payments'],
-          correctAnswerIndex: 0,
+          question: 'Drag these digital skills to match the opportunities they create:',
+          options: [
+            'Online selling - Start your own business',
+            'Video calling - Connect with family far away', 
+            'Digital banking - Save money safely',
+            'Online learning - Access any course worldwide'
+          ],
+          correctAnswerIndex: 0, // All matched correctly
           explanation:
-              'Almost every career today uses digital tools to work more effectively.',
-          points: 100,
-        ),
-        GameChallenge(
-          id: 'future_4',
-          type: ChallengeType.interactive,
-          question: 'Explore how digital heroes in your region succeeded!',
-          options: ['Exploration Complete'],
-          correctAnswerIndex: 0,
-          explanation: 'You can be a digital hero too!',
-          points: 50,
+              'Perfect! Digital skills create countless opportunities: online businesses, staying connected with loved ones, safe banking, and learning anything you want.',
+          points: 80,
         ),
       ],
     );
@@ -333,21 +425,80 @@ class LevelData {
       levelNumber: 5,
       title: 'Learning App Expert',
       theme: 'Mastering Our Learning App',
-      description: 'Master the learning app with login, lessons, videos, and offline features.',
+      description: 'Join your friendly guide on a Guided Quest to master this learning app!',
       backgroundImagePath: 'assets/images/backgrounds/learning_bg.png',
       characterImagePath: 'assets/images/characters/learning_hero.png',
-      targetScore: 350,
-      timeLimit: 200,
-      learningObjective: 'Students will effectively navigate and use educational apps.',
-      tips: ['Practice logging in safely', 'Download lessons for offline use', 'Complete quizzes to test knowledge', 'Watch videos for better understanding'],
+      targetScore: 380,
+      timeLimit: 240,
+      learningObjective: 'Students will navigate educational apps confidently and use offline features effectively.',
+      tips: [
+        'Follow your guide step-by-step for the best experience',
+        'Practice each feature until you feel comfortable',
+        'Download lessons for offline study',
+        'Celebrate each milestone you complete!'
+      ],
       challenges: [
         GameChallenge(
-          id: 'learning_1',
+          id: 'guided_quest_1',
+          type: ChallengeType.interactive,
+          question: 'Guided Quest: Welcome! Let your friendly guide help you log in for the first time.',
+          options: ['Login completed!', 'Need help', 'Try again', 'Guide me through'],
+          correctAnswerIndex: 0,
+          explanation: 'Excellent! You successfully logged in. Your guide is proud of you! 🎉',
+          points: 80,
+          interactiveData: {
+            'gameType': 'guidedQuest',
+            'step': 'login',
+            'guide_character': 'learning_buddy',
+            'instructions': 'Follow the glowing highlights to complete your first login',
+            'celebration': 'login_badge'
+          },
+        ),
+        GameChallenge(
+          id: 'guided_quest_2',
+          type: ChallengeType.interactive,
+          question: 'Guided Quest: Now let your guide show you how to find and start your first lesson!',
+          options: ['Lesson started!', 'Show me again', 'I found it!', 'Guide me more'],
+          correctAnswerIndex: 0,
+          explanation: 'Amazing! You found your first lesson. Your learning journey has begun! 📚',
+          points: 90,
+          interactiveData: {
+            'gameType': 'guidedQuest',
+            'step': 'find_lesson',
+            'guide_character': 'learning_buddy',
+            'instructions': 'Tap the lesson your guide highlights for you',
+            'celebration': 'explorer_badge'
+          },
+        ),
+        GameChallenge(
+          id: 'guided_quest_3',
+          type: ChallengeType.interactive,
+          question: 'Guided Quest: Time to take your first quiz! Your guide believes in you.',
+          options: ['Quiz completed!', 'Help me', 'I can do this!', 'More guidance please'],
+          correctAnswerIndex: 0,
+          explanation: 'Fantastic! You completed your first quiz. You are becoming a digital learner! 🌟',
+          points: 100,
+          interactiveData: {
+            'gameType': 'guidedQuest',
+            'step': 'take_quiz',
+            'guide_character': 'learning_buddy',
+            'instructions': 'Answer the quiz questions with your guide is cheering you on',
+            'celebration': 'quiz_master_badge'
+          },
+        ),
+        GameChallenge(
+          id: 'offline_features_1',
           type: ChallengeType.multipleChoice,
-          question: 'What should you do first when using a new learning app?',
-          options: ['Start any lesson', 'Create a secure login', 'Download everything', 'Share with friends'],
+          question: 'Why is it important to download lessons for offline use in rural areas?',
+          options: [
+            'It uses more battery power',
+            'Internet may not always be available',
+            'It makes the app slower',
+            'Downloaded lessons cost more'
+          ],
           correctAnswerIndex: 1,
-          explanation: 'Creating a secure login protects your progress and personal information.',
+          explanation:
+              'Downloading lessons ensures you can continue learning even when internet connection is limited or unavailable.',
           points: 70,
         ),
       ],
@@ -359,22 +510,90 @@ class LevelData {
       levelNumber: 6,
       title: 'Typing Champion',
       theme: 'Writing and Typing',
-      description: 'Learn keyboard layout and practice typing in your local language and English.',
+      description: 'Become a Typing Star! Practice with words falling from the sky in your language and English.',
       backgroundImagePath: 'assets/images/backgrounds/typing_bg.png',
       characterImagePath: 'assets/images/characters/typing_hero.png',
-      targetScore: 300,
-      timeLimit: 180,
-      learningObjective: 'Students will develop basic typing skills in multiple languages.',
-      tips: ['Start with proper finger placement', 'Practice regularly for improvement', 'Use both local language and English', 'Take breaks to avoid strain'],
+      targetScore: 350,
+      timeLimit: 220,
+      learningObjective: 'Students will develop typing skills in local language and English through engaging practice.',
+      tips: [
+        'Start with single letters, then move to words',
+        'Keep your eyes on the screen, not the keyboard',
+        'Practice both your local language and English',
+        'Speed comes with practice - focus on accuracy first'
+      ],
       challenges: [
         GameChallenge(
-          id: 'typing_1',
-          type: ChallengeType.interactive,
-          question: 'Complete this typing exercise: "My Village"',
-          options: ['Exercise Complete'],
+          id: 'typing_star_1',
+          type: ChallengeType.typingChallenge,
+          question: 'Typing Star: Type these falling letters before they reach the bottom! A, S, D, F',
+          options: ['All letters typed!', 'Try again', 'Almost there!', 'Perfect accuracy!'],
           correctAnswerIndex: 0,
-          explanation: 'Great typing practice!',
+          explanation:
+              'Great start! You caught all the falling letters. Now you understand the basic typing positions.',
+          points: 70,
+          interactiveData: {
+            'gameType': 'typingChallenge',
+            'level': 'letters',
+            'content': ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
+            'fallSpeed': 'slow',
+            'language': 'english',
+            'instructions': 'Type each letter as it falls down the screen'
+          },
+        ),
+        GameChallenge(
+          id: 'typing_star_2',
+          type: ChallengeType.typingChallenge,
+          question: 'Typing Star: Now catch these English words! CAT, DOG, SUN, TREE',
+          options: ['All words typed!', 'Keep practicing', 'Getting better!', 'Word master!'],
+          correctAnswerIndex: 0,
+          explanation:
+              'Excellent! You are becoming a typing star with English words. Your accuracy is improving!',
+          points: 90,
+          interactiveData: {
+            'gameType': 'typingChallenge',
+            'level': 'words',
+            'content': ['CAT', 'DOG', 'SUN', 'TREE', 'BOOK', 'HOME', 'PLAY', 'LEARN'],
+            'fallSpeed': 'medium',
+            'language': 'english',
+            'instructions': 'Type the complete word before it disappears'
+          },
+        ),
+        GameChallenge(
+          id: 'typing_star_3',
+          type: ChallengeType.typingChallenge,
+          question: 'Typing Star: Practice with your local language! (ਪੰਜਾਬੀ example: ਘਰ, ਸਕੂਲ, ਕਿਤਾਬ)',
+          options: ['Local words typed!', 'Keep trying', 'Great progress!', 'Language expert!'],
+          correctAnswerIndex: 0,
+          explanation:
+              'Wonderful! You can type in your local language too. This skill will help you communicate with family and friends.',
           points: 100,
+          interactiveData: {
+            'gameType': 'typingChallenge',
+            'level': 'local_words',
+            'content': ['ਘਰ', 'ਸਕੂਲ', 'ਕਿਤਾਬ', 'ਦੋਸਤ', 'ਪਾਣੀ', 'ਭੋਜਨ'], // Punjabi words
+            'fallSpeed': 'slow',
+            'language': 'punjabi',
+            'instructions': 'Type words in your local language'
+          },
+        ),
+        GameChallenge(
+          id: 'typing_star_4',
+          type: ChallengeType.typingChallenge,
+          question: 'Typing Star: Final challenge! Type this sentence: "My Village"',
+          options: ['Sentence completed!', 'Try again', 'Almost perfect!', 'Typing champion!'],
+          correctAnswerIndex: 0,
+          explanation:
+              'Amazing! You typed a complete sentence. You are now ready to write stories, emails, and homework on any device!',
+          points: 80,
+          interactiveData: {
+            'gameType': 'typingChallenge',
+            'level': 'sentence',
+            'content': ['My Village', 'I love learning', 'Digital skills are fun'],
+            'fallSpeed': 'medium',
+            'language': 'english',
+            'instructions': 'Type the complete sentence accurately'
+          },
         ),
       ],
     );
@@ -385,22 +604,95 @@ class LevelData {
       levelNumber: 7,
       title: 'Presentation Pro',
       theme: 'Creating Presentations',
-      description: 'Learn to create simple presentations with text and images.',
+      description: 'Become a Slide Designer! Create beautiful presentations step-by-step with guided tasks.',
       backgroundImagePath: 'assets/images/backgrounds/presentation_bg.png',
       characterImagePath: 'assets/images/characters/presentation_hero.png',
-      targetScore: 280,
-      timeLimit: 200,
-      learningObjective: 'Students will create basic presentations using simple software.',
-      tips: ['Keep slides simple and clear', 'Use images to support your message', 'Practice presenting your work', 'Save your work frequently'],
+      targetScore: 320,
+      timeLimit: 240,
+      learningObjective: 'Students will create simple but effective presentations using guided design tasks.',
+      tips: [
+        'Follow each task step-by-step for best results',
+        'Keep slides simple and easy to read',
+        'Use pictures to make your message clearer',
+        'Practice presenting your work out loud'
+      ],
       challenges: [
         GameChallenge(
-          id: 'presentation_1',
-          type: ChallengeType.interactive,
-          question: 'Create a 3-slide presentation about your favorite subject!',
-          options: ['Presentation Created'],
+          id: 'slide_designer_1',
+          type: ChallengeType.slideDesigner,
+          question: 'Slide Designer: Task 1 - Create a title slide for "My Village"',
+          options: ['Title slide created!', 'Let me try again', 'Show me how', 'Perfect design!'],
           correctAnswerIndex: 0,
-          explanation: 'Excellent presentation skills!',
-          points: 120,
+          explanation:
+              'Excellent! You created a beautiful title slide. A good title slide introduces your presentation topic clearly.',
+          points: 80,
+          interactiveData: {
+            'gameType': 'slideDesigner',
+            'task': 'create_title_slide',
+            'requirements': {
+              'title': 'My Village',
+              'subtitle': 'A presentation by [Student Name]',
+              'background': 'village_theme'
+            },
+            'tools': ['text_box', 'background_selector', 'font_options'],
+            'instructions': 'Use the text tool to add your title and subtitle'
+          },
+        ),
+        GameChallenge(
+          id: 'slide_designer_2',
+          type: ChallengeType.slideDesigner,
+          question: 'Slide Designer: Task 2 - Add a picture of a flower to your slide',
+          options: ['Picture added!', 'Help me position it', 'Choose different picture', 'Looks great!'],
+          correctAnswerIndex: 0,
+          explanation:
+              'Wonderful! Pictures make presentations more interesting and help explain your ideas better.',
+          points: 90,
+          interactiveData: {
+            'gameType': 'slideDesigner',
+            'task': 'add_image',
+            'requirements': {
+              'image_type': 'flower',
+              'position': 'center_right',
+              'size': 'medium'
+            },
+            'tools': ['image_gallery', 'resize_handles', 'position_guides'],
+            'instructions': 'Select a flower image and place it on your slide'
+          },
+        ),
+        GameChallenge(
+          id: 'slide_designer_3',
+          type: ChallengeType.slideDesigner,
+          question: 'Slide Designer: Task 3 - Choose a nice background color for your presentation',
+          options: ['Background chosen!', 'Try different color', 'Looks beautiful!', 'Perfect choice!'],
+          correctAnswerIndex: 0,
+          explanation:
+              'Great color choice! The right background makes your text easy to read and your presentation look professional.',
+          points: 70,
+          interactiveData: {
+            'gameType': 'slideDesigner',
+            'task': 'choose_background',
+            'requirements': {
+              'color_family': 'nature_colors',
+              'contrast': 'good_readability'
+            },
+            'tools': ['color_picker', 'theme_selector', 'preview_mode'],
+            'instructions': 'Pick a background color that makes your text easy to read'
+          },
+        ),
+        GameChallenge(
+          id: 'presentation_tips_1',
+          type: ChallengeType.multipleChoice,
+          question: 'What makes a good presentation slide?',
+          options: [
+            'Lots of text and many colors',
+            'Clear title, simple text, and relevant pictures',
+            'Fancy animations and loud colors',
+            'Only pictures with no text'
+          ],
+          correctAnswerIndex: 1,
+          explanation:
+              'Perfect! Good slides have clear titles, simple text that is easy to read, and pictures that support your message.',
+          points: 60,
         ),
       ],
     );
@@ -411,22 +703,81 @@ class LevelData {
       levelNumber: 8,
       title: 'File Organizer',
       theme: 'Organizing Digital Work',
-      description: 'Learn to create folders, name files properly, and organize your digital schoolwork.',
+      description: 'Clean up the messy desktop! Use the File Organizer game to sort files into proper folders.',
       backgroundImagePath: 'assets/images/backgrounds/organize_bg.png',
       characterImagePath: 'assets/images/characters/organize_hero.png',
-      targetScore: 320,
-      timeLimit: 160,
-      learningObjective: 'Students will organize digital files and folders effectively.',
-      tips: ['Use clear, descriptive file names', 'Create folders for different subjects', 'Save work in the right location', 'Back up important files'],
+      targetScore: 350,
+      timeLimit: 200,
+      learningObjective: 'Students will organize digital files effectively using proper folder structures.',
+      tips: [
+        'Create folders for different types of work',
+        'Use clear, descriptive names for files and folders',
+        'Keep schoolwork separate from personal files',
+        'Organize regularly to avoid clutter'
+      ],
       challenges: [
         GameChallenge(
-          id: 'organize_1',
-          type: ChallengeType.interactive,
-          question: 'Organize these school files into proper folders!',
-          options: ['Files Organized'],
+          id: 'file_organizer_1',
+          type: ChallengeType.fileOrganizer,
+          question: 'File Organizer: This desktop is messy! Create folders for "Schoolwork" and "Personal" then organize these files.',
+          options: ['All files organized!', 'Let me try again', 'Help me sort', 'Perfect organization!'],
           correctAnswerIndex: 0,
-          explanation: 'Perfect organization skills!',
-          points: 100,
+          explanation:
+              'Excellent organization! You created proper folders and sorted all files correctly. Now you can find your work easily!',
+          points: 120,
+          interactiveData: {
+            'gameType': 'fileOrganizer',
+            'messyFiles': [
+              {'name': 'Math_Homework.txt', 'type': 'schoolwork', 'icon': 'text_file.png'},
+              {'name': 'My_Drawing.jpg', 'type': 'personal', 'icon': 'image_file.png'},
+              {'name': 'English_Story.txt', 'type': 'schoolwork', 'icon': 'text_file.png'},
+              {'name': 'Family_Photo.jpg', 'type': 'personal', 'icon': 'image_file.png'},
+              {'name': 'Science_Notes.txt', 'type': 'schoolwork', 'icon': 'text_file.png'},
+              {'name': 'Birthday_Video.mp4', 'type': 'personal', 'icon': 'video_file.png'}
+            ],
+            'targetFolders': ['Schoolwork', 'Personal'],
+            'instructions': 'First create the folders, then drag each file to the correct folder'
+          },
+        ),
+        GameChallenge(
+          id: 'file_naming_1',
+          type: ChallengeType.multipleChoice,
+          question: 'Which is the best name for a file containing your math homework from Monday?',
+          options: [
+            'file1.txt',
+            'Math_Homework_Monday.txt',
+            'homework.txt',
+            'untitled.txt'
+          ],
+          correctAnswerIndex: 1,
+          explanation:
+              'Perfect! "Math_Homework_Monday.txt" tells you exactly what the file contains and when it was from.',
+          points: 70,
+        ),
+        GameChallenge(
+          id: 'folder_structure_1',
+          type: ChallengeType.scenario,
+          question: 'You have many school subjects. How should you organize your schoolwork folder?',
+          options: [
+            'Put everything in one big folder',
+            'Create separate folders for each subject (Math, English, Science, etc.)',
+            'Create folders by date only',
+            'Do not use folders at all'
+          ],
+          correctAnswerIndex: 1,
+          explanation:
+              'Excellent choice! Separate folders for each subject make it easy to find specific homework or notes quickly.',
+          points: 80,
+        ),
+        GameChallenge(
+          id: 'backup_importance_1',
+          type: ChallengeType.trueFalse,
+          question: 'It is important to back up your important school files to prevent losing them.',
+          options: ['True', 'False'],
+          correctAnswerIndex: 0,
+          explanation:
+              'True! Backing up files protects your hard work. Save important files in multiple places or cloud storage.',
+          points: 60,
         ),
       ],
     );
