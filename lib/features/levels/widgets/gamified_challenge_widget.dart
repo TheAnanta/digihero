@@ -258,27 +258,47 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
     return Center(
       child: Transform.scale(
         scale: 0.7 + (_platformController.value * 0.3),
-        child: Container(
-          width: 80,
-          height: 40,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                AppConstants.accentColor,
-                AppConstants.accentColor.withOpacity(0.7),
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-            borderRadius: BorderRadius.circular(8),
-            boxShadow: [
-              BoxShadow(
-                color: AppConstants.accentColor.withOpacity(0.3),
-                blurRadius: 15,
-                offset: const Offset(0, 8),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            // Platform shadow
+            Container(
+              width: 90,
+              height: 50,
+              margin: const EdgeInsets.only(top: 8),
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.3),
+                borderRadius: BorderRadius.circular(12),
               ),
-            ],
-          ),
+            ),
+            // Main central platform (red like reference)
+            Container(
+              width: 90,
+              height: 50,
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [
+                    Color(0xFFFF6B6B),
+                    Color(0xFFFF5252),
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: Colors.white.withOpacity(0.6),
+                  width: 2,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFFFF6B6B).withOpacity(0.4),
+                    blurRadius: 15,
+                    offset: const Offset(0, 8),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -290,8 +310,8 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
     final centerX = MediaQuery.of(context).size.width / 2;
     final centerY = 100.0;
     
-    final x = centerX + radius * math.cos(angle - math.pi / 2) - 60;
-    final y = centerY + radius * math.sin(angle - math.pi / 2) - 30;
+    final x = centerX + radius * math.cos(angle - math.pi / 2) - 70;
+    final y = centerY + radius * math.sin(angle - math.pi / 2) - 35;
     
     final isSelected = widget.selectedAnswer == widget.challenge.options[index];
     final animationDelay = index * 200;
@@ -303,86 +323,108 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
         onPressed: () => widget.onAnswerSelected(widget.challenge.options[index]),
         child: Transform.scale(
           scale: _platformController.value,
-          child: Container(
-            width: 120,
-            height: 60,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: isSelected 
-                  ? [
-                      AppConstants.secondaryColor,
-                      AppConstants.secondaryColor.withOpacity(0.7),
-                    ]
-                  : [
-                      Colors.white,
-                      Colors.grey.shade200,
-                    ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                color: isSelected 
-                  ? AppConstants.secondaryColor 
-                  : AppConstants.primaryColor.withOpacity(0.3),
-                width: isSelected ? 3 : 2,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: isSelected 
-                    ? AppConstants.secondaryColor.withOpacity(0.4)
-                    : Colors.black.withOpacity(0.1),
-                  blurRadius: isSelected ? 15 : 8,
-                  offset: const Offset(0, 6),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              // Platform shadow/depth effect
+              Container(
+                width: 140,
+                height: 70,
+                margin: const EdgeInsets.only(top: 8),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(16),
                 ),
-              ],
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Option letter
-                Container(
-                  width: 24,
-                  height: 24,
-                  decoration: BoxDecoration(
-                    color: isSelected 
-                      ? Colors.white 
-                      : AppConstants.primaryColor,
-                    shape: BoxShape.circle,
+              ),
+              // Main platform
+              Container(
+                width: 140,
+                height: 70,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: isSelected 
+                      ? [
+                          AppConstants.secondaryColor,
+                          AppConstants.secondaryColor.withOpacity(0.7),
+                        ]
+                      : [
+                          const Color(0xFFFF6B6B), // Red platform color like reference
+                          const Color(0xFFFF5252),
+                        ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
                   ),
-                  child: Center(
-                    child: Text(
-                      String.fromCharCode(65 + index), // A, B, C, D
-                      style: TextStyle(
-                        color: isSelected 
-                          ? AppConstants.secondaryColor 
-                          : Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12,
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                    color: isSelected 
+                      ? AppConstants.secondaryColor 
+                      : Colors.white.withOpacity(0.6),
+                    width: isSelected ? 3 : 2,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: isSelected 
+                        ? AppConstants.secondaryColor.withOpacity(0.4)
+                        : const Color(0xFFFF6B6B).withOpacity(0.3),
+                      blurRadius: isSelected ? 15 : 8,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Option letter
+                    Container(
+                      width: 28,
+                      height: 28,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.2),
+                            blurRadius: 4,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: Center(
+                        child: Text(
+                          String.fromCharCode(65 + index), // A, B, C, D
+                          style: TextStyle(
+                            color: isSelected 
+                              ? AppConstants.secondaryColor 
+                              : const Color(0xFFFF6B6B),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-                const SizedBox(height: 4),
-                // Option text (truncated)
-                Flexible(
-                  child: Text(
-                    widget.challenge.options[index].length > 15
-                        ? '${widget.challenge.options[index].substring(0, 15)}...'
-                        : widget.challenge.options[index],
-                    style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w600,
-                      color: isSelected 
-                        ? Colors.white 
-                        : AppConstants.textPrimaryColor,
+                    const SizedBox(height: 6),
+                    // Option text (truncated)
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Text(
+                          widget.challenge.options[index].length > 18
+                              ? '${widget.challenge.options[index].substring(0, 18)}...'
+                              : widget.challenge.options[index],
+                          style: const TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                        ),
+                      ),
                     ),
-                    textAlign: TextAlign.center,
-                    maxLines: 2,
-                  ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ).animate().scale(
@@ -397,32 +439,91 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
 
   Widget _buildCharacter() {
     return Positioned(
-      bottom: 140,
-      left: MediaQuery.of(context).size.width / 2 - 30,
+      bottom: 150,
+      left: MediaQuery.of(context).size.width / 2 - 35,
       child: AnimatedBuilder(
         animation: _characterController,
         builder: (context, child) {
           return Transform.translate(
             offset: Offset(0, math.sin(_characterController.value * 2 * math.pi) * 8),
-            child: Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                color: AppConstants.primaryColor,
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: AppConstants.primaryColor.withOpacity(0.3),
-                    blurRadius: 15,
-                    offset: const Offset(0, 5),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                // Character shadow
+                Container(
+                  width: 75,
+                  height: 75,
+                  margin: const EdgeInsets.only(top: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.black.withOpacity(0.2),
+                    shape: BoxShape.circle,
                   ),
-                ],
-              ),
-              child: Icon(
-                Icons.android,
-                color: Colors.white,
-                size: 30,
-              ),
+                ),
+                // Character body
+                Container(
+                  width: 70,
+                  height: 70,
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      colors: [
+                        Color(0xFF42A5F5), // Light blue
+                        Color(0xFF1E88E5), // Darker blue
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 3,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: const Color(0xFF42A5F5).withOpacity(0.4),
+                        blurRadius: 15,
+                        offset: const Offset(0, 5),
+                      ),
+                    ],
+                  ),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      // Character face/icon
+                      Icon(
+                        Icons.android,
+                        color: Colors.white,
+                        size: 35,
+                      ),
+                      // Character eyes/details
+                      Positioned(
+                        top: 15,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 6,
+                              height: 6,
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Container(
+                              width: 6,
+                              height: 6,
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           );
         },
