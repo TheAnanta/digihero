@@ -9,6 +9,9 @@ import '../../game/widgets/power_up_sequence_game.dart';
 import '../../game/widgets/icon_hunt_game.dart';
 import '../../game/widgets/cursor_maestro_game.dart';
 import '../../game/widgets/app_sorter_game.dart';
+import '../../game/widgets/digital_heroes_match_game.dart';
+import '../../game/widgets/typing_star_game.dart';
+import '../../game/widgets/slide_designer_game.dart';
 
 class GameifiedChallengeWidget extends StatefulWidget {
   final GameChallenge challenge;
@@ -101,6 +104,9 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
       ChallengeType.iconHunt,
       ChallengeType.cursorMaestro,
       ChallengeType.appSorter,
+      ChallengeType.matchUp,
+      ChallengeType.typingChallenge,
+      ChallengeType.slideDesigner,
     ].contains(widget.challenge.type);
   }
 
@@ -198,6 +204,36 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
         
       case ChallengeType.appSorter:
         return AppSorterGame(
+          gameData: gameData,
+          onComplete: (isCorrect, points) {
+            if (isCorrect) {
+              widget.onAnswerSelected(widget.challenge.options[0]);
+            }
+          },
+        );
+        
+      case ChallengeType.matchUp:
+        return DigitalHeroesMatchGame(
+          gameData: gameData,
+          onComplete: (isCorrect, points) {
+            if (isCorrect) {
+              widget.onAnswerSelected(widget.challenge.options[0]);
+            }
+          },
+        );
+        
+      case ChallengeType.typingChallenge:
+        return TypingStarGame(
+          gameData: gameData,
+          onComplete: (isCorrect, points) {
+            if (isCorrect) {
+              widget.onAnswerSelected(widget.challenge.options[0]);
+            }
+          },
+        );
+        
+      case ChallengeType.slideDesigner:
+        return SlideDesignerGame(
           gameData: gameData,
           onComplete: (isCorrect, points) {
             if (isCorrect) {
