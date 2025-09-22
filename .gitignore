@@ -1,0 +1,80 @@
+# Build outputs
+build/
+.dart_tool/
+.packages
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+.pub-cache/
+.pub/
+
+# Flutter/Dart specific
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+
+# Test files
+coverage/
+test/.test_coverage.dart
+
+# Android
+android/app/debug
+android/app/profile
+android/app/release
+android/.gradle/
+android/captures/
+android/gradlew
+android/gradlew.bat
+android/local.properties
+**/android/**/gradle-wrapper.jar
+**/android/.gradle
+**/android/captures/
+**/android/gradlew
+**/android/gradlew.bat
+**/android/local.properties
+**/android/**/GeneratedPluginRegistrant.java
+
+# iOS/XCode
+ios/Runner.xcworkspace/
+ios/Runner.xcodeproj/
+ios/.symlinks/
+ios/Flutter/flutter_assets/
+ios/Flutter/flutter_export_environment.sh
+ios/ServiceDefinitions.json
+ios/Runner/GeneratedPluginRegistrant.*
+
+# Web
+web/
+
+# Windows
+windows/
+
+# macOS
+macos/
+
+# Linux
+linux/
+
+# Assets that should be generated or downloaded
+assets/images/
+assets/audio/
+assets/fonts/
+assets/animations/
+
+# Temporary files
+tmp/
+temp/
+
+# Logs
+*.log
