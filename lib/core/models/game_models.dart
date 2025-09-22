@@ -144,6 +144,22 @@ enum ChallengeType {
   sequencing,
   interactive,
   scenario,
+  deviceBuilder,    // For device part identification games
+  iconHunt,         // For tapping specific icons
+  cursorMaestro,    // For mouse/touch gesture practice  
+  appSorter,        // For categorizing apps
+  matchUp,          // For matching pairs games
+  typingChallenge,  // For typing practice games
+  slideDesigner,    // For presentation creation
+  fileOrganizer,    // For file management games
+  browserNavigator, // For browser part identification
+  searchQuest,      // For search simulation games
+  safetyScenario,   // For safety decision scenarios
+  emailComposer,    // For email composition practice
+  chatSimulator,    // For messaging practice
+  dashboardReader,  // For data interpretation
+  scamSpotter,      // For identifying scams
+  careerExplorer,   // For career research
 }
 
 class GameCharacter {
