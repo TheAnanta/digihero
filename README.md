@@ -1,15 +1,15 @@
 # DigiHero 🦸‍♂️
 
-A complex gamified Flutter game for digital literacy education using the Flutter Causal Games toolkit, inspired by Google's Be Internet Awesome program.
+A complex gamified Flutter game for digital literacy education using the Flutter Causal Games toolkit, aligned with a comprehensive rural education syllabus.
 
 ## 🎯 Overview
 
-DigiHero is an interactive educational game designed to teach children and young people essential digital literacy skills through engaging gameplay. The game features 10 comprehensive levels covering crucial topics like password security, phishing awareness, privacy settings, cyberbullying prevention, and responsible digital citizenship.
+DigiHero is an interactive educational game designed to teach rural students essential digital literacy skills through engaging gameplay. The game features 20 comprehensive levels organized into 5 educational units, covering everything from basic device operation to advanced digital citizenship and career preparation.
 
 ## 🎮 Features
 
 ### Game Mechanics
-- **10 Educational Levels**: Each focusing on a specific digital literacy topic
+- **20 Educational Levels**: Organized into 5 units with 4 chapters each
 - **Multiple Challenge Types**: 
   - Multiple choice questions
   - True/False scenarios  
@@ -23,21 +23,41 @@ DigiHero is an interactive educational game designed to teach children and young
   - Progress tracking
   - Life system for added challenge
 
-### Educational Content
-1. **Smart Passwords** - Learn to create strong, secure passwords
-2. **Phishing Awareness** - Identify and avoid phishing attempts
-3. **Privacy Settings** - Master privacy controls across platforms
-4. **Cyberbullying** - Recognize and respond to online harassment
-5. **Safe Downloads** - Identify safe sources and avoid malware
-6. **Social Media Safety** - Navigate social platforms responsibly
-7. **Digital Footprint** - Understand and manage online presence
-8. **Secure Networks** - Connect safely to WiFi and networks
-9. **Information Literacy** - Verify and evaluate online information
-10. **Digital Citizenship** - Be a responsible member of online communities
+### Educational Content (5-Unit Syllabus)
+
+#### Unit 1: My First Step into the Digital World
+1. **Meet Your Digital Device** - Learn about different devices and their parts
+2. **Understanding Your Screen** - Discover icons, menus and basic navigation
+3. **Working with Apps** - Learn to open and use applications safely
+4. **Why Digital Skills Matter** - Understand how technology helps your future
+
+#### Unit 2: Using Digital Tools for School and Learning
+5. **Mastering Our Learning App** - Navigate and use educational apps effectively
+6. **Writing and Typing** - Practice typing in your language and English
+7. **Creating Presentations** - Make simple presentations with text and images
+8. **Organizing Digital Work** - Learn to save and organize your files
+
+#### Unit 3: Exploring the Internet Safely
+9. **What is the Internet** - Understand the internet and how to connect
+10. **Searching for Information** - Learn to search effectively and safely
+11. **Staying Safe Online** - Protect yourself and your personal information
+12. **Being a Good Digital Citizen** - Be kind and respectful online
+
+#### Unit 4: Communication and Collaboration
+13. **Introduction to Email** - Learn to compose and send emails safely
+14. **Messaging Apps Safety** - Use messaging apps responsibly for school
+15. **Understanding Progress** - Track your learning journey and improvement
+16. **Working Together Online** - Collaborate on digital projects with others
+
+#### Unit 5: Digital Skills for Life
+17. **Exploring Hobbies Online** - Find reliable information about your interests
+18. **Digital Payments Safety** - Understand and stay safe with digital money
+19. **Career Opportunities** - Discover careers and educational opportunities
+20. **Digital Portfolio Project** - Create a showcase of your digital skills
 
 ### Visual Design
 - **3D Cute Characters**: Engaging animated characters including DigiBuddy, CyberPal, and SafeBot
-- **Colorful UI**: Inspired by Google's Material Design and Be Internet Awesome
+- **Colorful UI**: Inspired by Google's Material Design with educational themes
 - **Smooth Animations**: Flutter Animate for engaging transitions
 - **Responsive Design**: Works across different screen sizes
 
@@ -47,10 +67,11 @@ DigiHero is an interactive educational game designed to teach children and young
 - **Audio System**: Background music and sound effects
 - **Progress Tracking**: Comprehensive analytics and achievements
 - **Modular Architecture**: Clean, maintainable code structure
+- **Unit-Based Progression**: Follow the structured syllabus path
 
 ## 🏗️ Architecture
 
-The app follows a feature-based architecture:
+The app follows a feature-based architecture with syllabus integration:
 
 ```
 lib/
