@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'dart:async';
-import 'dart:math';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/services/game_service.dart';
 import '../../../core/services/audio_service.dart';
@@ -991,6 +990,9 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
         }
         return true;
       case ChallengeType.interactive:
+        return _selectedAnswer == 'Completed';
+      default:
+        // For all other challenge types, check if answer matches
         return _selectedAnswer == 'Completed';
     }
   }

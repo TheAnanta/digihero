@@ -26,6 +26,5 @@ linter:
     avoid_web_libraries_in_flutter: true
     
     # Performance
-    prefer_for_elements_to_map_fromiterable: true
     prefer_collection_literals: true
     prefer_spread_collections: true

@@ -1,5 +1,4 @@
 import '../../../core/models/game_models.dart';
-import '../../../core/constants/app_constants.dart';
 
 class LevelData {
   static GameLevel getLevelData(int levelNumber) {
