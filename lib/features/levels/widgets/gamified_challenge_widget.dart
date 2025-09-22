@@ -4,6 +4,11 @@ import 'dart:math' as math;
 import '../../../core/constants/app_constants.dart';
 import '../../../core/models/game_models.dart';
 import '../../ui/widgets/animated_button.dart';
+import '../../game/widgets/device_builder_game.dart';
+import '../../game/widgets/power_up_sequence_game.dart';
+import '../../game/widgets/icon_hunt_game.dart';
+import '../../game/widgets/cursor_maestro_game.dart';
+import '../../game/widgets/app_sorter_game.dart';
 
 class GameifiedChallengeWidget extends StatefulWidget {
   final GameChallenge challenge;
@@ -61,6 +66,11 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
 
   @override
   Widget build(BuildContext context) {
+    // Check if this challenge uses an interactive game
+    if (_isInteractiveGame()) {
+      return _buildInteractiveGame();
+    }
+    
     return Container(
       height: MediaQuery.of(context).size.height * 0.6,
       child: Stack(
@@ -82,6 +92,130 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
         ],
       ),
     );
+  }
+
+  bool _isInteractiveGame() {
+    return [
+      ChallengeType.deviceBuilder,
+      ChallengeType.sequencing,
+      ChallengeType.iconHunt,
+      ChallengeType.cursorMaestro,
+      ChallengeType.appSorter,
+    ].contains(widget.challenge.type);
+  }
+
+  Widget _buildInteractiveGame() {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.8, // Taller for interactive games
+      child: Column(
+        children: [
+          // Question header
+          Container(
+            padding: const EdgeInsets.all(20),
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.95),
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 8,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Text(
+                widget.challenge.question,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: AppConstants.textPrimaryColor,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+          
+          // Interactive game widget
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: _buildGameWidget(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildGameWidget() {
+    // Merge challenge options into game data for games that need them
+    final gameData = Map<String, dynamic>.from(widget.challenge.interactiveData ?? {});
+    
+    switch (widget.challenge.type) {
+      case ChallengeType.deviceBuilder:
+        return DeviceBuilderGame(
+          gameData: gameData,
+          onComplete: (isCorrect, points) {
+            if (isCorrect) {
+              widget.onAnswerSelected(widget.challenge.options[0]);
+            }
+          },
+        );
+        
+      case ChallengeType.sequencing:
+        // Pass options as steps for sequencing game
+        gameData['steps'] = widget.challenge.options;
+        return PowerUpSequenceGame(
+          gameData: gameData,
+          onComplete: (isCorrect, points) {
+            if (isCorrect) {
+              widget.onAnswerSelected(widget.challenge.options[0]);
+            }
+          },
+        );
+        
+      case ChallengeType.iconHunt:
+        return IconHuntGame(
+          gameData: gameData,
+          onComplete: (isCorrect, points) {
+            if (isCorrect) {
+              widget.onAnswerSelected(widget.challenge.options[0]);
+            }
+          },
+        );
+        
+      case ChallengeType.cursorMaestro:
+        return CursorMaestroGame(
+          gameData: gameData,
+          onComplete: (isCorrect, points) {
+            if (isCorrect) {
+              widget.onAnswerSelected(widget.challenge.options[0]);
+            }
+          },
+        );
+        
+      case ChallengeType.appSorter:
+        return AppSorterGame(
+          gameData: gameData,
+          onComplete: (isCorrect, points) {
+            if (isCorrect) {
+              widget.onAnswerSelected(widget.challenge.options[0]);
+            }
+          },
+        );
+        
+      default:
+        return Container(
+          child: const Center(
+            child: Text(
+              'Interactive game not implemented',
+              style: TextStyle(fontSize: 16, color: Colors.grey),
+            ),
+          ),
+        );
+    }
   }
 
   Widget _buildAnimatedBackground() {
