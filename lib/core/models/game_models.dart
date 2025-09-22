@@ -25,6 +25,29 @@ class GameLevel {
     required this.tips,
   });
   
+  // Helper methods for syllabus integration
+  int get unitNumber {
+    return ((levelNumber - 1) ~/ 4) + 1;
+  }
+  
+  int get chapterInUnit {
+    return ((levelNumber - 1) % 4) + 1;
+  }
+  
+  String get unitTitle {
+    const units = [
+      'My First Step into the Digital World',
+      'Using Digital Tools for School and Learning', 
+      'Exploring the Internet Safely',
+      'Communication and Collaboration',
+      'Digital Skills for Life',
+    ];
+    if (unitNumber >= 1 && unitNumber <= units.length) {
+      return units[unitNumber - 1];
+    }
+    return 'Unknown Unit';
+  }
+  
   Map<String, dynamic> toMap() {
     return {
       'levelNumber': levelNumber,

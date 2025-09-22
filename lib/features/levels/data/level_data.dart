@@ -4,914 +4,505 @@ import '../../../core/constants/app_constants.dart';
 class LevelData {
   static GameLevel getLevelData(int levelNumber) {
     switch (levelNumber) {
+      // Unit 1: My First Step into the Digital World
       case 1:
-        return _createSmartPasswordsLevel();
+        return _createMeetYourDigitalDeviceLevel();
       case 2:
-        return _createPhishingAwarenessLevel();
+        return _createUnderstandingYourScreenLevel();
       case 3:
-        return _createPrivacySettingsLevel();
+        return _createWorkingWithAppsLevel();
       case 4:
-        return _createCyberbullyingLevel();
+        return _createWhyDigitalSkillsMatterLevel();
+      
+      // Unit 2: Using Digital Tools for School and Learning
       case 5:
-        return _createSafeDownloadsLevel();
+        return _createMasteringLearningAppLevel();
       case 6:
-        return _createSocialMediaSafetyLevel();
+        return _createWritingAndTypingLevel();
       case 7:
-        return _createDigitalFootprintLevel();
+        return _createCreatingPresentationsLevel();
       case 8:
-        return _createSecureNetworksLevel();
+        return _createOrganizingDigitalWorkLevel();
+      
+      // Unit 3: Exploring the Internet Safely
       case 9:
-        return _createInformationLiteracyLevel();
+        return _createWhatIsInternetLevel();
       case 10:
-        return _createDigitalCitizenshipLevel();
+        return _createSearchingInformationLevel();
+      case 11:
+        return _createStayingSafeOnlineLevel();
+      case 12:
+        return _createBeingGoodDigitalCitizenLevel();
+      
+      // Unit 4: Communication and Collaboration
+      case 13:
+        return _createIntroductionToEmailLevel();
+      case 14:
+        return _createMessagingAppsSafetyLevel();
+      case 15:
+        return _createUnderstandingProgressLevel();
+      case 16:
+        return _createWorkingTogetherOnlineLevel();
+      
+      // Unit 5: Digital Skills for Life
+      case 17:
+        return _createExploringHobbiesOnlineLevel();
+      case 18:
+        return _createDigitalPaymentsSafetyLevel();
+      case 19:
+        return _createCareerOpportunitiesLevel();
+      case 20:
+        return _createDigitalPortfolioProjectLevel();
+      
       default:
-        return _createSmartPasswordsLevel();
+        return _createMeetYourDigitalDeviceLevel();
     }
   }
 
-  static GameLevel _createSmartPasswordsLevel() {
+  // Unit 1: My First Step into the Digital World
+  static GameLevel _createMeetYourDigitalDeviceLevel() {
     return GameLevel(
       levelNumber: 1,
-      title: 'Password Power',
-      theme: 'Smart Passwords',
+      title: 'Device Explorer',
+      theme: 'Meet Your Digital Device',
       description:
-          'Learn to create strong, secure passwords that protect your digital life.',
-      backgroundImagePath: 'assets/images/backgrounds/password_bg.png',
-      characterImagePath: 'assets/images/characters/password_hero.png',
-      targetScore: 300,
-      timeLimit: 120,
-      learningObjective:
-          'Students will understand the importance of strong passwords and learn how to create them.',
-      tips: [
-        'Use a mix of letters, numbers, and symbols',
-        'Make passwords at least 12 characters long',
-        'Avoid using personal information',
-        'Use different passwords for different accounts'
-      ],
-      challenges: [
-        GameChallenge(
-          id: 'password_1',
-          type: ChallengeType.multipleChoice,
-          question: 'Which password is the strongest?',
-          options: ['password123', 'MyP@ssw0rd2024!', 'john1990', '12345678'],
-          correctAnswerIndex: 1,
-          explanation:
-              'Strong passwords use a mix of uppercase, lowercase, numbers, and special characters.',
-          points: 50,
-        ),
-        GameChallenge(
-          id: 'password_2',
-          type: ChallengeType.trueFalse,
-          question:
-              'It\'s safe to use the same password for all your accounts.',
-          options: ['True', 'False'],
-          correctAnswerIndex: 1,
-          explanation:
-              'Using the same password everywhere means if one account is hacked, all accounts are at risk.',
-          points: 50,
-        ),
-        GameChallenge(
-          id: 'password_3',
-          type: ChallengeType.dragAndDrop,
-          question:
-              'Arrange these password elements from weakest to strongest:',
-          options: ['123456', 'MyName', 'M@4\$Str0ng!P@ss', 'password'],
-          correctAnswerIndex: 0, // Not used for drag and drop
-          explanation: 'Longer passwords with mixed characters are stronger.',
-          points: 75,
-        ),
-        GameChallenge(
-          id: 'password_4',
-          type: ChallengeType.scenario,
-          question:
-              'Your friend asks for your social media password to help you with something. What should you do?',
-          options: [
-            'Give them the password since they\'re your friend',
-            'Tell them no and do it yourself instead',
-            'Give them a fake password',
-            'Ask your parents first'
-          ],
-          correctAnswerIndex: 1,
-          explanation:
-              'Never share passwords, even with friends. Keep your accounts secure by doing things yourself.',
-          points: 75,
-        ),
-        GameChallenge(
-          id: 'password_5',
-          type: ChallengeType.interactive,
-          question: 'Create a strong password using the password generator!',
-          options: ['Completed'],
-          correctAnswerIndex: 0,
-          explanation:
-              'Password generators help create random, strong passwords.',
-          points: 50,
-        ),
-      ],
-    );
-  }
-
-  static GameLevel _createPhishingAwarenessLevel() {
-    return GameLevel(
-      levelNumber: 2,
-      title: 'Phishing Detective',
-      theme: 'Phishing Awareness',
-      description:
-          'Become a detective and learn to spot fake emails, messages, and websites.',
-      backgroundImagePath: 'assets/images/backgrounds/detective_bg.png',
-      characterImagePath: 'assets/images/characters/detective_hero.png',
-      targetScore: 350,
+          'Learn about different types of devices and identify their main parts.',
+      backgroundImagePath: 'assets/images/backgrounds/device_bg.png',
+      characterImagePath: 'assets/images/characters/explorer_hero.png',
+      targetScore: 250,
       timeLimit: 150,
       learningObjective:
-          'Students will identify phishing attempts and learn how to respond safely.',
+          'Students will identify different types of devices and understand their main parts.',
       tips: [
-        'Check sender email addresses carefully',
-        'Look for spelling and grammar mistakes',
-        'Don\'t click suspicious links',
-        'Verify requests through official channels'
+        'Look for common device parts like screen, keyboard, and mouse',
+        'Different devices have different purposes',
+        'Practice turning devices on and off safely',
+        'Ask for help when handling new devices'
       ],
       challenges: [
         GameChallenge(
-          id: 'phishing_1',
-          type: ChallengeType.scenario,
-          question:
-              'You receive an email saying "Your account will be closed! Click here to verify." What should you do?',
-          options: [
-            'Click the link immediately',
-            'Delete the email and contact the company directly',
-            'Forward it to friends',
-            'Reply with your password'
-          ],
-          correctAnswerIndex: 1,
-          explanation:
-              'Legitimate companies don\'t ask for urgent action via email. Always verify through official channels.',
-          points: 75,
-        ),
-        GameChallenge(
-          id: 'phishing_2',
+          id: 'device_1',
           type: ChallengeType.multipleChoice,
-          question: 'Which email address looks suspicious?',
-          options: [
-            'support@amazon.com',
-            'noreply@paypal.com',
-            'security@g00gle.com',
-            'updates@microsoft.com'
-          ],
+          question: 'Which of these is NOT a main part of a computer?',
+          options: ['Monitor', 'Keyboard', 'Refrigerator', 'Mouse'],
           correctAnswerIndex: 2,
           explanation:
-              'Notice the "00" instead of "oo" in google - this is a common phishing trick.',
-          points: 60,
-        ),
-        GameChallenge(
-          id: 'phishing_3',
-          type: ChallengeType.trueFalse,
-          question: 'Phishing emails always have obvious spelling mistakes.',
-          options: ['True', 'False'],
-          correctAnswerIndex: 1,
-          explanation:
-              'Modern phishing emails can be very convincing and well-written. Always be cautious.',
+              'Computers have monitors, keyboards, and mice, but not refrigerators!',
           points: 50,
         ),
         GameChallenge(
-          id: 'phishing_4',
+          id: 'device_2',
           type: ChallengeType.dragAndDrop,
-          question: 'Sort these red flags from most to least suspicious:',
-          options: [
-            'Urgent action required',
-            'Generic greeting',
-            'Strange sender',
-            'Poor grammar'
-          ],
+          question: 'Match each device with its main use:',
+          options: ['Smartphone - Communication', 'Tablet - Reading', 'Computer - Work', 'TV - Entertainment'],
           correctAnswerIndex: 0,
           explanation:
-              'All are red flags, but urgent action requests are especially dangerous.',
-          points: 80,
+              'Different devices are designed for different purposes, though many can do multiple things.',
+          points: 75,
         ),
         GameChallenge(
-          id: 'phishing_5',
-          type: ChallengeType.interactive,
-          question: 'Analyze this suspicious email for phishing signs!',
-          options: ['Analysis Complete'],
+          id: 'device_3',
+          type: ChallengeType.trueFalse,
+          question: 'You should always turn off a device properly instead of just unplugging it.',
+          options: ['True', 'False'],
           correctAnswerIndex: 0,
-          explanation: 'Good job identifying the warning signs!',
-          points: 85,
+          explanation:
+              'Proper shutdown saves your work and protects the device from damage.',
+          points: 60,
+        ),
+        GameChallenge(
+          id: 'device_4',
+          type: ChallengeType.interactive,
+          question: 'Identify the parts of this computer setup!',
+          options: ['Parts Identified'],
+          correctAnswerIndex: 0,
+          explanation: 'Great job learning about device parts!',
+          points: 65,
         ),
       ],
     );
   }
 
-  static GameLevel _createPrivacySettingsLevel() {
+  static GameLevel _createUnderstandingYourScreenLevel() {
     return GameLevel(
-      levelNumber: 3,
-      title: 'Privacy Guardian',
-      theme: 'Privacy Settings',
+      levelNumber: 2,
+      title: 'Screen Navigator',
+      theme: 'Understanding Your Screen',
       description:
-          'Master your privacy settings to control who sees your information online.',
-      backgroundImagePath: 'assets/images/backgrounds/privacy_bg.png',
-      characterImagePath: 'assets/images/characters/privacy_hero.png',
-      targetScore: 400,
+          'Discover desktop icons, menus, and learn basic mouse and touch navigation.',
+      backgroundImagePath: 'assets/images/backgrounds/screen_bg.png',
+      characterImagePath: 'assets/images/characters/navigator_hero.png',
+      targetScore: 300,
       timeLimit: 180,
       learningObjective:
-          'Students will learn to configure privacy settings across different platforms.',
+          'Students will understand desktop elements and basic navigation using mouse or touch.',
       tips: [
-        'Review privacy settings regularly',
-        'Limit who can see your posts',
-        'Control what information is public',
-        'Understand data collection practices'
+        'Icons are small pictures that represent apps or files',
+        'Click once to select, double-click to open',
+        'On touch screens, tap once to select',
+        'Menus show you different options'
       ],
       challenges: [
         GameChallenge(
-          id: 'privacy_1',
+          id: 'screen_1',
           type: ChallengeType.multipleChoice,
-          question: 'What should you do before posting photos of friends?',
-          options: [
-            'Post them without asking',
-            'Ask for permission first',
-            'Tag everyone automatically',
-            'Make them public for everyone'
-          ],
+          question: 'What do icons on a screen represent?',
+          options: ['Decorations', 'Apps and files', 'Nothing important', 'Screen protectors'],
           correctAnswerIndex: 1,
           explanation:
-              'Always get permission before posting photos of others to respect their privacy.',
+              'Icons are small pictures that help you find and open apps and files.',
           points: 60,
         ),
         GameChallenge(
-          id: 'privacy_2',
+          id: 'screen_2',
           type: ChallengeType.scenario,
-          question:
-              'A social media app asks for access to your contacts, camera, and location. What should you consider?',
-          options: [
-            'Accept all permissions to use the app',
-            'Only give permissions that make sense for the app',
-            'Deny all permissions',
-            'Ask friends what they did'
-          ],
-          correctAnswerIndex: 1,
-          explanation:
-              'Only grant permissions that are necessary for the app to function properly.',
-          points: 75,
-        ),
-        GameChallenge(
-          id: 'privacy_3',
-          type: ChallengeType.trueFalse,
-          question:
-              'It\'s okay to share your location with all your social media followers.',
-          options: ['True', 'False'],
-          correctAnswerIndex: 1,
-          explanation:
-              'Sharing location can put you at risk. Only share with close friends and family when necessary.',
-          points: 50,
-        ),
-        GameChallenge(
-          id: 'privacy_4',
-          type: ChallengeType.dragAndDrop,
-          question: 'Match privacy settings with their purposes:',
-          options: [
-            'Friends Only',
-            'Private Account',
-            'Location Off',
-            'No Tagging'
-          ],
+          question: 'You want to open a calculator app. What should you do?',
+          options: ['Double-click the calculator icon', 'Shake the device', 'Press any key', 'Turn off the device'],
           correctAnswerIndex: 0,
           explanation:
-              'Each privacy setting helps protect different aspects of your online presence.',
-          points: 90,
-        ),
-        GameChallenge(
-          id: 'privacy_5',
-          type: ChallengeType.interactive,
-          question:
-              'Configure the privacy settings for this social media profile!',
-          options: ['Settings Configured'],
-          correctAnswerIndex: 0,
-          explanation: 'Great job setting up strong privacy protection!',
-          points: 125,
-        ),
-      ],
-    );
-  }
-
-  static GameLevel _createCyberbullyingLevel() {
-    return GameLevel(
-      levelNumber: 4,
-      title: 'Kindness Champion',
-      theme: 'Cyberbullying',
-      description:
-          'Learn to recognize, prevent, and respond to cyberbullying with kindness and courage.',
-      backgroundImagePath: 'assets/images/backgrounds/kindness_bg.png',
-      characterImagePath: 'assets/images/characters/kindness_hero.png',
-      targetScore: 450,
-      timeLimit: 200,
-      learningObjective:
-          'Students will understand cyberbullying and learn strategies to address it.',
-      tips: [
-        'Be kind and respectful online',
-        'Don\'t engage with bullies',
-        'Report harmful behavior',
-        'Support others who are being bullied'
-      ],
-      challenges: [
-        GameChallenge(
-          id: 'cyberbully_1',
-          type: ChallengeType.scenario,
-          question:
-              'Someone is posting mean comments about your friend. What should you do?',
-          options: [
-            'Join in with the comments',
-            'Ignore it completely',
-            'Support your friend and report the behavior',
-            'Screenshot and share the comments'
-          ],
-          correctAnswerIndex: 2,
-          explanation:
-              'Supporting your friend and reporting harmful behavior helps stop cyberbullying.',
-          points: 100,
-        ),
-        GameChallenge(
-          id: 'cyberbully_2',
-          type: ChallengeType.multipleChoice,
-          question: 'Which response shows good digital citizenship?',
-          options: [
-            'That\'s a stupid idea!',
-            'I disagree, but I respect your opinion.',
-            'You\'re so wrong about everything.',
-            'Nobody asked for your opinion.'
-          ],
-          correctAnswerIndex: 1,
-          explanation:
-              'Respectful disagreement shows good digital citizenship and prevents conflicts.',
-          points: 75,
-        ),
-        GameChallenge(
-          id: 'cyberbully_3',
-          type: ChallengeType.trueFalse,
-          question: 'Cyberbullying only happens on social media platforms.',
-          options: ['True', 'False'],
-          correctAnswerIndex: 1,
-          explanation:
-              'Cyberbullying can happen anywhere online - social media, games, messaging apps, etc.',
-          points: 60,
-        ),
-        GameChallenge(
-          id: 'cyberbully_4',
-          type: ChallengeType.dragAndDrop,
-          question: 'Arrange these responses from least to most helpful:',
-          options: ['Ignore', 'Fight Back', 'Report', 'Support Victim'],
-          correctAnswerIndex: 0,
-          explanation:
-              'Supporting victims and reporting are the most helpful responses to cyberbullying.',
-          points: 90,
-        ),
-        GameChallenge(
-          id: 'cyberbully_5',
-          type: ChallengeType.interactive,
-          question:
-              'Practice responding to a cyberbullying situation with kindness!',
-          options: ['Response Completed'],
-          correctAnswerIndex: 0,
-          explanation: 'Your kind response can make a real difference!',
-          points: 125,
-        ),
-      ],
-    );
-  }
-
-  static GameLevel _createSafeDownloadsLevel() {
-    return GameLevel(
-      levelNumber: 5,
-      title: 'Download Detective',
-      theme: 'Safe Downloads',
-      description:
-          'Learn to identify safe downloads and protect your devices from malware.',
-      backgroundImagePath: 'assets/images/backgrounds/download_bg.png',
-      characterImagePath: 'assets/images/characters/download_hero.png',
-      targetScore: 500,
-      timeLimit: 160,
-      learningObjective:
-          'Students will learn to safely download files and recognize potential threats.',
-      tips: [
-        'Only download from trusted sources',
-        'Check file types before downloading',
-        'Use antivirus software',
-        'Be cautious of free software offers'
-      ],
-      challenges: [
-        GameChallenge(
-          id: 'download_1',
-          type: ChallengeType.multipleChoice,
-          question: 'Which is the safest place to download apps?',
-          options: [
-            'Random websites offering free apps',
-            'Official app stores (Google Play, Apple App Store)',
-            'Email attachments from strangers',
-            'Pop-up ads promising free software'
-          ],
-          correctAnswerIndex: 1,
-          explanation:
-              'Official app stores review apps for safety before making them available.',
+              'Double-clicking (or tapping on touch screens) opens apps and files.',
           points: 80,
         ),
         GameChallenge(
-          id: 'download_2',
-          type: ChallengeType.scenario,
-          question:
-              'A pop-up claims your computer is infected and offers a free antivirus download. What should you do?',
+          id: 'screen_3',
+          type: ChallengeType.dragAndDrop,
+          question: 'Put these mouse actions in order to open a file:',
+          options: ['Point to icon', 'Move mouse', 'Double-click', 'File opens'],
+          correctAnswerIndex: 0,
+          explanation:
+              'First move the mouse to point at the icon, then double-click to open it.',
+          points: 90,
+        ),
+        GameChallenge(
+          id: 'screen_4',
+          type: ChallengeType.interactive,
+          question: 'Practice navigating this desktop!',
+          options: ['Navigation Complete'],
+          correctAnswerIndex: 0,
+          explanation: 'Excellent navigation skills!',
+          points: 70,
+        ),
+      ],
+    );
+  }
+
+  static GameLevel _createWorkingWithAppsLevel() {
+    return GameLevel(
+      levelNumber: 3,
+      title: 'App Master',
+      theme: 'Working with Apps',
+      description:
+          'Learn what software and apps are, and how to open and close them safely.',
+      backgroundImagePath: 'assets/images/backgrounds/apps_bg.png',
+      characterImagePath: 'assets/images/characters/app_hero.png',
+      targetScore: 280,
+      timeLimit: 160,
+      learningObjective:
+          'Students will understand the difference between system and application software and learn to use apps safely.',
+      tips: [
+        'Apps are programs that help you do specific tasks',
+        'Always close apps properly when done',
+        'System software runs the device itself',
+        'Try basic apps like calculator and notepad first'
+      ],
+      challenges: [
+        GameChallenge(
+          id: 'apps_1',
+          type: ChallengeType.multipleChoice,
+          question: 'What is the difference between system software and application software?',
           options: [
-            'Download the antivirus immediately',
-            'Close the pop-up and run your regular antivirus',
-            'Click to learn more about the offer',
-            'Share the link with friends'
+            'There is no difference',
+            'System software runs the device, apps do specific tasks',
+            'Apps are always free, system software costs money',
+            'System software is newer than apps'
           ],
           correctAnswerIndex: 1,
           explanation:
-              'Pop-up antivirus offers are often malware. Use your trusted antivirus software instead.',
-          points: 100,
-        ),
-        GameChallenge(
-          id: 'download_3',
-          type: ChallengeType.trueFalse,
-          question:
-              'It\'s safe to download files with .exe extension from any website.',
-          options: ['True', 'False'],
-          correctAnswerIndex: 1,
-          explanation:
-              '.exe files can contain viruses. Only download them from trusted sources.',
+              'System software (like Android or Windows) runs your device, while apps do specific tasks like calculating or drawing.',
           points: 70,
         ),
         GameChallenge(
-          id: 'download_4',
-          type: ChallengeType.dragAndDrop,
-          question: 'Sort these file sources from safest to most risky:',
-          options: [
-            'Official Website',
-            'App Store',
-            'Unknown Email',
-            'Torrent Site'
-          ],
-          correctAnswerIndex: 0,
+          id: 'apps_2',
+          type: ChallengeType.scenario,
+          question: 'You finished using a drawing app. What should you do?',
+          options: ['Leave it open', 'Close it properly', 'Turn off the device', 'Delete the app'],
+          correctAnswerIndex: 1,
           explanation:
-              'App stores and official websites are much safer than unknown sources.',
-          points: 90,
+              'Closing apps properly saves memory and keeps your device running smoothly.',
+          points: 60,
         ),
         GameChallenge(
-          id: 'download_5',
-          type: ChallengeType.interactive,
-          question: 'Scan this file for safety before downloading!',
-          options: ['Scan Complete'],
+          id: 'apps_3',
+          type: ChallengeType.trueFalse,
+          question: 'A calculator app is an example of application software.',
+          options: ['True', 'False'],
           correctAnswerIndex: 0,
-          explanation: 'Always scan downloads to keep your device safe!',
-          points: 160,
+          explanation:
+              'Calculator apps help you do specific tasks, making them application software.',
+          points: 50,
+        ),
+        GameChallenge(
+          id: 'apps_4',
+          type: ChallengeType.interactive,
+          question: 'Practice opening and closing these basic apps!',
+          options: ['Practice Complete'],
+          correctAnswerIndex: 0,
+          explanation: 'Great job managing apps safely!',
+          points: 100,
         ),
       ],
     );
   }
 
-  static GameLevel _createSocialMediaSafetyLevel() {
+  static GameLevel _createWhyDigitalSkillsMatterLevel() {
     return GameLevel(
-      levelNumber: 6,
-      title: 'Social Media Superhero',
-      theme: 'Social Media Safety',
+      levelNumber: 4,
+      title: 'Future Hero',
+      theme: 'Why Digital Skills Matter',
       description:
-          'Navigate social media safely and responsibly while having fun with friends.',
-      backgroundImagePath: 'assets/images/backgrounds/social_bg.png',
-      characterImagePath: 'assets/images/characters/social_hero.png',
-      targetScore: 550,
-      timeLimit: 190,
+          'Discover how digital tools help in education, jobs, and daily life for your future success.',
+      backgroundImagePath: 'assets/images/backgrounds/future_bg.png',
+      characterImagePath: 'assets/images/characters/future_hero.png',
+      targetScore: 320,
+      timeLimit: 180,
       learningObjective:
-          'Students will learn safe social media practices and how to identify risks.',
+          'Students will understand the importance of digital skills for their education and future careers.',
       tips: [
-        'Think before you post',
-        'Don\'t share personal information',
-        'Be careful with friend requests',
-        'Report inappropriate content'
+        'Digital skills help in almost every job today',
+        'Technology makes learning more fun and interactive',
+        'Digital tools connect you with people worldwide',
+        'These skills will grow more important over time'
       ],
       challenges: [
         GameChallenge(
-          id: 'social_1',
-          type: ChallengeType.scenario,
-          question:
-              'Someone you don\'t know sends you a friend request with an attractive profile picture. What should you do?',
-          options: [
-            'Accept immediately - they look friendly',
-            'Check their profile carefully and only accept if you know them',
-            'Accept and start chatting right away',
-            'Ask them for more photos'
-          ],
-          correctAnswerIndex: 1,
-          explanation:
-              'Only connect with people you actually know. Fake profiles are common online.',
-          points: 110,
-        ),
-        GameChallenge(
-          id: 'social_2',
+          id: 'future_1',
           type: ChallengeType.multipleChoice,
-          question:
-              'What information should you NOT share publicly on social media?',
+          question: 'How do digital skills help in education?',
           options: [
-            'Your favorite movie',
-            'Your school name and schedule',
-            'Photos of your pet',
-            'Your hobby interests'
+            'They make homework harder',
+            'They allow access to online learning and research',
+            'They are only for entertainment',
+            'They replace the need for teachers'
           ],
           correctAnswerIndex: 1,
           explanation:
-              'School information and schedules can help strangers find you in real life.',
-          points: 90,
-        ),
-        GameChallenge(
-          id: 'social_3',
-          type: ChallengeType.trueFalse,
-          question:
-              'Once you delete a post on social media, it\'s completely gone forever.',
-          options: ['True', 'False'],
-          correctAnswerIndex: 1,
-          explanation:
-              'Deleted posts may still exist in backups or screenshots. Think before posting!',
+              'Digital skills open up endless learning opportunities through online resources, educational apps, and research tools.',
           points: 80,
         ),
         GameChallenge(
-          id: 'social_4',
-          type: ChallengeType.dragAndDrop,
-          question: 'Match these situations with the best responses:',
-          options: [
-            'Inappropriate Message',
-            'Cyberbullying',
-            'Spam Post',
-            'Fake Profile'
-          ],
-          correctAnswerIndex: 0,
-          explanation:
-              'Each situation requires a different but important response to stay safe.',
-          points: 120,
-        ),
-        GameChallenge(
-          id: 'social_5',
-          type: ChallengeType.interactive,
-          question: 'Review this social media profile for safety issues!',
-          options: ['Review Complete'],
-          correctAnswerIndex: 0,
-          explanation: 'Great job spotting potential safety concerns!',
-          points: 150,
-        ),
-      ],
-    );
-  }
-
-  static GameLevel _createDigitalFootprintLevel() {
-    return GameLevel(
-      levelNumber: 7,
-      title: 'Footprint Guardian',
-      theme: 'Digital Footprint',
-      description:
-          'Learn how your online actions create a digital footprint and how to manage it wisely.',
-      backgroundImagePath: 'assets/images/backgrounds/footprint_bg.png',
-      characterImagePath: 'assets/images/characters/footprint_hero.png',
-      targetScore: 600,
-      timeLimit: 210,
-      learningObjective:
-          'Students will understand digital footprints and learn to manage their online presence.',
-      tips: [
-        'Everything you do online leaves a trace',
-        'Think about your future self',
-        'Regularly review your online presence',
-        'Create positive digital content'
-      ],
-      challenges: [
-        GameChallenge(
-          id: 'footprint_1',
-          type: ChallengeType.multipleChoice,
-          question: 'What is a digital footprint?',
-          options: [
-            'A special type of internet password',
-            'The trail of data you leave when using the internet',
-            'A way to track your steps while walking',
-            'A new type of social media app'
-          ],
-          correctAnswerIndex: 1,
-          explanation:
-              'Your digital footprint is all the information about you that exists online.',
-          points: 100,
-        ),
-        GameChallenge(
-          id: 'footprint_2',
+          id: 'future_2',
           type: ChallengeType.scenario,
-          question:
-              'You want to post a funny but embarrassing video of yourself. What should you consider?',
+          question: 'A farmer wants to check weather forecasts and crop prices. How do digital skills help?',
           options: [
-            'Post it right away - it\'s funny!',
-            'Think about how it might affect your future',
-            'Only post it if friends dare you to',
-            'Post it anonymously'
+            'Digital skills are not useful for farmers',
+            'They can access weather apps and market information online',
+            'They only help with entertainment',
+            'They make farming more difficult'
           ],
           correctAnswerIndex: 1,
           explanation:
-              'Consider how your posts might be viewed by future employers, schools, or family.',
-          points: 120,
-        ),
-        GameChallenge(
-          id: 'footprint_3',
-          type: ChallengeType.trueFalse,
-          question:
-              'Your digital footprint only includes things you post yourself.',
-          options: ['True', 'False'],
-          correctAnswerIndex: 1,
-          explanation:
-              'Others can tag you, mention you, or post about you, adding to your digital footprint.',
+              'Digital tools help farmers make better decisions with weather forecasts, market prices, and farming techniques.',
           points: 90,
         ),
         GameChallenge(
-          id: 'footprint_4',
+          id: 'future_3',
           type: ChallengeType.dragAndDrop,
-          question:
-              'Arrange these activities by how much they affect your digital footprint:',
-          options: [
-            'Browsing Websites',
-            'Posting Photos',
-            'Online Shopping',
-            'Creating Accounts'
-          ],
+          question: 'Match these careers with how they use digital skills:',
+          options: ['Teacher - Online lessons', 'Doctor - Digital records', 'Artist - Digital design', 'Shopkeeper - Digital payments'],
           correctAnswerIndex: 0,
           explanation:
-              'All online activities contribute to your footprint, but some are more visible than others.',
-          points: 130,
-        ),
-        GameChallenge(
-          id: 'footprint_5',
-          type: ChallengeType.interactive,
-          question: 'Audit and clean up this digital footprint!',
-          options: ['Cleanup Complete'],
-          correctAnswerIndex: 0,
-          explanation:
-              'Regular footprint maintenance helps maintain a positive online presence!',
-          points: 160,
-        ),
-      ],
-    );
-  }
-
-  static GameLevel _createSecureNetworksLevel() {
-    return GameLevel(
-      levelNumber: 8,
-      title: 'Network Guardian',
-      theme: 'Secure Networks',
-      description:
-          'Learn to identify secure networks and protect yourself when connecting to the internet.',
-      backgroundImagePath: 'assets/images/backgrounds/network_bg.png',
-      characterImagePath: 'assets/images/characters/network_hero.png',
-      targetScore: 650,
-      timeLimit: 180,
-      learningObjective:
-          'Students will learn to identify secure networks and practice safe connection habits.',
-      tips: [
-        'Look for secure (locked) WiFi networks',
-        'Avoid public WiFi for sensitive activities',
-        'Use VPNs when necessary',
-        'Keep your devices updated'
-      ],
-      challenges: [
-        GameChallenge(
-          id: 'network_1',
-          type: ChallengeType.multipleChoice,
-          question: 'Which WiFi network is safest to connect to?',
-          options: [
-            'FreeWiFi (no password)',
-            'CoffeeShop_Guest (no password)',
-            'MyHome_WiFi (password protected)',
-            'ClickHere_ForInternet (no password)'
-          ],
-          correctAnswerIndex: 2,
-          explanation:
-              'Password-protected networks are more secure than open public networks.',
-          points: 110,
-        ),
-        GameChallenge(
-          id: 'network_2',
-          type: ChallengeType.scenario,
-          question:
-              'You\'re at a coffee shop and need to check your bank account. What should you do?',
-          options: [
-            'Use the coffee shop\'s free WiFi',
-            'Wait until you get home or use your phone\'s data',
-            'Ask to borrow someone else\'s phone',
-            'Use any available WiFi network'
-          ],
-          correctAnswerIndex: 1,
-          explanation:
-              'Never access sensitive information like banking on public WiFi.',
-          points: 130,
-        ),
-        GameChallenge(
-          id: 'network_3',
-          type: ChallengeType.trueFalse,
-          question:
-              'It\'s safe to enter passwords when connected to public WiFi.',
-          options: ['True', 'False'],
-          correctAnswerIndex: 1,
-          explanation:
-              'Public WiFi can be monitored by others. Avoid entering sensitive information.',
+              'Almost every career today uses digital tools to work more effectively.',
           points: 100,
         ),
         GameChallenge(
-          id: 'network_4',
-          type: ChallengeType.dragAndDrop,
-          question: 'Rank these networks from most to least secure:',
-          options: [
-            'Home WiFi',
-            'Mobile Data',
-            'Public WiFi',
-            'Unknown Network'
-          ],
-          correctAnswerIndex: 0,
-          explanation:
-              'Your home WiFi and mobile data are much safer than public or unknown networks.',
-          points: 140,
-        ),
-        GameChallenge(
-          id: 'network_5',
+          id: 'future_4',
           type: ChallengeType.interactive,
-          question: 'Configure secure network settings for this device!',
-          options: ['Configuration Complete'],
+          question: 'Explore how digital heroes in your region succeeded!',
+          options: ['Exploration Complete'],
           correctAnswerIndex: 0,
-          explanation: 'Great job setting up secure network connections!',
-          points: 170,
+          explanation: 'You can be a digital hero too!',
+          points: 50,
         ),
       ],
     );
   }
 
-  static GameLevel _createInformationLiteracyLevel() {
+  // Unit 2: Using Digital Tools for School and Learning
+  static GameLevel _createMasteringLearningAppLevel() {
     return GameLevel(
-      levelNumber: 9,
-      title: 'Fact Detective',
-      theme: 'Information Literacy',
-      description:
-          'Become a fact-checking detective and learn to verify online information.',
-      backgroundImagePath: 'assets/images/backgrounds/fact_bg.png',
-      characterImagePath: 'assets/images/characters/fact_hero.png',
-      targetScore: 700,
-      timeLimit: 220,
-      learningObjective:
-          'Students will learn to evaluate online information and identify reliable sources.',
-      tips: [
-        'Check multiple sources',
-        'Look for author credentials',
-        'Verify with fact-checking websites',
-        'Be skeptical of sensational claims'
-      ],
+      levelNumber: 5,
+      title: 'Learning App Expert',
+      theme: 'Mastering Our Learning App',
+      description: 'Master the learning app with login, lessons, videos, and offline features.',
+      backgroundImagePath: 'assets/images/backgrounds/learning_bg.png',
+      characterImagePath: 'assets/images/characters/learning_hero.png',
+      targetScore: 350,
+      timeLimit: 200,
+      learningObjective: 'Students will effectively navigate and use educational apps.',
+      tips: ['Practice logging in safely', 'Download lessons for offline use', 'Complete quizzes to test knowledge', 'Watch videos for better understanding'],
       challenges: [
         GameChallenge(
-          id: 'info_1',
-          type: ChallengeType.scenario,
-          question:
-              'You see a shocking news story shared by a friend. What should you do before sharing it?',
-          options: [
-            'Share it immediately - your friend wouldn\'t lie',
-            'Check if it\'s reported by reliable news sources',
-            'Share it but add "not sure if true"',
-            'Only share it to close friends'
-          ],
-          correctAnswerIndex: 1,
-          explanation:
-              'Always verify information with reliable sources before sharing to prevent spreading misinformation.',
-          points: 140,
-        ),
-        GameChallenge(
-          id: 'info_2',
+          id: 'learning_1',
           type: ChallengeType.multipleChoice,
-          question: 'Which source is most reliable for health information?',
-          options: [
-            'A random blog post',
-            'A social media influencer',
-            'A medical website like Mayo Clinic',
-            'A comment on a forum'
-          ],
-          correctAnswerIndex: 2,
-          explanation:
-              'Established medical institutions provide the most reliable health information.',
-          points: 120,
-        ),
-        GameChallenge(
-          id: 'info_3',
-          type: ChallengeType.trueFalse,
-          question:
-              'If information appears on multiple websites, it must be true.',
-          options: ['True', 'False'],
+          question: 'What should you do first when using a new learning app?',
+          options: ['Start any lesson', 'Create a secure login', 'Download everything', 'Share with friends'],
           correctAnswerIndex: 1,
-          explanation:
-              'False information can spread across multiple sites. Check the original source and credibility.',
-          points: 110,
-        ),
-        GameChallenge(
-          id: 'info_4',
-          type: ChallengeType.dragAndDrop,
-          question: 'Arrange these sources from most to least credible:',
-          options: [
-            'Academic Journal',
-            'News Website',
-            'Social Media Post',
-            'Anonymous Blog'
-          ],
-          correctAnswerIndex: 0,
-          explanation:
-              'Academic sources and established news outlets are generally more credible.',
-          points: 150,
-        ),
-        GameChallenge(
-          id: 'info_5',
-          type: ChallengeType.interactive,
-          question: 'Fact-check this news article using reliable sources!',
-          options: ['Fact-Check Complete'],
-          correctAnswerIndex: 0,
-          explanation: 'Excellent detective work verifying the facts!',
-          points: 180,
+          explanation: 'Creating a secure login protects your progress and personal information.',
+          points: 70,
         ),
       ],
     );
   }
 
-  static GameLevel _createDigitalCitizenshipLevel() {
+  static GameLevel _createWritingAndTypingLevel() {
     return GameLevel(
-      levelNumber: 10,
-      title: 'Digital Citizen Hero',
-      theme: 'Digital Citizenship',
-      description:
-          'Master all aspects of being a responsible and positive digital citizen.',
-      backgroundImagePath: 'assets/images/backgrounds/citizen_bg.png',
-      characterImagePath: 'assets/images/characters/citizen_hero.png',
-      targetScore: 800,
-      timeLimit: 240,
-      learningObjective:
-          'Students will demonstrate comprehensive understanding of digital citizenship principles.',
+      levelNumber: 6,
+      title: 'Typing Champion',
+      theme: 'Writing and Typing',
+      description: 'Learn keyboard layout and practice typing in your local language and English.',
+      backgroundImagePath: 'assets/images/backgrounds/typing_bg.png',
+      characterImagePath: 'assets/images/characters/typing_hero.png',
+      targetScore: 300,
+      timeLimit: 180,
+      learningObjective: 'Students will develop basic typing skills in multiple languages.',
+      tips: ['Start with proper finger placement', 'Practice regularly for improvement', 'Use both local language and English', 'Take breaks to avoid strain'],
+      challenges: [
+        GameChallenge(
+          id: 'typing_1',
+          type: ChallengeType.interactive,
+          question: 'Complete this typing exercise: "My Village"',
+          options: ['Exercise Complete'],
+          correctAnswerIndex: 0,
+          explanation: 'Great typing practice!',
+          points: 100,
+        ),
+      ],
+    );
+  }
+
+  static GameLevel _createCreatingPresentationsLevel() {
+    return GameLevel(
+      levelNumber: 7,
+      title: 'Presentation Pro',
+      theme: 'Creating Presentations',
+      description: 'Learn to create simple presentations with text and images.',
+      backgroundImagePath: 'assets/images/backgrounds/presentation_bg.png',
+      characterImagePath: 'assets/images/characters/presentation_hero.png',
+      targetScore: 280,
+      timeLimit: 200,
+      learningObjective: 'Students will create basic presentations using simple software.',
+      tips: ['Keep slides simple and clear', 'Use images to support your message', 'Practice presenting your work', 'Save your work frequently'],
+      challenges: [
+        GameChallenge(
+          id: 'presentation_1',
+          type: ChallengeType.interactive,
+          question: 'Create a 3-slide presentation about your favorite subject!',
+          options: ['Presentation Created'],
+          correctAnswerIndex: 0,
+          explanation: 'Excellent presentation skills!',
+          points: 120,
+        ),
+      ],
+    );
+  }
+
+  static GameLevel _createOrganizingDigitalWorkLevel() {
+    return GameLevel(
+      levelNumber: 8,
+      title: 'File Organizer',
+      theme: 'Organizing Digital Work',
+      description: 'Learn to create folders, name files properly, and organize your digital schoolwork.',
+      backgroundImagePath: 'assets/images/backgrounds/organize_bg.png',
+      characterImagePath: 'assets/images/characters/organize_hero.png',
+      targetScore: 320,
+      timeLimit: 160,
+      learningObjective: 'Students will organize digital files and folders effectively.',
+      tips: ['Use clear, descriptive file names', 'Create folders for different subjects', 'Save work in the right location', 'Back up important files'],
+      challenges: [
+        GameChallenge(
+          id: 'organize_1',
+          type: ChallengeType.interactive,
+          question: 'Organize these school files into proper folders!',
+          options: ['Files Organized'],
+          correctAnswerIndex: 0,
+          explanation: 'Perfect organization skills!',
+          points: 100,
+        ),
+      ],
+    );
+  }
+
+  // Placeholder methods for remaining levels (to be implemented)
+  static GameLevel _createWhatIsInternetLevel() {
+    return GameLevel(levelNumber: 9, title: 'Internet Explorer', theme: 'What is the Internet', description: 'Understand the internet and how to connect safely.', backgroundImagePath: 'assets/images/backgrounds/internet_bg.png', characterImagePath: 'assets/images/characters/internet_hero.png', targetScore: 300, timeLimit: 180, learningObjective: 'Students will understand internet basics and connection methods.', tips: ['Internet connects computers worldwide', 'Wi-Fi and mobile data are connection methods', 'Browsers help you navigate the web', 'Always connect to secure networks'], challenges: [GameChallenge(id: 'internet_1', type: ChallengeType.multipleChoice, question: 'What is the internet?', options: ['A single computer', 'A global network of connected computers', 'A mobile app', 'A type of software'], correctAnswerIndex: 1, explanation: 'The internet is a global network connecting millions of computers worldwide.', points: 80)]);
+  }
+
+  static GameLevel _createSearchingInformationLevel() {
+    return GameLevel(levelNumber: 10, title: 'Search Master', theme: 'Searching for Information', description: 'Learn to search effectively using search engines.', backgroundImagePath: 'assets/images/backgrounds/search_bg.png', characterImagePath: 'assets/images/characters/search_hero.png', targetScore: 300, timeLimit: 180, learningObjective: 'Students will learn effective search techniques.', tips: ['Use simple, clear keywords', 'Check multiple sources', 'Look for reliable websites', 'Practice makes perfect'], challenges: [GameChallenge(id: 'search_1', type: ChallengeType.interactive, question: 'Search for facts about the solar system!', options: ['Search Complete'], correctAnswerIndex: 0, explanation: 'Great searching skills!', points: 100)]);
+  }
+
+  static GameLevel _createStayingSafeOnlineLevel() {
+    return GameLevel(levelNumber: 11, title: 'Safety Guardian', theme: 'Staying Safe Online', description: 'Learn to protect personal information and stay safe online.', backgroundImagePath: 'assets/images/backgrounds/safety_bg.png', characterImagePath: 'assets/images/characters/safety_hero.png', targetScore: 350, timeLimit: 200, learningObjective: 'Students will understand online safety principles.', tips: ['Never share personal information', 'Use strong passwords', 'Tell adults about uncomfortable content', 'Be careful with strangers online'], challenges: [GameChallenge(id: 'safety_1', type: ChallengeType.scenario, question: 'A stranger asks for your address online. What do you do?', options: ['Give them your address', 'Never share personal information', 'Ask friends first', 'Share only your city'], correctAnswerIndex: 1, explanation: 'Never share personal information with strangers online.', points: 100)]);
+  }
+
+  static GameLevel _createBeingGoodDigitalCitizenLevel() {
+    return GameLevel(levelNumber: 12, title: 'Digital Citizen', theme: 'Being a Good Digital Citizen', description: 'Learn to be kind and respectful online.', backgroundImagePath: 'assets/images/backgrounds/citizen_bg.png', characterImagePath: 'assets/images/characters/citizen_hero.png', targetScore: 300, timeLimit: 180, learningObjective: 'Students will understand digital citizenship principles.', tips: ['Be kind to others online', 'Respect others work and ideas', 'Help create a positive online community', 'Think before you post'], challenges: [GameChallenge(id: 'citizen_1', type: ChallengeType.multipleChoice, question: 'What is good digital citizenship?', options: ['Posting anything you want', 'Being kind and respectful online', 'Copying others work', 'Sharing personal information'], correctAnswerIndex: 1, explanation: 'Good digital citizenship means being kind, respectful, and responsible online.', points: 80)]);
+  }
+
+  static GameLevel _createIntroductionToEmailLevel() {
+    return GameLevel(levelNumber: 13, title: 'Email Expert', theme: 'Introduction to Email', description: 'Learn email basics: composing, sending, and attachments.', backgroundImagePath: 'assets/images/backgrounds/email_bg.png', characterImagePath: 'assets/images/characters/email_hero.png', targetScore: 320, timeLimit: 200, learningObjective: 'Students will learn basic email functionality.', tips: ['Use clear subject lines', 'Write polite messages', 'Check attachments before sending', 'Proofread before sending'], challenges: [GameChallenge(id: 'email_1', type: ChallengeType.interactive, question: 'Compose and send an email to your teacher!', options: ['Email Sent'], correctAnswerIndex: 0, explanation: 'Excellent email skills!', points: 100)]);
+  }
+
+  static GameLevel _createMessagingAppsSafetyLevel() {
+    return GameLevel(levelNumber: 14, title: 'Message Master', theme: 'Messaging Apps Safety', description: 'Use messaging apps safely and responsibly for school.', backgroundImagePath: 'assets/images/backgrounds/message_bg.png', characterImagePath: 'assets/images/characters/message_hero.png', targetScore: 280, timeLimit: 160, learningObjective: 'Students will use messaging apps safely.', tips: ['Only message people you know', 'Keep conversations school-appropriate', 'Ask permission before sharing photos', 'Report inappropriate behavior'], challenges: [GameChallenge(id: 'message_1', type: ChallengeType.scenario, question: 'How should you participate in a class group chat?', options: ['Send lots of jokes', 'Stay focused on the topic', 'Share personal photos', 'Ignore the rules'], correctAnswerIndex: 1, explanation: 'Group chats work best when everyone stays focused on the topic.', points: 90)]);
+  }
+
+  static GameLevel _createUnderstandingProgressLevel() {
+    return GameLevel(levelNumber: 15, title: 'Progress Tracker', theme: 'Understanding Progress', description: 'Learn to track your learning progress and improvement.', backgroundImagePath: 'assets/images/backgrounds/progress_bg.png', characterImagePath: 'assets/images/characters/progress_hero.png', targetScore: 250, timeLimit: 140, learningObjective: 'Students will understand how to track their learning progress.', tips: ['Check your dashboard regularly', 'Celebrate improvements', 'Identify areas for growth', 'Set learning goals'], challenges: [GameChallenge(id: 'progress_1', type: ChallengeType.interactive, question: 'Review your learning dashboard and identify one improvement area!', options: ['Review Complete'], correctAnswerIndex: 0, explanation: 'Self-reflection helps you learn better!', points: 80)]);
+  }
+
+  static GameLevel _createWorkingTogetherOnlineLevel() {
+    return GameLevel(levelNumber: 16, title: 'Team Player', theme: 'Working Together Online', description: 'Learn to collaborate on digital projects with others.', backgroundImagePath: 'assets/images/backgrounds/teamwork_bg.png', characterImagePath: 'assets/images/characters/team_hero.png', targetScore: 340, timeLimit: 220, learningObjective: 'Students will learn digital collaboration skills.', tips: ['Communicate clearly with team members', 'Share ideas respectfully', 'Take turns contributing', 'Support your teammates'], challenges: [GameChallenge(id: 'teamwork_1', type: ChallengeType.interactive, question: 'Collaborate on creating a class story!', options: ['Story Created'], correctAnswerIndex: 0, explanation: 'Teamwork makes the dream work!', points: 120)]);
+  }
+
+  static GameLevel _createExploringHobbiesOnlineLevel() {
+    return GameLevel(levelNumber: 17, title: 'Hobby Hunter', theme: 'Exploring Hobbies Online', description: 'Discover and learn about your interests using online resources.', backgroundImagePath: 'assets/images/backgrounds/hobby_bg.png', characterImagePath: 'assets/images/characters/hobby_hero.png', targetScore: 290, timeLimit: 180, learningObjective: 'Students will learn to explore hobbies safely online.', tips: ['Use trusted websites for learning', 'Watch educational videos', 'Practice new skills safely', 'Share discoveries with family'], challenges: [GameChallenge(id: 'hobby_1', type: ChallengeType.interactive, question: 'Research a hobby you are interested in and share one interesting fact!', options: ['Research Complete'], correctAnswerIndex: 0, explanation: 'Learning never stops!', points: 100)]);
+  }
+
+  static GameLevel _createDigitalPaymentsSafetyLevel() {
+    return GameLevel(levelNumber: 18, title: 'Money Guardian', theme: 'Digital Payments Safety', description: 'Learn about digital payments and how to stay safe with online money.', backgroundImagePath: 'assets/images/backgrounds/payment_bg.png', characterImagePath: 'assets/images/characters/money_hero.png', targetScore: 350, timeLimit: 200, learningObjective: 'Students will understand digital payment safety.', tips: ['Never share passwords or PINs', 'Only use trusted payment apps', 'Ask adults before making payments', 'Watch out for payment scams'], challenges: [GameChallenge(id: 'payment_1', type: ChallengeType.multipleChoice, question: 'What should you do if someone asks for your payment PIN?', options: ['Share it if they seem nice', 'Never share PINs with anyone', 'Only share with friends', 'Write it down for them'], correctAnswerIndex: 1, explanation: 'PINs are like keys to your money - never share them!', points: 100)]);
+  }
+
+  static GameLevel _createCareerOpportunitiesLevel() {
+    return GameLevel(levelNumber: 19, title: 'Career Explorer', theme: 'Career Opportunities', description: 'Discover careers and educational opportunities using the internet.', backgroundImagePath: 'assets/images/backgrounds/career_bg.png', characterImagePath: 'assets/images/characters/career_hero.png', targetScore: 320, timeLimit: 200, learningObjective: 'Students will learn to research career opportunities online.', tips: ['Explore different career paths', 'Look for educational requirements', 'Find government educational portals', 'Dream big and plan ahead'], challenges: [GameChallenge(id: 'career_1', type: ChallengeType.interactive, question: 'Research a career you are curious about!', options: ['Research Complete'], correctAnswerIndex: 0, explanation: 'Your future is bright!', points: 110)]);
+  }
+
+  static GameLevel _createDigitalPortfolioProjectLevel() {
+    return GameLevel(
+      levelNumber: 20,
+      title: 'Portfolio Creator',
+      theme: 'Digital Portfolio Project',
+      description: 'Create a final project showcasing all your digital skills.',
+      backgroundImagePath: 'assets/images/backgrounds/portfolio_bg.png',
+      characterImagePath: 'assets/images/characters/portfolio_hero.png',
+      targetScore: 400,
+      timeLimit: 300,
+      learningObjective: 'Students will demonstrate mastery of all digital literacy skills.',
       tips: [
-        'Be respectful and kind online',
-        'Protect your privacy and others\'',
-        'Think critically about information',
-        'Help create a positive online community'
+        'Include work from all units',
+        'Show your best efforts',
+        'Write about your learning journey',
+        'Plan how you will use these skills'
       ],
       challenges: [
         GameChallenge(
-          id: 'citizen_1',
-          type: ChallengeType.scenario,
-          question:
-              'You witness cyberbullying in an online game. As a digital citizen, what should you do?',
-          options: [
-            'Join in to fit in with the group',
-            'Ignore it - it\'s not your problem',
-            'Support the victim and report the behavior',
-            'Leave the game immediately'
-          ],
-          correctAnswerIndex: 2,
-          explanation:
-              'Good digital citizens stand up against bullying and help create safer online spaces.',
-          points: 160,
-        ),
-        GameChallenge(
-          id: 'citizen_2',
-          type: ChallengeType.multipleChoice,
-          question:
-              'What is the most important principle of digital citizenship?',
-          options: [
-            'Getting the most followers',
-            'Treating others with respect and kindness',
-            'Sharing everything about your life',
-            'Always being right in arguments'
-          ],
-          correctAnswerIndex: 1,
-          explanation:
-              'Respect and kindness are the foundation of good digital citizenship.',
-          points: 140,
-        ),
-        GameChallenge(
-          id: 'citizen_3',
-          type: ChallengeType.trueFalse,
-          question:
-              'Digital citizenship only applies to social media platforms.',
-          options: ['True', 'False'],
-          correctAnswerIndex: 1,
-          explanation:
-              'Digital citizenship applies to all online interactions - games, email, websites, apps, etc.',
-          points: 120,
-        ),
-        GameChallenge(
-          id: 'citizen_4',
-          type: ChallengeType.dragAndDrop,
-          question:
-              'Match these digital citizenship principles with their descriptions:',
-          options: ['Respect', 'Privacy', 'Integrity', 'Responsibility'],
-          correctAnswerIndex: 0,
-          explanation:
-              'All these principles work together to create positive online communities.',
-          points: 170,
-        ),
-        GameChallenge(
-          id: 'citizen_5',
+          id: 'portfolio_1',
           type: ChallengeType.interactive,
-          question:
-              'Create a positive impact in this online community scenario!',
-          options: ['Impact Created'],
+          question: 'Create your complete digital portfolio!',
+          options: ['Portfolio Complete'],
           correctAnswerIndex: 0,
-          explanation:
-              'Congratulations! You\'ve mastered digital citizenship and can make the internet a better place!',
-          points: 210,
+          explanation: 'Congratulations! You are now a digital literacy hero!',
+          points: 200,
         ),
       ],
     );

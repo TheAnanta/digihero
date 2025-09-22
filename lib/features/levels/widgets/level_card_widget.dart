@@ -304,26 +304,56 @@ class LevelCardWidget extends StatelessWidget {
 
   String _getLevelDescription() {
     switch (theme) {
-      case 'Smart Passwords':
-        return 'Learn to create strong passwords';
-      case 'Phishing Awareness':
-        return 'Spot and avoid phishing attempts';
-      case 'Privacy Settings':
-        return 'Master your privacy controls';
-      case 'Cyberbullying':
-        return 'Handle online harassment';
-      case 'Safe Downloads':
-        return 'Download files safely';
-      case 'Social Media Safety':
-        return 'Stay safe on social platforms';
-      case 'Digital Footprint':
-        return 'Manage your online presence';
-      case 'Secure Networks':
-        return 'Connect to safe networks';
-      case 'Information Literacy':
-        return 'Verify online information';
-      case 'Digital Citizenship':
-        return 'Be a responsible digital citizen';
+      // Unit 1: My First Step into the Digital World
+      case 'Meet Your Digital Device':
+        return 'Learn about different devices and their parts';
+      case 'Understanding Your Screen':
+        return 'Discover icons, menus and basic navigation';
+      case 'Working with Apps':
+        return 'Learn to open and use applications safely';
+      case 'Why Digital Skills Matter':
+        return 'Understand how technology helps your future';
+      
+      // Unit 2: Using Digital Tools for School and Learning  
+      case 'Mastering Our Learning App':
+        return 'Navigate and use educational apps effectively';
+      case 'Writing and Typing':
+        return 'Practice typing in your language and English';
+      case 'Creating Presentations':
+        return 'Make simple presentations with text and images';
+      case 'Organizing Digital Work':
+        return 'Learn to save and organize your files';
+      
+      // Unit 3: Exploring the Internet Safely
+      case 'What is the Internet':
+        return 'Understand the internet and how to connect';
+      case 'Searching for Information':
+        return 'Learn to search effectively and safely';
+      case 'Staying Safe Online':
+        return 'Protect yourself and your personal information';
+      case 'Being a Good Digital Citizen':
+        return 'Be kind and respectful online';
+      
+      // Unit 4: Communication and Collaboration
+      case 'Introduction to Email':
+        return 'Learn to compose and send emails safely';
+      case 'Messaging Apps Safety':
+        return 'Use messaging apps responsibly for school';
+      case 'Understanding Progress':
+        return 'Track your learning journey and improvement';
+      case 'Working Together Online':
+        return 'Collaborate on digital projects with others';
+      
+      // Unit 5: Digital Skills for Life
+      case 'Exploring Hobbies Online':
+        return 'Find reliable information about your interests';
+      case 'Digital Payments Safety':
+        return 'Understand and stay safe with digital money';
+      case 'Career Opportunities':
+        return 'Discover careers and educational opportunities';
+      case 'Digital Portfolio Project':
+        return 'Create a showcase of your digital skills';
+      
       default:
         return 'Digital literacy challenge';
     }
