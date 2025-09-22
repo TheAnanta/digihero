@@ -73,18 +73,37 @@ lib/
 
 ### Educational Content
 
-The game covers 10 essential digital literacy topics:
+The game follows a comprehensive 5-unit digital literacy syllabus with 20 levels total:
 
-1. **Smart Passwords**: Password security, complexity, and management
-2. **Phishing Awareness**: Identifying fake emails, websites, and messages
-3. **Privacy Settings**: Managing personal information and privacy controls
-4. **Cyberbullying**: Recognition, prevention, and response strategies
-5. **Safe Downloads**: Identifying safe sources and avoiding malware
-6. **Social Media Safety**: Responsible sharing and friend management
-7. **Digital Footprint**: Understanding long-term impact of online actions
-8. **Secure Networks**: WiFi safety and network security practices
-9. **Information Literacy**: Fact-checking and source verification
-10. **Digital Citizenship**: Comprehensive responsible online behavior
+#### Unit 1: My First Step into the Digital World (Levels 1-4)
+1. **Meet Your Digital Device**: Device identification and basic operation
+2. **Understanding Your Screen**: Desktop navigation and icon recognition  
+3. **Working with Apps**: Application management and safe usage
+4. **Why Digital Skills Matter**: Importance of digital literacy for rural students
+
+#### Unit 2: Using Digital Tools for School and Learning (Levels 5-8)
+5. **Mastering Our Learning App**: Educational app navigation and offline features
+6. **Writing and Typing**: Multilingual typing skills development
+7. **Creating Presentations**: Basic presentation software and design
+8. **Organizing Digital Work**: File management and digital organization
+
+#### Unit 3: Exploring the Internet Safely (Levels 9-12)
+9. **What is the Internet**: Internet basics and connection methods
+10. **Searching for Information**: Effective search techniques and evaluation
+11. **Staying Safe Online**: Personal information protection and safety
+12. **Being a Good Digital Citizen**: Online ethics and respectful behavior
+
+#### Unit 4: Communication and Collaboration (Levels 13-16)
+13. **Introduction to Email**: Email composition, sending, and attachments
+14. **Messaging Apps Safety**: Responsible communication for education
+15. **Understanding Progress**: Learning analytics and self-assessment
+16. **Working Together Online**: Digital collaboration and teamwork
+
+#### Unit 5: Digital Skills for Life (Levels 17-20)
+17. **Exploring Hobbies Online**: Research skills and hobby development
+18. **Digital Payments Safety**: Financial literacy and online security
+19. **Career Opportunities**: Educational and career pathway research
+20. **Digital Portfolio Project**: Capstone project demonstrating all skills
 
 ### Challenge Types
 
@@ -105,6 +124,29 @@ Each level includes multiple challenge types to maintain engagement:
 - **Lives System**: Limited attempts add challenge and value to learning
 - **Progress Tracking**: Visual indicators of advancement
 - **Streak Tracking**: Consecutive day play rewards
+
+### Syllabus Progression
+
+The 20-level structure follows educational best practices:
+
+- **Sequential Learning**: Each unit builds on previous knowledge
+- **Age-Appropriate Content**: Designed for rural students with varying tech experience
+- **Practical Applications**: Real-world scenarios relevant to rural contexts
+- **Assessment Integration**: Regular evaluation and feedback throughout units
+- **Cultural Relevance**: Examples and contexts meaningful to rural communities
+- **Offline Capability**: Important for areas with limited internet connectivity
+
+#### Unit Progression Logic
+```dart
+// Unit calculation: unitNumber = ((levelNumber - 1) ~/ 4) + 1
+// Chapter in unit: chapterNumber = ((levelNumber - 1) % 4) + 1
+```
+
+This structure allows for:
+- Easy navigation between units and chapters
+- Progress tracking at both unit and chapter levels
+- Flexible content delivery based on connectivity
+- Clear learning milestones for students and educators
 
 ## UI/UX Design
 

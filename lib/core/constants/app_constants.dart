@@ -16,22 +16,52 @@ class AppConstants {
   static const Color textSecondaryColor = Color(0xFF5F6368);
   
   // Game Constants
-  static const int totalLevels = 10;
+  static const int totalUnits = 5;
+  static const int chaptersPerUnit = 4;
+  static const int totalLevels = 20; // 5 units × 4 chapters each
   static const int starsPerLevel = 3;
   static const int coinsPerStar = 10;
   
-  // Level Themes (based on Be Internet Awesome curriculum)
+  // Syllabus Units
+  static const List<String> syllabusUnits = [
+    'My First Step into the Digital World',
+    'Using Digital Tools for School and Learning', 
+    'Exploring the Internet Safely',
+    'Communication and Collaboration',
+    'Digital Skills for Life',
+  ];
+  
+  // Level Themes (aligned with Digital Literacy Syllabus)
   static const List<String> levelThemes = [
-    'Smart Passwords',      // Level 1
-    'Phishing Awareness',   // Level 2
-    'Privacy Settings',     // Level 3
-    'Cyberbullying',       // Level 4
-    'Safe Downloads',      // Level 5
-    'Social Media Safety', // Level 6
-    'Digital Footprint',   // Level 7
-    'Secure Networks',     // Level 8
-    'Information Literacy', // Level 9
-    'Digital Citizenship', // Level 10
+    // Unit 1: My First Step into the Digital World
+    'Meet Your Digital Device',        // Level 1
+    'Understanding Your Screen',       // Level 2
+    'Working with Apps',              // Level 3
+    'Why Digital Skills Matter',      // Level 4
+    
+    // Unit 2: Using Digital Tools for School and Learning
+    'Mastering Our Learning App',     // Level 5
+    'Writing and Typing',            // Level 6
+    'Creating Presentations',        // Level 7
+    'Organizing Digital Work',       // Level 8
+    
+    // Unit 3: Exploring the Internet Safely
+    'What is the Internet',          // Level 9
+    'Searching for Information',     // Level 10
+    'Staying Safe Online',          // Level 11
+    'Being a Good Digital Citizen', // Level 12
+    
+    // Unit 4: Communication and Collaboration
+    'Introduction to Email',         // Level 13
+    'Messaging Apps Safety',        // Level 14
+    'Understanding Progress',       // Level 15
+    'Working Together Online',      // Level 16
+    
+    // Unit 5: Digital Skills for Life
+    'Exploring Hobbies Online',     // Level 17
+    'Digital Payments Safety',     // Level 18
+    'Career Opportunities',        // Level 19
+    'Digital Portfolio Project',   // Level 20
   ];
   
   // Character Names
@@ -52,4 +82,26 @@ class AppConstants {
   static const double gameSpeed = 1.0;
   static const int maxLives = 3;
   static const int timeLimit = 120; // seconds per level
+  
+  // Helper methods for syllabus navigation
+  static int getUnitFromLevel(int levelNumber) {
+    return ((levelNumber - 1) ~/ chaptersPerUnit) + 1;
+  }
+  
+  static int getChapterInUnit(int levelNumber) {
+    return ((levelNumber - 1) % chaptersPerUnit) + 1;
+  }
+  
+  static String getUnitTitle(int unitNumber) {
+    if (unitNumber >= 1 && unitNumber <= syllabusUnits.length) {
+      return syllabusUnits[unitNumber - 1];
+    }
+    return 'Unknown Unit';
+  }
+  
+  static List<int> getLevelsForUnit(int unitNumber) {
+    if (unitNumber < 1 || unitNumber > totalUnits) return [];
+    int startLevel = ((unitNumber - 1) * chaptersPerUnit) + 1;
+    return List.generate(chaptersPerUnit, (index) => startLevel + index);
+  }
 }
