@@ -3,7 +3,8 @@ import 'package:digihero/main.dart';
 
 void main() {
   group('DigiHero App Tests', () {
-    testWidgets('App starts and shows main screen', (WidgetTester tester) async {
+    testWidgets('App starts and shows main screen',
+        (WidgetTester tester) async {
       // Build our app and trigger a frame.
       await tester.pumpWidget(const DigiHeroApp());
 
@@ -11,10 +12,11 @@ void main() {
       expect(find.text('DigiHero'), findsOneWidget);
     });
 
-    testWidgets('App shows start adventure button', (WidgetTester tester) async {
+    testWidgets('App shows start adventure button',
+        (WidgetTester tester) async {
       // Build our app and trigger a frame.
       await tester.pumpWidget(const DigiHeroApp());
-      
+
       // Wait for animations to complete
       await tester.pumpAndSettle();
 

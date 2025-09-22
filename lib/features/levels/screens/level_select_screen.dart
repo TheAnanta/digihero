@@ -54,15 +54,15 @@ class _LevelSelectScreenState extends State<LevelSelectScreen>
                 children: [
                   // Header
                   _buildHeader(context, audioService),
-                  
+
                   // Level grid
                   Expanded(
                     child: _buildLevelGrid(gameService, audioService),
                   ),
-                  
+
                   // Page indicator
                   _buildPageIndicator(),
-                  
+
                   const SizedBox(height: 20),
                 ],
               );
@@ -105,16 +105,16 @@ class _LevelSelectScreenState extends State<LevelSelectScreen>
                 Text(
                   'Choose Your Level',
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                 ).animate().fadeIn(duration: 600.ms).slideX(begin: -0.3),
                 const SizedBox(height: 4),
                 Text(
                   'Select a digital literacy challenge',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.white.withOpacity(0.8),
-                  ),
+                        color: Colors.white.withOpacity(0.8),
+                      ),
                 ).animate().fadeIn(delay: 200.ms, duration: 600.ms),
               ],
             ),
@@ -150,7 +150,7 @@ class _LevelSelectScreenState extends State<LevelSelectScreen>
               if (levelNumber > AppConstants.totalLevels) {
                 return const SizedBox.shrink();
               }
-              
+
               return LevelCardWidget(
                 levelNumber: levelNumber,
                 isUnlocked: gameService.isLevelUnlocked(levelNumber),
@@ -163,7 +163,8 @@ class _LevelSelectScreenState extends State<LevelSelectScreen>
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => LevelPlayScreen(levelNumber: levelNumber),
+                        builder: (context) =>
+                            LevelPlayScreen(levelNumber: levelNumber),
                       ),
                     );
                   } else {
@@ -171,7 +172,10 @@ class _LevelSelectScreenState extends State<LevelSelectScreen>
                     _showLockedLevelDialog(context);
                   }
                 },
-              ).animate(delay: (index * 100).ms).fadeIn().scale(begin: const Offset(0.8, 0.8));
+              )
+                  .animate(delay: (index * 100).ms)
+                  .fadeIn()
+                  .scale(begin: const Offset(0.8, 0.8));
             },
           ),
         );
@@ -182,7 +186,7 @@ class _LevelSelectScreenState extends State<LevelSelectScreen>
   Widget _buildPageIndicator() {
     final totalPages = (AppConstants.totalLevels / 6).ceil();
     if (totalPages <= 1) return const SizedBox.shrink();
-    
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(totalPages, (index) {
@@ -191,8 +195,8 @@ class _LevelSelectScreenState extends State<LevelSelectScreen>
           width: _currentPage == index ? 24 : 8,
           height: 8,
           decoration: BoxDecoration(
-            color: _currentPage == index 
-                ? Colors.white 
+            color: _currentPage == index
+                ? Colors.white
                 : Colors.white.withOpacity(0.4),
             borderRadius: BorderRadius.circular(4),
           ),
