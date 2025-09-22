@@ -12,6 +12,9 @@ import '../../game/widgets/app_sorter_game.dart';
 import '../../game/widgets/digital_heroes_match_game.dart';
 import '../../game/widgets/typing_star_game.dart';
 import '../../game/widgets/slide_designer_game.dart';
+import '../../game/widgets/browser_navigator_game.dart';
+import '../../game/widgets/search_quest_game.dart';
+import '../../game/widgets/scam_spotter_game.dart';
 
 class GameifiedChallengeWidget extends StatefulWidget {
   final GameChallenge challenge;
@@ -107,6 +110,9 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
       ChallengeType.matchUp,
       ChallengeType.typingChallenge,
       ChallengeType.slideDesigner,
+      ChallengeType.browserNavigator,
+      ChallengeType.searchQuest,
+      ChallengeType.scamSpotter,
     ].contains(widget.challenge.type);
   }
 
@@ -234,6 +240,36 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
         
       case ChallengeType.slideDesigner:
         return SlideDesignerGame(
+          gameData: gameData,
+          onComplete: (isCorrect, points) {
+            if (isCorrect) {
+              widget.onAnswerSelected(widget.challenge.options[0]);
+            }
+          },
+        );
+        
+      case ChallengeType.browserNavigator:
+        return BrowserNavigatorGame(
+          gameData: gameData,
+          onComplete: (isCorrect, points) {
+            if (isCorrect) {
+              widget.onAnswerSelected(widget.challenge.options[0]);
+            }
+          },
+        );
+        
+      case ChallengeType.searchQuest:
+        return SearchQuestGame(
+          gameData: gameData,
+          onComplete: (isCorrect, points) {
+            if (isCorrect) {
+              widget.onAnswerSelected(widget.challenge.options[0]);
+            }
+          },
+        );
+        
+      case ChallengeType.scamSpotter:
+        return ScamSpotterGame(
           gameData: gameData,
           onComplete: (isCorrect, points) {
             if (isCorrect) {
