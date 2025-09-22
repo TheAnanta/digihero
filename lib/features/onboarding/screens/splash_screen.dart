@@ -25,17 +25,17 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
-    
+
     _backgroundController = AnimationController(
       duration: const Duration(seconds: 10),
       vsync: this,
     )..repeat();
-    
+
     _logoController = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,
     );
-    
+
     _particleController = AnimationController(
       duration: const Duration(seconds: 15),
       vsync: this,
@@ -62,7 +62,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   void _handleSplashTap() {
     final gameService = context.read<GameService>();
-    
+
     // Check if user has set their age
     if (gameService.hasSetAge) {
       // Navigate to game home screen
@@ -101,10 +101,10 @@ class _SplashScreenState extends State<SplashScreen>
             children: [
               // Animated background elements
               _buildAnimatedBackground(),
-              
+
               // Floating particles
               _buildFloatingParticles(),
-              
+
               // Main content
               SafeArea(
                 child: Center(
@@ -113,14 +113,14 @@ class _SplashScreenState extends State<SplashScreen>
                     children: [
                       // Logo and title
                       _buildLogo(),
-                      
+
                       const SizedBox(height: 40),
-                      
+
                       // Subtitle
                       _buildSubtitle(),
-                      
+
                       const SizedBox(height: 60),
-                      
+
                       // Tap to start indicator
                       if (_showTapToStart) _buildTapToStart(),
                     ],
@@ -148,7 +148,7 @@ class _SplashScreenState extends State<SplashScreen>
                   radius * math.cos(offset + index * 1.047);
               final y = MediaQuery.of(context).size.height / 2 +
                   radius * math.sin(offset + index * 1.047);
-              
+
               return Positioned(
                 left: x - 30,
                 top: y - 30,
@@ -177,7 +177,7 @@ class _SplashScreenState extends State<SplashScreen>
             final progress = (_particleController.value + index * 0.05) % 1.0;
             final screenHeight = MediaQuery.of(context).size.height;
             final screenWidth = MediaQuery.of(context).size.width;
-            
+
             return Positioned(
               left: (index * 50) % screenWidth,
               top: screenHeight - (progress * screenHeight * 1.2),
@@ -232,13 +232,13 @@ class _SplashScreenState extends State<SplashScreen>
                   color: AppConstants.primaryColor,
                 ),
               ).animate().scale(
-                delay: 500.ms,
-                duration: 1000.ms,
-                curve: Curves.elasticOut,
-              ),
-              
+                    delay: 500.ms,
+                    duration: 1000.ms,
+                    curve: Curves.elasticOut,
+                  ),
+
               const SizedBox(height: 20),
-              
+
               // App name
               Text(
                 AppConstants.appName,
@@ -248,10 +248,13 @@ class _SplashScreenState extends State<SplashScreen>
                   color: Colors.white,
                   letterSpacing: 2,
                 ),
-              ).animate().fadeIn(
-                delay: 800.ms,
-                duration: 1000.ms,
-              ).slideY(begin: 0.3),
+              )
+                  .animate()
+                  .fadeIn(
+                    delay: 800.ms,
+                    duration: 1000.ms,
+                  )
+                  .slideY(begin: 0.3),
             ],
           ),
         );
@@ -271,12 +274,10 @@ class _SplashScreenState extends State<SplashScreen>
           ),
           textAlign: TextAlign.center,
         ).animate().fadeIn(
-          delay: 1200.ms,
-          duration: 800.ms,
-        ),
-        
+              delay: 1200.ms,
+              duration: 800.ms,
+            ),
         const SizedBox(height: 10),
-        
         Text(
           'Learn • Play • Protect • Explore',
           style: TextStyle(
@@ -286,9 +287,9 @@ class _SplashScreenState extends State<SplashScreen>
           ),
           textAlign: TextAlign.center,
         ).animate().fadeIn(
-          delay: 1500.ms,
-          duration: 800.ms,
-        ),
+              delay: 1500.ms,
+              duration: 800.ms,
+            ),
       ],
     );
   }
@@ -325,16 +326,19 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ],
           ),
-        ).animate().fadeIn(
-          duration: 800.ms,
-        ).scale(
-          delay: 200.ms,
-          duration: 800.ms,
-          curve: Curves.elasticOut,
-        ),
-        
+        )
+            .animate()
+            .fadeIn(
+              duration: 800.ms,
+            )
+            .scale(
+              delay: 200.ms,
+              duration: 800.ms,
+              curve: Curves.elasticOut,
+            ),
+
         const SizedBox(height: 20),
-        
+
         // Pulsing indicator
         Container(
           width: 12,
@@ -343,7 +347,8 @@ class _SplashScreenState extends State<SplashScreen>
             color: Colors.white,
             shape: BoxShape.circle,
           ),
-        ).animate(onPlay: (controller) => controller.repeat())
+        )
+            .animate(onPlay: (controller) => controller.repeat())
             .scale(
               duration: 1000.ms,
               begin: const Offset(0.8, 0.8),

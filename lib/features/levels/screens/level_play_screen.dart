@@ -42,6 +42,7 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
   String? _selectedAnswer;
   List<String> _dragItems = [];
   List<String> _dropTargets = [];
+  Map<String, String> _deviceBuilderAnswers = {};
 
   @override
   void initState() {
@@ -418,6 +419,8 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
         return _buildInteractiveChallenge(challenge);
       case ChallengeType.scenario:
         return _buildScenarioChallenge(challenge);
+      case ChallengeType.deviceBuilder:
+        return _buildDeviceBuilderChallenge(challenge);
       default:
         return _buildMultipleChoiceChallenge(challenge);
     }
@@ -679,6 +682,323 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
         challenge); // Similar to multiple choice
   }
 
+  Widget _buildDeviceBuilderChallenge(GameChallenge challenge) {
+    final interactiveData = challenge.interactiveData ?? {};
+    final deviceType = interactiveData['deviceType'] ?? 'computer';
+    final parts =
+        List<String>.from(interactiveData['parts'] ?? challenge.options);
+    final instructions = interactiveData['instructions'] ??
+        'Drag each label to the correct part';
+
+    return Column(
+      children: [
+        // Instructions
+        Container(
+          padding: const EdgeInsets.all(16),
+          margin: const EdgeInsets.only(bottom: 20),
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: Colors.white.withOpacity(0.3)),
+          ),
+          child: Column(
+            children: [
+              Text(
+                challenge.question,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 8),
+              Text(
+                instructions,
+                style: TextStyle(
+                  color: Colors.white.withOpacity(0.8),
+                  fontSize: 14,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+
+        // Device illustration with drop zones
+        Expanded(
+          flex: 3,
+          child: _buildDeviceIllustration(deviceType, parts),
+        ),
+
+        const SizedBox(height: 20),
+
+        // Draggable labels
+        Expanded(
+          flex: 1,
+          child: _buildDraggableLabels(parts),
+        ),
+
+        // Check answer button
+        const SizedBox(height: 20),
+        if (_deviceBuilderAnswers.length == parts.length)
+          AnimatedButton(
+            onPressed: () => _checkDeviceBuilderAnswer(challenge),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+              decoration: BoxDecoration(
+                color: AppConstants.primaryColor,
+                borderRadius: BorderRadius.circular(25),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    blurRadius: 8,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: const Text(
+                'Check Answer',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+
+  Widget _buildDeviceIllustration(String deviceType, List<String> parts) {
+    // Larger computer illustration with better drop zones
+    return Container(
+      margin: const EdgeInsets.all(10),
+      child: Stack(
+        children: [
+          // Computer base illustration - made larger
+          Center(
+            child: Container(
+              width: 350,
+              height: 280,
+              decoration: BoxDecoration(
+                color: Colors.grey.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(16),
+                border:
+                    Border.all(color: Colors.white.withOpacity(0.4), width: 3),
+              ),
+              child: CustomPaint(
+                painter: ComputerPainter(),
+                size: const Size(350, 280),
+              ),
+            ),
+          ),
+
+          // Drop zones positioned over device parts - larger targets
+          ..._buildDropZones(parts),
+        ],
+      ),
+    );
+  }
+
+  List<Widget> _buildDropZones(List<String> parts) {
+    // Predefined positions for computer parts with better spacing
+    final Map<String, Offset> positions = {
+      'Monitor': const Offset(0.35, 0.08),
+      'CPU': const Offset(0.05, 0.45),
+      'Keyboard': const Offset(0.35, 0.82),
+      'Mouse': const Offset(0.75, 0.75),
+    };
+
+    return parts.map((part) {
+      final position = positions[part] ?? const Offset(0.5, 0.5);
+      return Positioned(
+        left: MediaQuery.of(context).size.width * position.dx - 70,
+        top: 60 + (280 * position.dy) - 35,
+        child: DragTarget<String>(
+          onWillAccept: (data) => data == part,
+          onAccept: (data) {
+            setState(() {
+              _deviceBuilderAnswers[part] = data;
+            });
+            context.read<AudioService>().playButtonClick();
+          },
+          builder: (context, candidateData, rejectedData) {
+            final hasAnswer = _deviceBuilderAnswers.containsKey(part);
+            final isHovered = candidateData.isNotEmpty;
+
+            return AnimatedContainer(
+              duration: const Duration(milliseconds: 200),
+              width: 140,
+              height: 70,
+              decoration: BoxDecoration(
+                color: hasAnswer
+                    ? AppConstants.secondaryColor.withOpacity(0.9)
+                    : isHovered
+                        ? AppConstants.primaryColor.withOpacity(0.6)
+                        : Colors.white.withOpacity(0.25),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: isHovered
+                      ? AppConstants.primaryColor
+                      : hasAnswer
+                          ? AppConstants.secondaryColor
+                          : Colors.white.withOpacity(0.6),
+                  width: isHovered ? 4 : 3,
+                ),
+                boxShadow: [
+                  if (isHovered || hasAnswer)
+                    BoxShadow(
+                      color: (isHovered
+                              ? AppConstants.primaryColor
+                              : AppConstants.secondaryColor)
+                          .withOpacity(0.4),
+                      blurRadius: 8,
+                      spreadRadius: 2,
+                    ),
+                ],
+              ),
+              child: Center(
+                child: Text(
+                  hasAnswer
+                      ? _deviceBuilderAnswers[part]!
+                      : 'Drop\n$part\nhere',
+                  style: TextStyle(
+                    color: hasAnswer
+                        ? Colors.white
+                        : Colors.white.withOpacity(0.8),
+                    fontSize: hasAnswer ? 16 : 14,
+                    fontWeight: hasAnswer ? FontWeight.w700 : FontWeight.w600,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            );
+          },
+        ),
+      );
+    }).toList();
+  }
+
+  Widget _buildDraggableLabels(List<String> parts) {
+    final availableLabels = parts
+        .where((part) => !_deviceBuilderAnswers.containsValue(part))
+        .toList();
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: availableLabels.map((label) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: Draggable<String>(
+                data: label,
+                feedback: Material(
+                  color: Colors.transparent,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 24, vertical: 12),
+                    decoration: BoxDecoration(
+                      color: AppConstants.primaryColor.withOpacity(0.95),
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          blurRadius: 8,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      label,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+                childWhenDragging: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.withOpacity(0.4),
+                    borderRadius: BorderRadius.circular(25),
+                    border: Border.all(
+                        color: Colors.grey.withOpacity(0.6), width: 2),
+                  ),
+                  child: Text(
+                    label,
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.5),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 150),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  decoration: BoxDecoration(
+                    color: AppConstants.secondaryColor,
+                    borderRadius: BorderRadius.circular(25),
+                    border: Border.all(
+                        color: Colors.white.withOpacity(0.3), width: 2),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        blurRadius: 6,
+                        offset: const Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Text(
+                    label,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+            );
+          }).toList(),
+        ),
+      ),
+    );
+  }
+
+  void _checkDeviceBuilderAnswer(GameChallenge challenge) {
+    final parts = List<String>.from(
+        challenge.interactiveData?['parts'] ?? challenge.options);
+    final allCorrect =
+        parts.every((part) => _deviceBuilderAnswers[part] == part);
+
+    if (allCorrect) {
+      _selectAnswer('correct', challenge);
+    } else {
+      // Show feedback and allow retry
+      setState(() {
+        _deviceBuilderAnswers.clear();
+      });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text('Not quite right! Try again.'),
+          backgroundColor: Colors.red.withOpacity(0.8),
+          duration: const Duration(seconds: 2),
+        ),
+      );
+    }
+  }
+
   Widget _buildGameControls(AudioService audioService) {
     return Container(
       padding: const EdgeInsets.all(20),
@@ -861,6 +1181,9 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
           // Reset drag and drop items for next challenge
           _dragItems.clear();
           _dropTargets.clear();
+
+          // Reset device builder answers for next challenge
+          _deviceBuilderAnswers.clear();
         });
         _initializeChallenge();
       } else {
@@ -1115,4 +1438,109 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
         return [AppConstants.accentColor, AppConstants.primaryColor];
     }
   }
+}
+
+// Custom painter for drawing a simple computer illustration
+class ComputerPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 3.0
+      ..color = Colors.white.withOpacity(0.9);
+
+    final fillPaint = Paint()
+      ..style = PaintingStyle.fill
+      ..color = Colors.white.withOpacity(0.15);
+
+    // Draw monitor (screen) - larger and more prominent
+    final monitorRect = Rect.fromLTWH(size.width * 0.25, size.height * 0.05,
+        size.width * 0.5, size.height * 0.45);
+    canvas.drawRRect(
+        RRect.fromRectAndRadius(monitorRect, const Radius.circular(8)),
+        fillPaint);
+    canvas.drawRRect(
+        RRect.fromRectAndRadius(monitorRect, const Radius.circular(8)), paint);
+
+    // Draw monitor stand - more detailed
+    final standRect = Rect.fromLTWH(size.width * 0.43, size.height * 0.5,
+        size.width * 0.14, size.height * 0.08);
+    canvas.drawRRect(
+        RRect.fromRectAndRadius(standRect, const Radius.circular(4)),
+        fillPaint);
+    canvas.drawRRect(
+        RRect.fromRectAndRadius(standRect, const Radius.circular(4)), paint);
+
+    // Monitor base
+    final baseRect = Rect.fromLTWH(size.width * 0.38, size.height * 0.58,
+        size.width * 0.24, size.height * 0.04);
+    canvas.drawRRect(
+        RRect.fromRectAndRadius(baseRect, const Radius.circular(8)), fillPaint);
+    canvas.drawRRect(
+        RRect.fromRectAndRadius(baseRect, const Radius.circular(8)), paint);
+
+    // Draw CPU unit - larger and more detailed
+    final cpuRect = Rect.fromLTWH(size.width * 0.02, size.height * 0.35,
+        size.width * 0.18, size.height * 0.45);
+    canvas.drawRRect(
+        RRect.fromRectAndRadius(cpuRect, const Radius.circular(6)), fillPaint);
+    canvas.drawRRect(
+        RRect.fromRectAndRadius(cpuRect, const Radius.circular(6)), paint);
+
+    // CPU details (power button, ports)
+    final powerButton = Rect.fromLTWH(size.width * 0.06, size.height * 0.38,
+        size.width * 0.03, size.width * 0.03);
+    canvas.drawCircle(powerButton.center, powerButton.width / 2, paint);
+
+    // Draw keyboard - larger and more detailed
+    final keyboardRect = Rect.fromLTWH(size.width * 0.28, size.height * 0.78,
+        size.width * 0.44, size.height * 0.12);
+    canvas.drawRRect(
+        RRect.fromRectAndRadius(keyboardRect, const Radius.circular(6)),
+        fillPaint);
+    canvas.drawRRect(
+        RRect.fromRectAndRadius(keyboardRect, const Radius.circular(6)), paint);
+
+    // Keyboard keys (simple representation)
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 8; j++) {
+        final keyRect = Rect.fromLTWH(
+          keyboardRect.left + 8 + (j * (keyboardRect.width - 16) / 8),
+          keyboardRect.top + 4 + (i * (keyboardRect.height - 8) / 3),
+          (keyboardRect.width - 16) / 8 - 2,
+          (keyboardRect.height - 8) / 3 - 2,
+        );
+        canvas.drawRRect(
+            RRect.fromRectAndRadius(keyRect, const Radius.circular(2)),
+            Paint()
+              ..color = Colors.white.withOpacity(0.3)
+              ..style = PaintingStyle.fill);
+      }
+    }
+
+    // Draw mouse - larger and more detailed
+    final mouseRect = Rect.fromLTWH(size.width * 0.76, size.height * 0.68,
+        size.width * 0.12, size.height * 0.18);
+    canvas.drawRRect(
+        RRect.fromRectAndRadius(
+            mouseRect, Radius.circular(mouseRect.width / 3)),
+        fillPaint);
+    canvas.drawRRect(
+        RRect.fromRectAndRadius(
+            mouseRect, Radius.circular(mouseRect.width / 3)),
+        paint);
+
+    // Mouse scroll wheel
+    final scrollWheel = Rect.fromLTWH(
+      mouseRect.center.dx - 2,
+      mouseRect.top + mouseRect.height * 0.2,
+      4,
+      mouseRect.height * 0.3,
+    );
+    canvas.drawRRect(
+        RRect.fromRectAndRadius(scrollWheel, const Radius.circular(2)), paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

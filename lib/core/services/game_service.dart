@@ -17,7 +17,7 @@ class GameService extends ChangeNotifier {
   final Map<int, Map<String, dynamic>> _levelProgress = {};
 
   // Player profile and difficulty
-  int _playerAge = 10;
+  int? _playerAge; // No default age - must be set by user
   String _difficultyLevel = 'medium'; // easy, medium, hard, expert
 
   GameService() {
@@ -32,7 +32,7 @@ class GameService extends ChangeNotifier {
   bool get isGameActive => _isGameActive;
   bool get isPaused => _isPaused;
   Map<int, Map<String, dynamic>> get levelProgress => _levelProgress;
-  int get playerAge => _playerAge;
+  int get playerAge => _playerAge ?? 0;
   String get difficultyLevel => _difficultyLevel;
 
   void _initializeGame() {
@@ -87,7 +87,7 @@ class GameService extends ChangeNotifier {
     _gameBox.put('lives', _lives);
 
     // Only save age and difficulty if they have been set
-    if (_gameBox.get('playerAge') != null) {
+    if (_playerAge != null) {
       _gameBox.put('playerAge', _playerAge);
       _gameBox.put('difficultyLevel', _difficultyLevel);
     }
@@ -247,6 +247,16 @@ class GameService extends ChangeNotifier {
     _difficultyLevel = difficulty;
     _gameBox.put('playerAge', age);
     _gameBox.put('difficultyLevel', difficulty);
+    _saveGameData();
+    notifyListeners();
+  }
+
+  // Clear player age (for testing/debugging)
+  void clearPlayerAge() {
+    _playerAge = null;
+    _difficultyLevel = 'medium';
+    _gameBox.delete('playerAge');
+    _gameBox.delete('difficultyLevel');
     _saveGameData();
     notifyListeners();
   }
