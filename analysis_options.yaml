@@ -1,0 +1,31 @@
+# Flutter analysis options for DigiHero
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+  errors:
+    invalid_annotation_target: ignore
+
+linter:
+  rules:
+    # Flutter specific rules
+    prefer_const_constructors: true
+    prefer_const_declarations: true
+    prefer_const_literals_to_create_immutables: true
+    
+    # Code style
+    prefer_single_quotes: true
+    require_trailing_commas: false
+    lines_longer_than_80_chars: false
+    
+    # Error prevention
+    avoid_print: false
+    avoid_unnecessary_containers: true
+    avoid_web_libraries_in_flutter: true
+    
+    # Performance
+    prefer_for_elements_to_map_fromiterable: true
+    prefer_collection_literals: true
+    prefer_spread_collections: true
