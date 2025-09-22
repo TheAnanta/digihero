@@ -11,6 +11,7 @@ import '../../ui/widgets/animated_button.dart';
 import '../../ui/widgets/progress_indicator_widget.dart';
 import '../../characters/widgets/character_widget.dart';
 import '../data/level_data.dart';
+import '../widgets/gamified_challenge_widget.dart';
 
 class LevelPlayScreen extends StatefulWidget {
   final int levelNumber;
@@ -423,88 +424,10 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
   }
 
   Widget _buildMultipleChoiceChallenge(GameChallenge challenge) {
-    return Column(
-      children: [
-        // Question with image if available
-        if (challenge.imagePath != null)
-          Container(
-            height: 150,
-            margin: const EdgeInsets.only(bottom: 20),
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: const Center(
-              child: Icon(
-                Icons.image,
-                color: Colors.white,
-                size: 64,
-              ),
-            ),
-          ),
-
-        // Options
-        Expanded(
-          child: ListView.builder(
-            itemCount: challenge.options.length,
-            itemBuilder: (context, index) {
-              final option = challenge.options[index];
-              final isSelected = _selectedAnswer == option;
-
-              return AnimatedButton(
-                onPressed: () => _selectAnswer(option, challenge),
-                child: Container(
-                  margin: const EdgeInsets.only(bottom: 12),
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: isSelected
-                        ? AppConstants.primaryColor.withOpacity(0.3)
-                        : Colors.white.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: isSelected
-                          ? AppConstants.primaryColor
-                          : Colors.white.withOpacity(0.3),
-                      width: 2,
-                    ),
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 30,
-                        height: 30,
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Center(
-                          child: Text(
-                            String.fromCharCode(65 + index), // A, B, C, D
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 16),
-                      Expanded(
-                        child: Text(
-                          option,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ).animate(delay: (index * 100).ms).fadeIn().slideX(begin: 0.3);
-            },
-          ),
-        ),
-      ],
+    return GameifiedChallengeWidget(
+      challenge: challenge,
+      selectedAnswer: _selectedAnswer,
+      onAnswerSelected: (answer) => _selectAnswer(answer, challenge),
     );
   }
 
