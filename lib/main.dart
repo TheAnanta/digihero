@@ -4,17 +4,17 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'core/services/game_service.dart';
 import 'core/services/audio_service.dart';
 import 'core/services/progress_service.dart';
-import 'features/game/screens/game_home_screen.dart';
 import 'core/constants/app_constants.dart';
+import 'app_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // Initialize Hive for local storage
   await Hive.initFlutter();
   await Hive.openBox('gameProgress');
   await Hive.openBox('settings');
-  
+
   runApp(const DigiHeroApp());
 }
 
@@ -39,7 +39,7 @@ class DigiHeroApp extends StatelessWidget {
           useMaterial3: true,
           fontFamily: 'GameFont',
         ),
-        home: const GameHomeScreen(),
+        home: const AppRouter(),
         debugShowCheckedModeBanner: false,
       ),
     );

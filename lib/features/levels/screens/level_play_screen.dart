@@ -31,7 +31,7 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
   late AnimationController _timerController;
   late AnimationController _scoreController;
   late Timer _gameTimer;
-  
+
   int _currentChallengeIndex = 0;
   int _score = 0;
   int _timeRemaining = 0;
@@ -47,19 +47,33 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
   void initState() {
     super.initState();
     _level = LevelData.getLevelData(widget.levelNumber);
+
+    // Initialize with default values, will be updated in didChangeDependencies
     _timeRemaining = _level.timeLimit;
-    
+    _lives = 3;
+
     _timerController = AnimationController(
       duration: Duration(seconds: _level.timeLimit),
       vsync: this,
     );
-    
+
     _scoreController = AnimationController(
       duration: const Duration(milliseconds: 500),
       vsync: this,
     );
-    
+
     _initializeLevel();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    // Now we can safely access the GameService
+    final gameService = context.read<GameService>();
+    _timeRemaining =
+        gameService.getDifficultyAdjustedTimeLimit(_level.timeLimit);
+    _lives = gameService.getDifficultyAdjustedLives();
   }
 
   void _initializeLevel() {
@@ -70,7 +84,7 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
       _dragItems.shuffle();
       _dropTargets = List.filled(currentChallenge.options.length, '');
     }
-    
+
     _startGame();
   }
 
@@ -78,10 +92,10 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
     setState(() {
       _isGameActive = true;
     });
-    
+
     _timerController.forward();
     _startTimer();
-    
+
     context.read<AudioService>().playBackgroundMusic('level_theme.mp3');
   }
 
@@ -91,7 +105,7 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
         setState(() {
           _timeRemaining--;
         });
-        
+
         if (_timeRemaining <= 0) {
           _endGame(false);
         }
@@ -119,10 +133,10 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
     setState(() {
       _isGameActive = false;
     });
-    
+
     _gameTimer.cancel();
     _timerController.stop();
-    
+
     if (completed) {
       _showLevelCompleteDialog();
     } else {
@@ -151,38 +165,37 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
         ),
         child: SafeArea(
           child: Consumer3<GameService, AudioService, ProgressService>(
-            builder: (context, gameService, audioService, progressService, child) {
+            builder:
+                (context, gameService, audioService, progressService, child) {
               return Stack(
                 children: [
                   // Background elements
                   _buildBackgroundElements(),
-                  
+
                   // Main game content
                   Column(
                     children: [
                       // Game header
                       _buildGameHeader(audioService),
-                      
+
                       // Character and speech
                       _buildCharacterSection(),
-                      
+
                       // Challenge content
                       Expanded(
                         child: _buildChallengeContent(),
                       ),
-                      
+
                       // Game controls
                       _buildGameControls(audioService),
                     ],
                   ),
-                  
+
                   // Pause overlay
-                  if (_isPaused)
-                    _buildPauseOverlay(audioService),
-                  
+                  if (_isPaused) _buildPauseOverlay(audioService),
+
                   // Hint overlay
-                  if (_showHint)
-                    _buildHintOverlay(),
+                  if (_showHint) _buildHintOverlay(),
                 ],
               );
             },
@@ -208,7 +221,8 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
                   color: Colors.white.withOpacity(0.1),
                   shape: BoxShape.circle,
                 ),
-              ).animate(onPlay: (controller) => controller.repeat())
+              )
+                  .animate(onPlay: (controller) => controller.repeat())
                   .scale(duration: 2000.ms, begin: const Offset(0.5, 0.5))
                   .fade(duration: 2000.ms),
             );
@@ -240,9 +254,9 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
               child: const Icon(Icons.arrow_back, color: Colors.white),
             ),
           ),
-          
+
           const SizedBox(width: 16),
-          
+
           // Level info
           Expanded(
             child: Column(
@@ -266,7 +280,7 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
               ],
             ),
           ),
-          
+
           // Game stats
           _buildGameStats(),
         ],
@@ -281,7 +295,7 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           decoration: BoxDecoration(
-            color: _timeRemaining <= 30 
+            color: _timeRemaining <= 30
                 ? AppConstants.accentColor
                 : Colors.white.withOpacity(0.2),
             borderRadius: BorderRadius.circular(15),
@@ -305,9 +319,9 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
             ],
           ),
         ),
-        
+
         const SizedBox(width: 8),
-        
+
         // Score
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
@@ -334,9 +348,9 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
             ],
           ),
         ),
-        
+
         const SizedBox(width: 8),
-        
+
         // Lives
         Row(
           children: List.generate(3, (index) {
@@ -353,7 +367,7 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
 
   Widget _buildCharacterSection() {
     final currentChallenge = _level.challenges[_currentChallengeIndex];
-    
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: CharacterWidget(
@@ -367,7 +381,7 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
 
   Widget _buildChallengeContent() {
     final currentChallenge = _level.challenges[_currentChallengeIndex];
-    
+
     return Container(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -375,11 +389,12 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
           // Progress indicator
           ProgressIndicatorWidget(
             progress: (_currentChallengeIndex + 1) / _level.challenges.length,
-            label: 'Progress: ${_currentChallengeIndex + 1}/${_level.challenges.length}',
+            label:
+                'Progress: ${_currentChallengeIndex + 1}/${_level.challenges.length}',
           ),
-          
+
           const SizedBox(height: 30),
-          
+
           // Challenge content based on type
           Expanded(
             child: _buildChallengeByType(currentChallenge),
@@ -428,7 +443,7 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
               ),
             ),
           ),
-        
+
         // Options
         Expanded(
           child: ListView.builder(
@@ -436,19 +451,19 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
             itemBuilder: (context, index) {
               final option = challenge.options[index];
               final isSelected = _selectedAnswer == option;
-              
+
               return AnimatedButton(
                 onPressed: () => _selectAnswer(option, challenge),
                 child: Container(
                   margin: const EdgeInsets.only(bottom: 12),
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: isSelected 
+                    color: isSelected
                         ? AppConstants.primaryColor.withOpacity(0.3)
                         : Colors.white.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: isSelected 
+                      color: isSelected
                           ? AppConstants.primaryColor
                           : Colors.white.withOpacity(0.3),
                       width: 2,
@@ -614,7 +629,9 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
                     ),
                     child: Center(
                       child: Text(
-                        _dropTargets[index].isEmpty ? 'Drop here' : _dropTargets[index],
+                        _dropTargets[index].isEmpty
+                            ? 'Drop here'
+                            : _dropTargets[index],
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 14,
@@ -628,9 +645,9 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
             },
           ),
         ),
-        
+
         const SizedBox(height: 20),
-        
+
         // Draggable items
         Expanded(
           flex: 1,
@@ -736,7 +753,8 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
   }
 
   Widget _buildScenarioChallenge(GameChallenge challenge) {
-    return _buildMultipleChoiceChallenge(challenge); // Similar to multiple choice
+    return _buildMultipleChoiceChallenge(
+        challenge); // Similar to multiple choice
   }
 
   Widget _buildGameControls(AudioService audioService) {
@@ -763,21 +781,24 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
                 child: const Icon(Icons.lightbulb, color: Colors.white),
               ),
             ),
-          
+
           const Spacer(),
-          
+
           // Submit/Next button
           if (_selectedAnswer != null || _dragItems.isEmpty)
             AnimatedButton(
               onPressed: () => _submitAnswer(),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 decoration: BoxDecoration(
                   color: AppConstants.secondaryColor,
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: Text(
-                  _currentChallengeIndex < _level.challenges.length - 1 ? 'NEXT' : 'FINISH',
+                  _currentChallengeIndex < _level.challenges.length - 1
+                      ? 'NEXT'
+                      : 'FINISH',
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -818,7 +839,8 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
                   _resumeGame();
                 },
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                   decoration: BoxDecoration(
                     color: AppConstants.primaryColor,
                     borderRadius: BorderRadius.circular(25),
@@ -841,7 +863,7 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
 
   Widget _buildHintOverlay() {
     final currentChallenge = _level.challenges[_currentChallengeIndex];
-    
+
     return Container(
       color: Colors.black.withOpacity(0.7),
       child: Center(
@@ -898,27 +920,35 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
   void _submitAnswer() {
     final currentChallenge = _level.challenges[_currentChallengeIndex];
     final isCorrect = _checkAnswer(currentChallenge);
-    
+
     if (isCorrect) {
       context.read<AudioService>().playCorrectAnswer();
-      _score += currentChallenge.points;
+      final gameService = context.read<GameService>();
+      final adjustedPoints =
+          gameService.getDifficultyAdjustedPoints(currentChallenge.points);
+      _score += adjustedPoints;
       _scoreController.forward();
-      
+
       // Move to next challenge or complete level
       if (_currentChallengeIndex < _level.challenges.length - 1) {
         setState(() {
           _currentChallengeIndex++;
           _selectedAnswer = null;
           _showHint = false;
+
+          // Reset drag and drop items for next challenge
+          _dragItems.clear();
+          _dropTargets.clear();
         });
         _initializeChallenge();
       } else {
+        // Level completed - all challenges answered correctly
         _endGame(true);
       }
     } else {
       context.read<AudioService>().playWrongAnswer();
       _lives--;
-      
+
       if (_lives <= 0) {
         _endGame(false);
       } else {
@@ -932,17 +962,36 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
     switch (challenge.type) {
       case ChallengeType.multipleChoice:
       case ChallengeType.scenario:
-        return _selectedAnswer == challenge.options[challenge.correctAnswerIndex];
+        return _selectedAnswer ==
+            challenge.options[challenge.correctAnswerIndex];
       case ChallengeType.trueFalse:
-        final correctAnswer = challenge.correctAnswerIndex == 0 ? 'True' : 'False';
+        final correctAnswer =
+            challenge.correctAnswerIndex == 0 ? 'True' : 'False';
         return _selectedAnswer == correctAnswer;
       case ChallengeType.dragAndDrop:
+        // Check if all items are placed correctly
+        if (_dragItems.isNotEmpty) return false; // Not all items placed
+
+        // For drag and drop, we need to check if items are in correct order
+        for (int i = 0; i < _dropTargets.length; i++) {
+          if (_dropTargets[i] != challenge.options[i]) {
+            return false;
+          }
+        }
+        return true;
       case ChallengeType.sequencing:
-        return _dragItems.isEmpty; // All items placed
+        // For sequencing, check if the order matches expected sequence
+        if (_dragItems.isNotEmpty) return false; // Not all items placed
+
+        // Check if sequence is correct
+        for (int i = 0; i < _dropTargets.length; i++) {
+          if (_dropTargets[i] != challenge.options[i]) {
+            return false;
+          }
+        }
+        return true;
       case ChallengeType.interactive:
         return _selectedAnswer == 'Completed';
-      default:
-        return false;
     }
   }
 
@@ -1002,18 +1051,18 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
     final stars = _calculateStars();
     final timeBonus = _timeRemaining * 5;
     final totalScore = _score + timeBonus;
-    
+
     // Update game service
     context.read<GameService>().completeLevel(
-      widget.levelNumber,
-      totalScore,
-      stars,
-      _level.timeLimit - _timeRemaining,
-    );
-    
+          widget.levelNumber,
+          totalScore,
+          stars,
+          _level.timeLimit - _timeRemaining,
+        );
+
     context.read<ProgressService>().recordLevelPlayed();
     context.read<AudioService>().playLevelComplete();
-    
+
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -1048,7 +1097,7 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
 
   void _showGameOverDialog() {
     context.read<AudioService>().playGameOver();
-    
+
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -1103,11 +1152,13 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
   }
 
   void _restartLevel() {
+    final gameService = context.read<GameService>();
     setState(() {
       _currentChallengeIndex = 0;
       _score = 0;
-      _timeRemaining = _level.timeLimit;
-      _lives = 3;
+      _timeRemaining =
+          gameService.getDifficultyAdjustedTimeLimit(_level.timeLimit);
+      _lives = gameService.getDifficultyAdjustedLives();
       _selectedAnswer = null;
       _showHint = false;
     });
@@ -1117,7 +1168,7 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
   int _calculateStars() {
     final timePercentage = _timeRemaining / _level.timeLimit;
     final scorePercentage = _score / _level.targetScore;
-    
+
     if (timePercentage >= 0.7 && scorePercentage >= 0.9) {
       return 3;
     } else if (timePercentage >= 0.5 && scorePercentage >= 0.7) {
