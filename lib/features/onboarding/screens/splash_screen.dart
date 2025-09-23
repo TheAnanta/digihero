@@ -5,7 +5,9 @@ import 'dart:async';
 import 'dart:math' as math;
 import '../../../core/constants/app_constants.dart';
 import '../../../core/services/game_service.dart';
+import '../../../core/services/auth_service.dart';
 import '../../../l10n/app_localizations.dart';
+import '../../auth/screens/login_screen.dart';
 import 'age_input_screen.dart';
 import '../../game/screens/game_home_screen.dart';
 
@@ -63,16 +65,23 @@ class _SplashScreenState extends State<SplashScreen>
 
   void _handleSplashTap() {
     final gameService = context.read<GameService>();
+    final authService = context.read<AuthService>();
 
-    // Check if user has set their age
-    if (gameService.hasSetAge) {
-      // Navigate to game home screen
+    // Check authentication first
+    if (!authService.isAuthenticated) {
+      // Navigate to login screen
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginScreen()),
+      );
+    } else if (gameService.hasSetAge) {
+      // User is authenticated and has set age - go to game
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const GameHomeScreen()),
       );
     } else {
-      // Navigate to age input screen
+      // User is authenticated but hasn't set age - go to age input
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const AgeInputScreen()),
