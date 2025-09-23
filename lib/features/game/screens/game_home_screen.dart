@@ -6,9 +6,11 @@ import '../../../core/services/game_service.dart';
 import '../../../core/services/audio_service.dart';
 import '../../../core/services/progress_service.dart';
 import '../../../core/services/language_service.dart';
+import '../../../core/services/auth_service.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../core/widgets/language_selection.dart';
 import '../../levels/screens/level_select_screen.dart';
+import '../../onboarding/screens/splash_screen.dart';
 import '../../ui/widgets/animated_button.dart';
 import '../../ui/widgets/progress_indicator_widget.dart';
 import '../../characters/widgets/character_widget.dart';
@@ -66,9 +68,9 @@ class _GameHomeScreenState extends State<GameHomeScreen>
           ),
         ),
         child: SafeArea(
-          child: Consumer3<GameService, AudioService, ProgressService>(
+          child: Consumer4<GameService, AudioService, ProgressService, AuthService>(
             builder:
-                (context, gameService, audioService, progressService, child) {
+                (context, gameService, audioService, progressService, authService, child) {
               return Stack(
                 children: [
                   // Animated background elements
@@ -78,7 +80,7 @@ class _GameHomeScreenState extends State<GameHomeScreen>
                   Column(
                     children: [
                       // Header with title and progress
-                      _buildHeader(progressService),
+                      _buildHeader(progressService, authService),
 
                       const SizedBox(height: 20),
 
@@ -157,11 +159,24 @@ class _GameHomeScreenState extends State<GameHomeScreen>
     );
   }
 
-  Widget _buildHeader(ProgressService progressService) {
+  Widget _buildHeader(ProgressService progressService, AuthService authService) {
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Column(
         children: [
+          // Welcome user message
+          if (authService.isAuthenticated)
+            Text(
+              'Welcome back, ${authService.userName}!',
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    color: Colors.white.withOpacity(0.95),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20,
+                  ),
+            ).animate().fadeIn(duration: 600.ms).slideY(begin: -0.2),
+          
+          if (authService.isAuthenticated) const SizedBox(height: 8),
+          
           Text(
             AppConstants.appName,
             style: Theme.of(context).textTheme.headlineLarge?.copyWith(
@@ -499,11 +514,21 @@ class _GameHomeScreenState extends State<GameHomeScreen>
       context: context,
       builder: (context) => AlertDialog(
         title: Text(localizations?.settings ?? 'Settings'),
-        content: Consumer2<AudioService, LanguageService>(
-          builder: (context, audioService, languageService, child) {
+        content: Consumer3<AudioService, LanguageService, AuthService>(
+          builder: (context, audioService, languageService, authService, child) {
             return Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                // User info
+                if (authService.isAuthenticated) ...[
+                  ListTile(
+                    leading: Icon(Icons.person, color: AppConstants.primaryColor),
+                    title: Text('Logged in as'),
+                    subtitle: Text(authService.userName),
+                  ),
+                  const Divider(),
+                ],
+
                 // Language selection
                 ListTile(
                   leading: const Icon(Icons.language),
@@ -543,6 +568,19 @@ class _GameHomeScreenState extends State<GameHomeScreen>
                     onChanged: (value) => audioService.setSfxVolume(value),
                   ),
                 ),
+                
+                // Logout option
+                if (authService.isAuthenticated) ...[
+                  const Divider(),
+                  ListTile(
+                    leading: Icon(Icons.logout, color: Colors.red),
+                    title: Text('Logout', style: TextStyle(color: Colors.red)),
+                    onTap: () {
+                      Navigator.pop(context); // Close settings
+                      _showLogoutConfirmation(context, authService);
+                    },
+                  ),
+                ],
               ],
             );
           },
@@ -566,5 +604,37 @@ class _GameHomeScreenState extends State<GameHomeScreen>
     } else {
       return '${minutes}m';
     }
+  }
+
+  void _showLogoutConfirmation(BuildContext context, AuthService authService) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Logout'),
+        content: const Text('Are you sure you want to logout?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              authService.logout();
+              Navigator.pop(context); // Close dialog
+              // Navigate back to splash screen which will redirect to login
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => const SplashScreen()),
+                (route) => false,
+              );
+            },
+            child: Text(
+              'Logout',
+              style: TextStyle(color: Colors.red),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

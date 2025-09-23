@@ -5,6 +5,7 @@ import 'core/services/game_service.dart';
 import 'core/services/audio_service.dart';
 import 'core/services/progress_service.dart';
 import 'core/services/language_service.dart';
+import 'core/services/auth_service.dart';
 import 'core/constants/app_constants.dart';
 import 'app_router.dart';
 import 'l10n/app_localizations.dart';
@@ -28,6 +29,7 @@ class DigiHeroApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => LanguageService()),
+        ChangeNotifierProvider(create: (_) => AuthService()),
         ChangeNotifierProvider(create: (_) => GameService()),
         ChangeNotifierProvider(create: (_) => AudioService()),
         ChangeNotifierProvider(create: (_) => ProgressService()),
