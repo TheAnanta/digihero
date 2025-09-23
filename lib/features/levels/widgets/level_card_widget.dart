@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../l10n/app_localizations.dart';
+import '../../../core/utils/theme_localizer.dart';
 import '../../ui/widgets/animated_button.dart';
 import '../../ui/widgets/progress_indicator_widget.dart';
 
@@ -37,7 +39,7 @@ class LevelCardWidget extends StatelessWidget {
               offset: const Offset(0, 8),
             ),
           ],
-          border: isCompleted 
+          border: isCompleted
               ? Border.all(color: AppConstants.secondaryColor, width: 3)
               : null,
         ),
@@ -45,7 +47,7 @@ class LevelCardWidget extends StatelessWidget {
           children: [
             // Background pattern
             _buildBackgroundPattern(),
-            
+
             // Main content
             Padding(
               padding: const EdgeInsets.all(16),
@@ -69,8 +71,8 @@ class LevelCardWidget extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: isUnlocked 
-                                  ? AppConstants.textPrimaryColor 
+                              color: isUnlocked
+                                  ? AppConstants.textPrimaryColor
                                   : AppConstants.textSecondaryColor,
                             ),
                           ),
@@ -91,18 +93,19 @@ class LevelCardWidget extends StatelessWidget {
                         ),
                     ],
                   ),
-                  
-                  const SizedBox(height: 12),
-                  
+
+                  const SizedBox(height: 8),
+
                   // Theme/title
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          theme,
+                          ThemeLocalizer.getLocalizedTheme(context, theme),
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 13,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                             shadows: [
@@ -113,40 +116,43 @@ class LevelCardWidget extends StatelessWidget {
                               ),
                             ],
                           ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        const SizedBox(height: 4),
-                        Text(
-                          _getLevelDescription(),
-                          style: TextStyle(
-                            fontSize: 11,
-                            color: Colors.white.withOpacity(0.9),
-                            shadows: [
-                              Shadow(
-                                color: Colors.black.withOpacity(0.3),
-                                blurRadius: 2,
-                                offset: const Offset(0, 1),
-                              ),
-                            ],
+                        const SizedBox(height: 2),
+                        Flexible(
+                          child: Text(
+                            _getLevelDescription(),
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: Colors.white.withOpacity(0.9),
+                              shadows: [
+                                Shadow(
+                                  color: Colors.black.withOpacity(0.3),
+                                  blurRadius: 2,
+                                  offset: const Offset(0, 1),
+                                ),
+                              ],
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                       ],
                     ),
                   ),
-                  
+
                   // Stars and progress
-                  if (isUnlocked)
-                    _buildProgressSection(),
+                  if (isUnlocked) _buildProgressSection(),
                 ],
               ),
             ),
-            
+
             // Completion overlay
-            if (isCompleted)
-              _buildCompletionOverlay(),
-            
+            if (isCompleted) _buildCompletionOverlay(),
+
             // Lock overlay
-            if (!isUnlocked)
-              _buildLockOverlay(),
+            if (!isUnlocked) _buildLockOverlay(),
           ],
         ),
       ),
@@ -191,46 +197,54 @@ class LevelCardWidget extends StatelessWidget {
   }
 
   Widget _buildProgressSection() {
-    return Column(
-      children: [
-        // Stars
-        if (isCompleted)
-          StarsWidget(
-            totalStars: AppConstants.starsPerLevel,
-            filledStars: stars,
-            size: 18,
-          ),
-        
-        const SizedBox(height: 8),
-        
-        // Play indicator
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.2),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                isCompleted ? Icons.replay : Icons.play_arrow,
-                color: Colors.white,
+    return Builder(
+      builder: (context) {
+        final localizations = AppLocalizations.of(context);
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Stars
+            if (isCompleted)
+              StarsWidget(
+                totalStars: AppConstants.starsPerLevel,
+                filledStars: stars,
                 size: 16,
               ),
-              const SizedBox(width: 4),
-              Text(
-                isCompleted ? 'Replay' : 'Play',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                ),
+
+            const SizedBox(height: 4),
+
+            // Play indicator
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(12),
               ),
-            ],
-          ),
-        ),
-      ],
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    isCompleted ? Icons.replay : Icons.play_arrow,
+                    color: Colors.white,
+                    size: 14,
+                  ),
+                  const SizedBox(width: 3),
+                  Text(
+                    isCompleted
+                        ? (localizations?.replay ?? 'Replay')
+                        : (localizations?.play ?? 'Play'),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 11,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -280,7 +294,7 @@ class LevelCardWidget extends StatelessWidget {
         ],
       );
     }
-    
+
     // Different gradient based on level theme
     switch (levelNumber % 4) {
       case 1:
@@ -313,8 +327,8 @@ class LevelCardWidget extends StatelessWidget {
         return 'Learn to open and use applications safely';
       case 'Why Digital Skills Matter':
         return 'Understand how technology helps your future';
-      
-      // Unit 2: Using Digital Tools for School and Learning  
+
+      // Unit 2: Using Digital Tools for School and Learning
       case 'Mastering Our Learning App':
         return 'Navigate and use educational apps effectively';
       case 'Writing and Typing':
@@ -323,7 +337,7 @@ class LevelCardWidget extends StatelessWidget {
         return 'Make simple presentations with text and images';
       case 'Organizing Digital Work':
         return 'Learn to save and organize your files';
-      
+
       // Unit 3: Exploring the Internet Safely
       case 'What is the Internet':
         return 'Understand the internet and how to connect';
@@ -333,7 +347,7 @@ class LevelCardWidget extends StatelessWidget {
         return 'Protect yourself and your personal information';
       case 'Being a Good Digital Citizen':
         return 'Be kind and respectful online';
-      
+
       // Unit 4: Communication and Collaboration
       case 'Introduction to Email':
         return 'Learn to compose and send emails safely';
@@ -343,7 +357,7 @@ class LevelCardWidget extends StatelessWidget {
         return 'Track your learning journey and improvement';
       case 'Working Together Online':
         return 'Collaborate on digital projects with others';
-      
+
       // Unit 5: Digital Skills for Life
       case 'Exploring Hobbies Online':
         return 'Find reliable information about your interests';
@@ -353,7 +367,7 @@ class LevelCardWidget extends StatelessWidget {
         return 'Discover careers and educational opportunities';
       case 'Digital Portfolio Project':
         return 'Create a showcase of your digital skills';
-      
+
       default:
         return 'Digital literacy challenge';
     }

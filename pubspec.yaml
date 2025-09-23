@@ -9,6 +9,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
   
   # Flutter Causal Games toolkit
   games_services: ^4.0.0
@@ -39,6 +42,7 @@ dependencies:
   sqflite: ^2.3.0
   hive: ^2.2.3
   hive_flutter: ^1.1.0
+  llama_cpp: ^1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -49,7 +53,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  
+  generate: true
   assets:
     - assets/images/
     - assets/images/characters/
@@ -61,6 +65,7 @@ flutter:
     - assets/audio/sfx/
     - assets/data/
     - assets/animations/
+    - assets/i18n/
     
   fonts:
     - family: GameFont

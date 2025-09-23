@@ -19,15 +19,20 @@ android {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
+    aaptOptions {
+        noCompress("sarvam-translate-q4_k_m.gguf")
+    }
+
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.digihero"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
+        minSdk = 28
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        multiDexEnabled = true
     }
 
     buildTypes {
@@ -37,6 +42,8 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+
+    
 }
 
 flutter {

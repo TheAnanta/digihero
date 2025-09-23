@@ -5,7 +5,6 @@ import '../../../core/constants/app_constants.dart';
 import '../../../core/models/game_models.dart';
 import '../../ui/widgets/animated_button.dart';
 import '../../game/widgets/device_builder_game.dart';
-import '../../game/widgets/power_up_sequence_game.dart';
 import '../../game/widgets/icon_hunt_game.dart';
 import '../../game/widgets/cursor_maestro_game.dart';
 import '../../game/widgets/app_sorter_game.dart';
@@ -42,17 +41,17 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
   @override
   void initState() {
     super.initState();
-    
+
     _platformController = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,
     );
-    
+
     _characterController = AnimationController(
       duration: const Duration(seconds: 3),
       vsync: this,
     )..repeat(reverse: true);
-    
+
     _floatingController = AnimationController(
       duration: const Duration(seconds: 8),
       vsync: this,
@@ -76,23 +75,22 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
     if (_isInteractiveGame()) {
       return _buildInteractiveGame();
     }
-    
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.6,
+
+    return Expanded(
       child: Stack(
         children: [
           // Animated background
           _buildAnimatedBackground(),
-          
+
           // Floating elements
           _buildFloatingElements(),
-          
+
           // Question display area
           _buildQuestionArea(),
-          
+
           // 3D Platform with answer options
           _buildAnswerPlatforms(),
-          
+
           // Character
           _buildCharacter(),
         ],
@@ -103,7 +101,6 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
   bool _isInteractiveGame() {
     return [
       ChallengeType.deviceBuilder,
-      ChallengeType.sequencing,
       ChallengeType.iconHunt,
       ChallengeType.cursorMaestro,
       ChallengeType.appSorter,
@@ -118,7 +115,8 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
 
   Widget _buildInteractiveGame() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.8, // Taller for interactive games
+      height: MediaQuery.of(context).size.height *
+          0.8, // Taller for interactive games
       child: Column(
         children: [
           // Question header
@@ -148,7 +146,7 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
               ),
             ),
           ),
-          
+
           // Interactive game widget
           Expanded(
             child: Padding(
@@ -163,8 +161,9 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
 
   Widget _buildGameWidget() {
     // Merge challenge options into game data for games that need them
-    final gameData = Map<String, dynamic>.from(widget.challenge.interactiveData ?? {});
-    
+    final gameData =
+        Map<String, dynamic>.from(widget.challenge.interactiveData ?? {});
+
     switch (widget.challenge.type) {
       case ChallengeType.deviceBuilder:
         return DeviceBuilderGame(
@@ -175,19 +174,7 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
             }
           },
         );
-        
-      case ChallengeType.sequencing:
-        // Pass options as steps for sequencing game
-        gameData['steps'] = widget.challenge.options;
-        return PowerUpSequenceGame(
-          gameData: gameData,
-          onComplete: (isCorrect, points) {
-            if (isCorrect) {
-              widget.onAnswerSelected(widget.challenge.options[0]);
-            }
-          },
-        );
-        
+
       case ChallengeType.iconHunt:
         return IconHuntGame(
           gameData: gameData,
@@ -197,7 +184,7 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
             }
           },
         );
-        
+
       case ChallengeType.cursorMaestro:
         return CursorMaestroGame(
           gameData: gameData,
@@ -207,7 +194,7 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
             }
           },
         );
-        
+
       case ChallengeType.appSorter:
         return AppSorterGame(
           gameData: gameData,
@@ -217,7 +204,7 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
             }
           },
         );
-        
+
       case ChallengeType.matchUp:
         return DigitalHeroesMatchGame(
           gameData: gameData,
@@ -227,7 +214,7 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
             }
           },
         );
-        
+
       case ChallengeType.typingChallenge:
         return TypingStarGame(
           gameData: gameData,
@@ -237,7 +224,7 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
             }
           },
         );
-        
+
       case ChallengeType.slideDesigner:
         return SlideDesignerGame(
           gameData: gameData,
@@ -247,7 +234,7 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
             }
           },
         );
-        
+
       case ChallengeType.browserNavigator:
         return BrowserNavigatorGame(
           gameData: gameData,
@@ -257,7 +244,7 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
             }
           },
         );
-        
+
       case ChallengeType.searchQuest:
         return SearchQuestGame(
           gameData: gameData,
@@ -267,7 +254,7 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
             }
           },
         );
-        
+
       case ChallengeType.scamSpotter:
         return ScamSpotterGame(
           gameData: gameData,
@@ -277,7 +264,7 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
             }
           },
         );
-        
+
       default:
         return Container(
           child: const Center(
@@ -339,10 +326,10 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
           children: List.generate(8, (index) {
             final progress = (_floatingController.value + index * 0.125) % 1.0;
             final screenWidth = MediaQuery.of(context).size.width;
-            final x = (index * (screenWidth / 8)) + 
-                    math.sin(progress * 2 * math.pi) * 30;
+            final x = (index * (screenWidth / 8)) +
+                math.sin(progress * 2 * math.pi) * 30;
             final y = 100 + progress * 50;
-            
+
             return Positioned(
               left: x,
               top: y,
@@ -427,20 +414,23 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
             ),
           ],
         ),
-      ).animate().slideY(
-        begin: -0.5,
-        duration: 1000.ms,
-        curve: Curves.elasticOut,
-      ).fadeIn(),
+      )
+          .animate()
+          .slideY(
+            begin: -0.5,
+            duration: 1000.ms,
+            curve: Curves.elasticOut,
+          )
+          .fadeIn(),
     );
   }
 
   Widget _buildAnswerPlatforms() {
     return Positioned(
-      bottom: 60,
+      bottom: 100, // Increased from 60 to avoid overlap with game controls
       left: 0,
       right: 0,
-      height: 200,
+      height: 180, // Reduced from 200 to fit better
       child: AnimatedBuilder(
         animation: _platformController,
         builder: (context, child) {
@@ -448,7 +438,7 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
             children: [
               // Central platform
               _buildCentralPlatform(),
-              
+
               // Answer option platforms
               ...List.generate(widget.challenge.options.length, (index) {
                 return _buildAnswerPlatform(index);
@@ -515,10 +505,10 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
     final radius = 120.0;
     final centerX = MediaQuery.of(context).size.width / 2;
     final centerY = 100.0;
-    
+
     final x = centerX + radius * math.cos(angle - math.pi / 2) - 70;
     final y = centerY + radius * math.sin(angle - math.pi / 2) - 35;
-    
+
     final isSelected = widget.selectedAnswer == widget.challenge.options[index];
     final animationDelay = index * 200;
 
@@ -526,7 +516,8 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
       left: x,
       top: y,
       child: AnimatedButton(
-        onPressed: () => widget.onAnswerSelected(widget.challenge.options[index]),
+        onPressed: () =>
+            widget.onAnswerSelected(widget.challenge.options[index]),
         child: Transform.scale(
           scale: _platformController.value,
           child: Stack(
@@ -548,30 +539,31 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
                 height: 70,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: isSelected 
-                      ? [
-                          AppConstants.secondaryColor,
-                          AppConstants.secondaryColor.withOpacity(0.7),
-                        ]
-                      : [
-                          const Color(0xFFFF6B6B), // Red platform color like reference
-                          const Color(0xFFFF5252),
-                        ],
+                    colors: isSelected
+                        ? [
+                            AppConstants.secondaryColor,
+                            AppConstants.secondaryColor.withOpacity(0.7),
+                          ]
+                        : [
+                            const Color(
+                                0xFFFF6B6B), // Red platform color like reference
+                            const Color(0xFFFF5252),
+                          ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                   ),
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
-                    color: isSelected 
-                      ? AppConstants.secondaryColor 
-                      : Colors.white.withOpacity(0.6),
+                    color: isSelected
+                        ? AppConstants.secondaryColor
+                        : Colors.white.withOpacity(0.6),
                     width: isSelected ? 3 : 2,
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: isSelected 
-                        ? AppConstants.secondaryColor.withOpacity(0.4)
-                        : const Color(0xFFFF6B6B).withOpacity(0.3),
+                      color: isSelected
+                          ? AppConstants.secondaryColor.withOpacity(0.4)
+                          : const Color(0xFFFF6B6B).withOpacity(0.3),
                       blurRadius: isSelected ? 15 : 8,
                       offset: const Offset(0, 6),
                     ),
@@ -599,9 +591,9 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
                         child: Text(
                           String.fromCharCode(65 + index), // A, B, C, D
                           style: TextStyle(
-                            color: isSelected 
-                              ? AppConstants.secondaryColor 
-                              : const Color(0xFFFF6B6B),
+                            color: isSelected
+                                ? AppConstants.secondaryColor
+                                : const Color(0xFFFF6B6B),
                             fontWeight: FontWeight.bold,
                             fontSize: 14,
                           ),
@@ -633,13 +625,16 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
             ],
           ),
         ),
-      ).animate().scale(
-        delay: Duration(milliseconds: animationDelay),
-        duration: 800.ms,
-        curve: Curves.elasticOut,
-      ).fadeIn(
-        delay: Duration(milliseconds: animationDelay),
-      ),
+      )
+          .animate()
+          .scale(
+            delay: Duration(milliseconds: animationDelay),
+            duration: 800.ms,
+            curve: Curves.elasticOut,
+          )
+          .fadeIn(
+            delay: Duration(milliseconds: animationDelay),
+          ),
     );
   }
 
@@ -651,7 +646,8 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
         animation: _characterController,
         builder: (context, child) {
           return Transform.translate(
-            offset: Offset(0, math.sin(_characterController.value * 2 * math.pi) * 8),
+            offset: Offset(
+                0, math.sin(_characterController.value * 2 * math.pi) * 8),
             child: Stack(
               alignment: Alignment.center,
               children: [
@@ -734,10 +730,10 @@ class _GameifiedChallengeWidgetState extends State<GameifiedChallengeWidget>
           );
         },
       ).animate().scale(
-        delay: 1000.ms,
-        duration: 800.ms,
-        curve: Curves.elasticOut,
-      ),
+            delay: 1000.ms,
+            duration: 800.ms,
+            curve: Curves.elasticOut,
+          ),
     );
   }
 }

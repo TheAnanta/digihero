@@ -6,10 +6,11 @@ import '../../../core/constants/app_constants.dart';
 import '../../../core/services/game_service.dart';
 import '../../../core/services/audio_service.dart';
 import '../../../core/services/progress_service.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../../core/models/game_models.dart';
+import '../../../core/utils/theme_localizer.dart';
 import '../../ui/widgets/animated_button.dart';
 import '../../ui/widgets/progress_indicator_widget.dart';
-import '../../characters/widgets/character_widget.dart';
 import '../data/level_data.dart';
 import '../widgets/gamified_challenge_widget.dart';
 
@@ -39,6 +40,9 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
   bool _isGameActive = false;
   bool _isPaused = false;
   bool _showHint = false;
+  bool _showDeviceInstructions = true;
+  bool _currentChallengeCompleted =
+      false; // Track if current challenge was answered correctly
   String? _selectedAnswer;
   List<String> _dragItems = [];
   List<String> _dropTargets = [];
@@ -92,6 +96,7 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
   void _startGame() {
     setState(() {
       _isGameActive = true;
+      _currentChallengeCompleted = false;
     });
 
     _timerController.forward();
@@ -179,10 +184,7 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
                       // Game header
                       _buildGameHeader(audioService),
 
-                      // Character and speech
-                      _buildCharacterSection(),
-
-                      // Challenge content
+                      // Challenge content (removed character section)
                       Expanded(
                         child: _buildChallengeContent(),
                       ),
@@ -272,7 +274,7 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
                   ),
                 ),
                 Text(
-                  _level.theme,
+                  ThemeLocalizer.getLocalizedTheme(context, _level.theme),
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.8),
                     fontSize: 14,
@@ -366,20 +368,6 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
     );
   }
 
-  Widget _buildCharacterSection() {
-    final currentChallenge = _level.challenges[_currentChallengeIndex];
-
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: CharacterWidget(
-        characterId: 'digiBuddy',
-        size: 120,
-        showSpeechBubble: true,
-        speechText: currentChallenge.question,
-      ),
-    );
-  }
-
   Widget _buildChallengeContent() {
     final currentChallenge = _level.challenges[_currentChallengeIndex];
 
@@ -387,16 +375,7 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
       padding: const EdgeInsets.all(20),
       child: Column(
         children: [
-          // Progress indicator
-          ProgressIndicatorWidget(
-            progress: (_currentChallengeIndex + 1) / _level.challenges.length,
-            label:
-                'Progress: ${_currentChallengeIndex + 1}/${_level.challenges.length}',
-          ),
-
-          const SizedBox(height: 30),
-
-          // Challenge content based on type
+          // Challenge content based on type (removed progress indicator)
           Expanded(
             child: _buildChallengeByType(currentChallenge),
           ),
@@ -627,7 +606,22 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
   }
 
   Widget _buildSequencingChallenge(GameChallenge challenge) {
-    return _buildDragAndDropChallenge(challenge); // Similar implementation
+    // Check if this is an interactive sequencing game
+    if (challenge.interactiveData != null &&
+        challenge.interactiveData!['gameType'] == 'sequencing') {
+      return GameifiedChallengeWidget(
+        challenge: challenge,
+        onAnswerSelected: (answer) {
+          setState(() {
+            _selectedAnswer = answer;
+          });
+        },
+        selectedAnswer: _selectedAnswer,
+      );
+    } else {
+      // Fallback to drag-and-drop implementation for non-interactive sequencing
+      return _buildDragAndDropChallenge(challenge);
+    }
   }
 
   Widget _buildInteractiveChallenge(GameChallenge challenge) {
@@ -690,44 +684,57 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
     final instructions = interactiveData['instructions'] ??
         'Drag each label to the correct part';
 
+    // Start timer to hide instructions after 4 seconds
+    if (_showDeviceInstructions) {
+      Timer(const Duration(seconds: 4), () {
+        if (mounted) {
+          setState(() {
+            _showDeviceInstructions = false;
+          });
+        }
+      });
+    }
+
     return Column(
       children: [
-        // Instructions
-        Container(
-          padding: const EdgeInsets.all(16),
-          margin: const EdgeInsets.only(bottom: 20),
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.white.withOpacity(0.3)),
-          ),
-          child: Column(
-            children: [
-              Text(
-                challenge.question,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+        // Instructions - show for 4 seconds then hide
+        if (_showDeviceInstructions)
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 500),
+            padding: const EdgeInsets.all(16),
+            margin: const EdgeInsets.only(bottom: 20),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: Colors.white.withOpacity(0.3)),
+            ),
+            child: Column(
+              children: [
+                Text(
+                  challenge.question,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                instructions,
-                style: TextStyle(
-                  color: Colors.white.withOpacity(0.8),
-                  fontSize: 14,
+                const SizedBox(height: 8),
+                Text(
+                  instructions,
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.8),
+                    fontSize: 14,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
 
-        // Device illustration with drop zones
+        // Device illustration with drop zones - bigger and better positioned
         Expanded(
-          flex: 3,
+          flex: _showDeviceInstructions ? 3 : 4,
           child: _buildDeviceIllustration(deviceType, parts),
         ),
 
@@ -743,7 +750,16 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
         const SizedBox(height: 20),
         if (_deviceBuilderAnswers.length == parts.length)
           AnimatedButton(
-            onPressed: () => _checkDeviceBuilderAnswer(challenge),
+            onPressed: () {
+              // Set the selected answer to indicate completion and submit
+              print(
+                  'Device builder button pressed: _deviceBuilderAnswers = $_deviceBuilderAnswers');
+              setState(() {
+                _selectedAnswer = 'deviceBuilderComplete';
+              });
+              print('After setState: _selectedAnswer = $_selectedAnswer');
+              _submitAnswer();
+            },
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
               decoration: BoxDecoration(
@@ -772,106 +788,149 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
   }
 
   Widget _buildDeviceIllustration(String deviceType, List<String> parts) {
-    // Larger computer illustration with better drop zones
-    return Container(
-      margin: const EdgeInsets.all(10),
-      child: Stack(
-        children: [
-          // Computer base illustration - made larger
-          Center(
-            child: Container(
-              width: 350,
-              height: 280,
-              decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(16),
-                border:
-                    Border.all(color: Colors.white.withOpacity(0.4), width: 3),
-              ),
-              child: CustomPaint(
-                painter: ComputerPainter(),
-                size: const Size(350, 280),
-              ),
-            ),
-          ),
+    // Device takes 80% of screen width for better visibility
+    final screenWidth = MediaQuery.of(context).size.width;
+    final deviceWidth = screenWidth * 0.8;
+    final deviceHeight = deviceWidth * 0.75; // Maintain aspect ratio
 
-          // Drop zones positioned over device parts - larger targets
-          ..._buildDropZones(parts),
-        ],
+    return Container(
+      margin: const EdgeInsets.all(8),
+      child: Center(
+        child: Container(
+          width: deviceWidth,
+          height: deviceHeight,
+          decoration: BoxDecoration(
+            color: Colors.grey.withOpacity(0.2),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: Colors.white.withOpacity(0.4), width: 3),
+          ),
+          child: Stack(
+            children: [
+              // Background computer base
+              CustomPaint(
+                painter: ComputerBackgroundPainter(),
+                size: Size(deviceWidth, deviceHeight),
+              ),
+
+              // Interactive computer components as drag targets
+              ..._buildInteractiveComponents(parts, deviceWidth, deviceHeight),
+            ],
+          ),
+        ),
       ),
     );
   }
 
-  List<Widget> _buildDropZones(List<String> parts) {
-    // Predefined positions for computer parts with better spacing
-    final Map<String, Offset> positions = {
-      'Monitor': const Offset(0.35, 0.08),
-      'CPU': const Offset(0.05, 0.45),
-      'Keyboard': const Offset(0.35, 0.82),
-      'Mouse': const Offset(0.75, 0.75),
+  List<Widget> _buildInteractiveComponents(
+      List<String> parts, double deviceWidth, double deviceHeight) {
+    // Component positions and sizes matching the ComputerPainter
+    final Map<String, Map<String, dynamic>> componentSpecs = {
+      'Monitor': {
+        'rect': Rect.fromLTWH(deviceWidth * 0.25, deviceHeight * 0.05,
+            deviceWidth * 0.5, deviceHeight * 0.45),
+        'borderRadius': 8.0,
+      },
+      'CPU': {
+        'rect': Rect.fromLTWH(deviceWidth * 0.02, deviceHeight * 0.35,
+            deviceWidth * 0.18, deviceHeight * 0.45),
+        'borderRadius': 6.0,
+      },
+      'Keyboard': {
+        'rect': Rect.fromLTWH(deviceWidth * 0.28, deviceHeight * 0.78,
+            deviceWidth * 0.44, deviceHeight * 0.12),
+        'borderRadius': 6.0,
+      },
+      'Mouse': {
+        'rect': Rect.fromLTWH(deviceWidth * 0.76, deviceHeight * 0.68,
+            deviceWidth * 0.12, deviceHeight * 0.18),
+        'borderRadius': null, // Use custom radius for mouse
+      },
     };
 
     return parts.map((part) {
-      final position = positions[part] ?? const Offset(0.5, 0.5);
+      final spec = componentSpecs[part];
+      if (spec == null) return const SizedBox.shrink();
+
+      final rect = spec['rect'] as Rect;
+      final borderRadius = spec['borderRadius'] as double?;
+      final hasAnswer = _deviceBuilderAnswers.containsKey(part);
+
       return Positioned(
-        left: MediaQuery.of(context).size.width * position.dx - 70,
-        top: 60 + (280 * position.dy) - 35,
+        left: rect.left,
+        top: rect.top,
+        width: rect.width,
+        height: rect.height,
         child: DragTarget<String>(
           onWillAccept: (data) => data == part,
           onAccept: (data) {
             setState(() {
+              // Remove any existing mapping for this part
+              _deviceBuilderAnswers.removeWhere((key, value) => value == data);
+              // Add new mapping
               _deviceBuilderAnswers[part] = data;
             });
             context.read<AudioService>().playButtonClick();
           },
           builder: (context, candidateData, rejectedData) {
-            final hasAnswer = _deviceBuilderAnswers.containsKey(part);
             final isHovered = candidateData.isNotEmpty;
 
-            return AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
-              width: 140,
-              height: 70,
-              decoration: BoxDecoration(
-                color: hasAnswer
-                    ? AppConstants.secondaryColor.withOpacity(0.9)
-                    : isHovered
-                        ? AppConstants.primaryColor.withOpacity(0.6)
-                        : Colors.white.withOpacity(0.25),
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: isHovered
-                      ? AppConstants.primaryColor
-                      : hasAnswer
-                          ? AppConstants.secondaryColor
-                          : Colors.white.withOpacity(0.6),
-                  width: isHovered ? 4 : 3,
-                ),
-                boxShadow: [
-                  if (isHovered || hasAnswer)
-                    BoxShadow(
-                      color: (isHovered
-                              ? AppConstants.primaryColor
-                              : AppConstants.secondaryColor)
-                          .withOpacity(0.4),
-                      blurRadius: 8,
-                      spreadRadius: 2,
-                    ),
-                ],
-              ),
-              child: Center(
-                child: Text(
-                  hasAnswer
-                      ? _deviceBuilderAnswers[part]!
-                      : 'Drop\n$part\nhere',
-                  style: TextStyle(
-                    color: hasAnswer
-                        ? Colors.white
-                        : Colors.white.withOpacity(0.8),
-                    fontSize: hasAnswer ? 16 : 14,
-                    fontWeight: hasAnswer ? FontWeight.w700 : FontWeight.w600,
+            return GestureDetector(
+              onTap: hasAnswer
+                  ? () {
+                      setState(() {
+                        _deviceBuilderAnswers.remove(part);
+                      });
+                      context.read<AudioService>().playButtonClick();
+                    }
+                  : null,
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                decoration: BoxDecoration(
+                  color: hasAnswer
+                      ? AppConstants.secondaryColor.withOpacity(0.7)
+                      : isHovered
+                          ? AppConstants.primaryColor.withOpacity(0.6)
+                          : Colors.white.withOpacity(0.15),
+                  borderRadius: borderRadius != null
+                      ? BorderRadius.circular(borderRadius)
+                      : BorderRadius.circular(
+                          rect.width / 3), // Mouse special case
+                  border: Border.all(
+                    color: isHovered
+                        ? AppConstants.primaryColor
+                        : hasAnswer
+                            ? AppConstants.secondaryColor
+                            : Colors.white.withOpacity(0.6),
+                    width: isHovered ? 4 : 3,
                   ),
-                  textAlign: TextAlign.center,
+                  boxShadow: [
+                    if (isHovered || hasAnswer)
+                      BoxShadow(
+                        color: (isHovered
+                                ? AppConstants.primaryColor
+                                : AppConstants.secondaryColor)
+                            .withOpacity(0.4),
+                        blurRadius: 8,
+                        spreadRadius: 2,
+                      ),
+                  ],
+                ),
+                child: Center(
+                  child: hasAnswer
+                      ? Text(
+                          _deviceBuilderAnswers[part]!,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        )
+                      : Icon(
+                          _getComponentIcon(part),
+                          color: Colors.white.withOpacity(0.7),
+                          size: rect.width * 0.3,
+                        ),
                 ),
               ),
             );
@@ -881,18 +940,31 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
     }).toList();
   }
 
-  Widget _buildDraggableLabels(List<String> parts) {
-    final availableLabels = parts
-        .where((part) => !_deviceBuilderAnswers.containsValue(part))
-        .toList();
+  IconData _getComponentIcon(String component) {
+    switch (component) {
+      case 'Monitor':
+        return Icons.desktop_windows;
+      case 'CPU':
+        return Icons.memory;
+      case 'Keyboard':
+        return Icons.keyboard;
+      case 'Mouse':
+        return Icons.mouse;
+      default:
+        return Icons.computer;
+    }
+  }
 
+  Widget _buildDraggableLabels(List<String> parts) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: availableLabels.map((label) {
+          children: parts.map((label) {
+            final isUsed = _deviceBuilderAnswers.containsValue(label);
+
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Draggable<String>(
@@ -901,15 +973,15 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
                   color: Colors.transparent,
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 24, vertical: 12),
+                        horizontal: 32, vertical: 16),
                     decoration: BoxDecoration(
                       color: AppConstants.primaryColor.withOpacity(0.95),
-                      borderRadius: BorderRadius.circular(25),
+                      borderRadius: BorderRadius.circular(30),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withOpacity(0.3),
-                          blurRadius: 8,
-                          offset: const Offset(0, 4),
+                          blurRadius: 12,
+                          offset: const Offset(0, 6),
                         ),
                       ],
                     ),
@@ -918,17 +990,17 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
                       style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                        fontSize: 20,
                       ),
                     ),
                   ),
                 ),
                 childWhenDragging: Container(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                      const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                   decoration: BoxDecoration(
                     color: Colors.grey.withOpacity(0.4),
-                    borderRadius: BorderRadius.circular(25),
+                    borderRadius: BorderRadius.circular(30),
                     border: Border.all(
                         color: Colors.grey.withOpacity(0.6), width: 2),
                   ),
@@ -937,34 +1009,54 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
                     style: TextStyle(
                       color: Colors.white.withOpacity(0.5),
                       fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                      fontSize: 18,
                     ),
                   ),
                 ),
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 150),
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                      const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                   decoration: BoxDecoration(
-                    color: AppConstants.secondaryColor,
-                    borderRadius: BorderRadius.circular(25),
+                    color: isUsed
+                        ? Colors.green.withOpacity(0.7)
+                        : AppConstants.secondaryColor,
+                    borderRadius: BorderRadius.circular(30),
                     border: Border.all(
-                        color: Colors.white.withOpacity(0.3), width: 2),
+                        color: isUsed
+                            ? Colors.green
+                            : Colors.white.withOpacity(0.3),
+                        width: 2),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(0.2),
-                        blurRadius: 6,
-                        offset: const Offset(0, 3),
+                        blurRadius: 8,
+                        offset: const Offset(0, 4),
                       ),
                     ],
                   ),
-                  child: Text(
-                    label,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        label,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          decoration:
+                              isUsed ? TextDecoration.lineThrough : null,
+                        ),
+                      ),
+                      if (isUsed) ...[
+                        const SizedBox(width: 8),
+                        const Icon(
+                          Icons.check_circle,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                      ],
+                    ],
                   ),
                 ),
               ),
@@ -973,30 +1065,6 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
         ),
       ),
     );
-  }
-
-  void _checkDeviceBuilderAnswer(GameChallenge challenge) {
-    final parts = List<String>.from(
-        challenge.interactiveData?['parts'] ?? challenge.options);
-    final allCorrect =
-        parts.every((part) => _deviceBuilderAnswers[part] == part);
-
-    if (allCorrect) {
-      _selectAnswer('correct', challenge);
-    } else {
-      // Show feedback and allow retry
-      setState(() {
-        _deviceBuilderAnswers.clear();
-      });
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text('Not quite right! Try again.'),
-          backgroundColor: Colors.red.withOpacity(0.8),
-          duration: const Duration(seconds: 2),
-        ),
-      );
-    }
   }
 
   Widget _buildGameControls(AudioService audioService) {
@@ -1027,9 +1095,24 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
           const Spacer(),
 
           // Submit/Next button
-          if (_selectedAnswer != null || _dragItems.isEmpty)
+          if (_selectedAnswer != null ||
+              _dragItems.isEmpty ||
+              _currentChallengeCompleted)
             AnimatedButton(
-              onPressed: () => _submitAnswer(),
+              onPressed: () {
+                print(
+                    'Button clicked: _currentChallengeCompleted = $_currentChallengeCompleted, _currentChallengeIndex = $_currentChallengeIndex, totalChallenges = ${_level.challenges.length}');
+                if (_currentChallengeCompleted &&
+                    _currentChallengeIndex < _level.challenges.length - 1) {
+                  // Current challenge was completed, advance to next
+                  print('Advancing to next challenge');
+                  _advanceToNextChallenge();
+                } else {
+                  // Submit the current challenge or finish the level
+                  print('Submitting answer');
+                  _submitAnswer();
+                }
+              },
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
@@ -1038,9 +1121,12 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: Text(
-                  _currentChallengeIndex < _level.challenges.length - 1
+                  (_currentChallengeCompleted &&
+                          _currentChallengeIndex < _level.challenges.length - 1)
                       ? 'NEXT'
-                      : 'FINISH',
+                      : (_currentChallengeIndex < _level.challenges.length - 1
+                          ? 'SUBMIT'
+                          : 'FINISH'),
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -1163,6 +1249,9 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
     final currentChallenge = _level.challenges[_currentChallengeIndex];
     final isCorrect = _checkAnswer(currentChallenge);
 
+    print(
+        '_submitAnswer: challengeIndex=$_currentChallengeIndex, totalChallenges=${_level.challenges.length}, isCorrect=$isCorrect');
+
     if (isCorrect) {
       context.read<AudioService>().playCorrectAnswer();
       final gameService = context.read<GameService>();
@@ -1171,23 +1260,17 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
       _score += adjustedPoints;
       _scoreController.forward();
 
-      // Move to next challenge or complete level
-      if (_currentChallengeIndex < _level.challenges.length - 1) {
-        setState(() {
-          _currentChallengeIndex++;
-          _selectedAnswer = null;
-          _showHint = false;
+      // Mark current challenge as completed, but don't auto-advance
+      setState(() {
+        _currentChallengeCompleted = true;
+      });
 
-          // Reset drag and drop items for next challenge
-          _dragItems.clear();
-          _dropTargets.clear();
-
-          // Reset device builder answers for next challenge
-          _deviceBuilderAnswers.clear();
-        });
-        _initializeChallenge();
-      } else {
+      // Check if this was the last challenge
+      final challengesLength = _level.challenges.length;
+      if (challengesLength > 0 &&
+          _currentChallengeIndex >= challengesLength - 1) {
         // Level completed - all challenges answered correctly
+        print('Level completed! All challenges done.');
         _endGame(true);
       }
     } else {
@@ -1201,6 +1284,25 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
         _showWrongAnswerDialog(currentChallenge);
       }
     }
+  }
+
+  void _advanceToNextChallenge() {
+    setState(() {
+      _currentChallengeIndex++;
+      _selectedAnswer = null;
+      _showHint = false;
+      _currentChallengeCompleted =
+          false; // Reset completion flag for new challenge
+
+      // Reset drag and drop items for next challenge
+      _dragItems = <String>[];
+      _dropTargets = <String>[];
+
+      // Reset device builder answers for next challenge
+      _deviceBuilderAnswers.clear();
+      _showDeviceInstructions = true;
+    });
+    _initializeChallenge();
   }
 
   bool _checkAnswer(GameChallenge challenge) {
@@ -1225,18 +1327,51 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
         }
         return true;
       case ChallengeType.sequencing:
-        // For sequencing, check if the order matches expected sequence
-        if (_dragItems.isNotEmpty) return false; // Not all items placed
+        // Check if this is an interactive sequencing game or drag-and-drop
+        if (challenge.interactiveData != null &&
+            challenge.interactiveData!['gameType'] == 'sequencing') {
+          // For interactive sequencing games, check if the correct order was achieved
+          return _selectedAnswer ==
+              challenge.options[challenge.correctAnswerIndex];
+        } else {
+          // For drag-and-drop sequencing, check if the order matches expected sequence
+          if (_dragItems.isNotEmpty) return false; // Not all items placed
 
-        // Check if sequence is correct
-        for (int i = 0; i < _dropTargets.length; i++) {
-          if (_dropTargets[i] != challenge.options[i]) {
-            return false;
+          // Check if sequence is correct
+          for (int i = 0; i < _dropTargets.length; i++) {
+            if (_dropTargets[i] != challenge.options[i]) {
+              return false;
+            }
           }
+          return true;
         }
-        return true;
       case ChallengeType.interactive:
         return _selectedAnswer == 'Completed';
+      case ChallengeType.iconHunt:
+        // For icon hunt games, check if the target icon was found
+        return _selectedAnswer ==
+            challenge.options[challenge.correctAnswerIndex];
+      case ChallengeType.cursorMaestro:
+        // For cursor maestro games, check if the action was completed successfully
+        return _selectedAnswer ==
+            challenge.options[challenge.correctAnswerIndex];
+      case ChallengeType.appSorter:
+        // For app sorter games, check if all apps were sorted correctly
+        return _selectedAnswer ==
+            challenge.options[challenge.correctAnswerIndex];
+      case ChallengeType.deviceBuilder:
+        // For device builder, check if all parts are correctly placed
+        if (_selectedAnswer == 'deviceBuilderComplete') {
+          final parts = List<String>.from(
+              challenge.interactiveData?['parts'] ?? challenge.options);
+          print(
+              'DeviceBuilder validation: _selectedAnswer = $_selectedAnswer, parts = $parts, _deviceBuilderAnswers = $_deviceBuilderAnswers');
+          final result =
+              parts.every((part) => _deviceBuilderAnswers[part] == part);
+          print('DeviceBuilder validation result: $result');
+          return result;
+        }
+        return false;
       default:
         // For all other challenge types, check if answer matches
         return _selectedAnswer == 'Completed';
@@ -1245,10 +1380,16 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
 
   void _initializeChallenge() {
     final currentChallenge = _level.challenges[_currentChallengeIndex];
-    if (currentChallenge.type == ChallengeType.dragAndDrop) {
-      _dragItems = List.from(currentChallenge.options);
+    print(
+        'Initializing challenge ${_currentChallengeIndex}: ${currentChallenge.type}');
+
+    if (currentChallenge.type == ChallengeType.dragAndDrop ||
+        currentChallenge.type == ChallengeType.sequencing) {
+      _dragItems = List<String>.from(currentChallenge.options);
       _dragItems.shuffle();
-      _dropTargets = List.filled(currentChallenge.options.length, '');
+      _dropTargets = List<String>.filled(currentChallenge.options.length, '');
+      print(
+          'Sequencing/DragDrop initialized: dragItems = $_dragItems, dropTargets = $_dropTargets');
     }
   }
 
@@ -1296,6 +1437,8 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
   }
 
   void _showLevelCompleteDialog() {
+    print(
+        'Level Complete Dialog, ${widget.levelNumber} timer: $_timeRemaining totalLevels: ${AppConstants.totalLevels} totalScore $_score');
     final stars = _calculateStars();
     final timeBonus = _timeRemaining * 5;
     final totalScore = _score + timeBonus;
@@ -1316,7 +1459,8 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
       barrierDismissible: false,
       builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text('Level Complete!'),
+        title: Text(
+            AppLocalizations.of(context)?.levelComplete ?? 'Level Complete!'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -1326,8 +1470,10 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
               size: 32,
             ),
             const SizedBox(height: 16),
-            Text('Score: $totalScore'),
-            Text('Time Bonus: $timeBonus'),
+            Text(
+                '${AppLocalizations.of(context)?.score ?? 'Score'}: $totalScore'),
+            Text(
+                '${AppLocalizations.of(context)?.timeBonus ?? 'Time Bonus'}: $timeBonus'),
           ],
         ),
         actions: [
@@ -1336,7 +1482,8 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
               Navigator.pop(context);
               Navigator.pop(context);
             },
-            child: const Text('Continue'),
+            child: Text(
+                AppLocalizations.of(context)?.continueButton ?? 'Continue'),
           ),
         ],
       ),
@@ -1351,22 +1498,24 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
       barrierDismissible: false,
       builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text('Game Over'),
-        content: const Text('Don\'t give up! Try again to master this level.'),
+        title: Text(AppLocalizations.of(context)?.gameOver ?? 'Game Over'),
+        content: Text(AppLocalizations.of(context)?.gameOverMessage ??
+            'Don\'t give up! Try again to master this level.'),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.pop(context);
               Navigator.pop(context);
             },
-            child: const Text('Back to Level Select'),
+            child: Text(AppLocalizations.of(context)?.backToLevelSelect ??
+                'Back to Level Select'),
           ),
           TextButton(
             onPressed: () {
               Navigator.pop(context);
               _restartLevel();
             },
-            child: const Text('Try Again'),
+            child: Text(AppLocalizations.of(context)?.tryAgain ?? 'Try Again'),
           ),
         ],
       ),
@@ -1409,6 +1558,9 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
       _lives = gameService.getDifficultyAdjustedLives();
       _selectedAnswer = null;
       _showHint = false;
+      _showDeviceInstructions = true;
+      _currentChallengeCompleted = false; // Reset completion flag
+      _deviceBuilderAnswers.clear();
     });
     _initializeLevel();
   }
@@ -1438,6 +1590,54 @@ class _LevelPlayScreenState extends State<LevelPlayScreen>
         return [AppConstants.accentColor, AppConstants.primaryColor];
     }
   }
+}
+
+// Custom painter for drawing computer background (non-interactive elements)
+class ComputerBackgroundPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2.0
+      ..color = Colors.white.withOpacity(0.3);
+
+    // Draw monitor stand
+    final standRect = Rect.fromLTWH(size.width * 0.43, size.height * 0.5,
+        size.width * 0.14, size.height * 0.08);
+    canvas.drawRRect(
+        RRect.fromRectAndRadius(standRect, const Radius.circular(4)), paint);
+
+    // Monitor base
+    final baseRect = Rect.fromLTWH(size.width * 0.38, size.height * 0.58,
+        size.width * 0.24, size.height * 0.04);
+    canvas.drawRRect(
+        RRect.fromRectAndRadius(baseRect, const Radius.circular(8)), paint);
+
+    // Add some connecting lines/cables for visual context
+    final cablePaint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2.0
+      ..color = Colors.white.withOpacity(0.2);
+
+    // Cable from CPU to Monitor
+    final cpuRight = Offset(size.width * 0.2, size.height * 0.45);
+    final monitorLeft = Offset(size.width * 0.25, size.height * 0.35);
+    canvas.drawLine(cpuRight, monitorLeft, cablePaint);
+
+    // Surface line
+    final surfacePaint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.0
+      ..color = Colors.white.withOpacity(0.2);
+    canvas.drawLine(
+      Offset(0, size.height * 0.9),
+      Offset(size.width, size.height * 0.9),
+      surfacePaint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
 
 // Custom painter for drawing a simple computer illustration

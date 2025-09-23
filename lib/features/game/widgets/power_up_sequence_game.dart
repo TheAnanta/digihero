@@ -37,10 +37,11 @@ class _PowerUpSequenceGameState extends State<PowerUpSequenceGame>
   }
 
   void _initializeSteps() {
-    correctOrder = List<int>.from(widget.gameData['correctOrder'] ?? [0, 1, 2, 3]);
+    correctOrder =
+        List<int>.from(widget.gameData['correctOrder'] ?? [0, 1, 2, 3]);
     // Get steps from the parent challenge options if not in gameData
     final steps = widget.gameData['steps'] ?? widget.gameData['options'] ?? [];
-    
+
     // Convert steps to list of strings
     availableSteps = List<String>.from(steps)..shuffle();
     orderedSteps = List.filled(availableSteps.length, null);
@@ -56,15 +57,15 @@ class _PowerUpSequenceGameState extends State<PowerUpSequenceGame>
     setState(() {
       // Remove step from available steps
       availableSteps.remove(step);
-      
+
       // If there was already a step in this position, move it back to available
       if (orderedSteps[position] != null) {
         availableSteps.add(orderedSteps[position]!);
       }
-      
+
       // Place the new step
       orderedSteps[position] = step;
-      
+
       draggedStep = null;
     });
 
@@ -86,7 +87,7 @@ class _PowerUpSequenceGameState extends State<PowerUpSequenceGame>
   void _checkSequence() {
     final allSteps = List<String>.from(widget.gameData['steps'] ?? []);
     bool isCorrect = true;
-    
+
     for (int i = 0; i < correctOrder.length; i++) {
       if (orderedSteps[i] != allSteps[correctOrder[i]]) {
         isCorrect = false;
@@ -148,7 +149,7 @@ class _PowerUpSequenceGameState extends State<PowerUpSequenceGame>
         decoration: BoxDecoration(
           color: Colors.grey.withOpacity(0.3),
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.grey, style: BorderStyle.dashed),
+          border: Border.all(color: Colors.grey.withOpacity(0.5), width: 2),
         ),
       ),
       child: _buildStepCard(step),
@@ -200,7 +201,7 @@ class _PowerUpSequenceGameState extends State<PowerUpSequenceGame>
   Widget _buildDropSlot(int index) {
     final isEmpty = orderedSteps[index] == null;
     final isHighlighted = draggedStep != null && isEmpty;
-    
+
     return DragTarget<String>(
       onAccept: (step) => _onStepPlaced(step, index),
       builder: (context, candidateData, rejectedData) {
@@ -210,15 +211,16 @@ class _PowerUpSequenceGameState extends State<PowerUpSequenceGame>
           margin: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: isEmpty
-                ? (isHighlighted ? Colors.blue.withOpacity(0.3) : Colors.grey[200])
+                ? (isHighlighted
+                    ? Colors.blue.withOpacity(0.3)
+                    : Colors.grey[200])
                 : Colors.green[100],
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: isEmpty
                   ? (isHighlighted ? Colors.blue : Colors.grey[400]!)
                   : Colors.green,
-              width: 2,
-              style: isEmpty ? BorderStyle.dashed : BorderStyle.solid,
+              width: isEmpty ? 1 : 3,
             ),
           ),
           child: Stack(
@@ -246,7 +248,7 @@ class _PowerUpSequenceGameState extends State<PowerUpSequenceGame>
                   ),
                 ),
               ),
-              
+
               // Content
               if (orderedSteps[index] != null)
                 Center(
@@ -287,10 +289,10 @@ class _PowerUpSequenceGameState extends State<PowerUpSequenceGame>
 
   Widget _buildResultOverlay() {
     if (!showResult) return const SizedBox.shrink();
-    
+
     return Positioned.fill(
       child: Container(
-        color: isComplete 
+        color: isComplete
             ? Colors.green.withOpacity(0.9)
             : Colors.red.withOpacity(0.9),
         child: Center(
@@ -304,9 +306,7 @@ class _PowerUpSequenceGameState extends State<PowerUpSequenceGame>
               ),
               const SizedBox(height: 20),
               Text(
-                isComplete 
-                    ? 'Perfect Sequence!' 
-                    : 'Not quite right...',
+                isComplete ? 'Perfect Sequence!' : 'Not quite right...',
                 style: const TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -315,7 +315,7 @@ class _PowerUpSequenceGameState extends State<PowerUpSequenceGame>
               ),
               const SizedBox(height: 10),
               Text(
-                isComplete 
+                isComplete
                     ? 'You got the power-on sequence exactly right!'
                     : 'Try again - check the correct order of steps.',
                 style: const TextStyle(
@@ -334,7 +334,7 @@ class _PowerUpSequenceGameState extends State<PowerUpSequenceGame>
   @override
   Widget build(BuildContext context) {
     final canCheck = !orderedSteps.contains(null);
-    
+
     return Container(
       width: double.infinity,
       height: 600,
@@ -370,8 +370,8 @@ class _PowerUpSequenceGameState extends State<PowerUpSequenceGame>
                     ],
                   ),
                   child: Text(
-                    widget.gameData['instructions'] ?? 
-                    'Arrange the steps in the right order',
+                    widget.gameData['instructions'] ??
+                        'Arrange the steps in the right order',
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
@@ -414,7 +414,7 @@ class _PowerUpSequenceGameState extends State<PowerUpSequenceGame>
                   ),
                 ),
                 const SizedBox(height: 15),
-                
+
                 Wrap(
                   alignment: WrapAlignment.center,
                   spacing: 5,
@@ -432,7 +432,8 @@ class _PowerUpSequenceGameState extends State<PowerUpSequenceGame>
                   onPressed: canCheck ? _checkSequence : null,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: canCheck ? Colors.green : Colors.grey,
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25),
                     ),
@@ -445,10 +446,15 @@ class _PowerUpSequenceGameState extends State<PowerUpSequenceGame>
                       color: canCheck ? Colors.white : Colors.grey[600],
                     ),
                   ),
-                ).animate(target: canCheck ? 1 : 0)
-                 .scale(begin: const Offset(0.9, 0.9), end: const Offset(1.0, 1.0))
-                 .then()
-                 .shimmer(duration: 1000.ms, color: Colors.white.withOpacity(0.5)),
+                )
+                    .animate(target: canCheck ? 1 : 0)
+                    .scale(
+                        begin: const Offset(0.9, 0.9),
+                        end: const Offset(1.0, 1.0))
+                    .then()
+                    .shimmer(
+                        duration: 1000.ms,
+                        color: Colors.white.withOpacity(0.5)),
               ],
             ),
           ),

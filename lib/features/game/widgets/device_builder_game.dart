@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import '../../../core/utils/level_content_localizer.dart';
 import 'dart:math' as math;
 
 class DeviceBuilderGame extends StatefulWidget {
@@ -59,7 +60,7 @@ class _DeviceBuilderGameState extends State<DeviceBuilderGame>
       setState(() {
         placedLabels[label] = true;
       });
-      
+
       // Check if game is complete
       if (placedLabels.values.every((placed) => placed)) {
         _completeGame();
@@ -83,7 +84,7 @@ class _DeviceBuilderGameState extends State<DeviceBuilderGame>
     setState(() {
       isGameComplete = true;
     });
-    
+
     Future.delayed(const Duration(milliseconds: 500), () {
       widget.onComplete(true, 100);
     });
@@ -91,7 +92,7 @@ class _DeviceBuilderGameState extends State<DeviceBuilderGame>
 
   Widget _buildDeviceImage() {
     final deviceType = widget.gameData['deviceType'] ?? 'computer';
-    
+
     return Container(
       width: 400,
       height: 300,
@@ -110,7 +111,7 @@ class _DeviceBuilderGameState extends State<DeviceBuilderGame>
               color: Colors.grey[600],
             ),
           ),
-          
+
           // Target zones for device parts
           ..._buildTargetZones(),
         ],
@@ -121,7 +122,7 @@ class _DeviceBuilderGameState extends State<DeviceBuilderGame>
   List<Widget> _buildTargetZones() {
     final parts = List<String>.from(widget.gameData['parts'] ?? []);
     final deviceType = widget.gameData['deviceType'] ?? 'computer';
-    
+
     if (deviceType == 'computer') {
       return [
         // Monitor target zone
@@ -134,14 +135,15 @@ class _DeviceBuilderGameState extends State<DeviceBuilderGame>
         _buildTargetZone('Mouse', const Offset(50, 180), 60, 40),
       ];
     }
-    
+
     return [];
   }
 
-  Widget _buildTargetZone(String targetId, Offset position, double width, double height) {
+  Widget _buildTargetZone(
+      String targetId, Offset position, double width, double height) {
     final isHighlighted = draggedLabel != null && !placedLabels[draggedLabel]!;
     final isOccupied = placedLabels[targetId] == true;
-    
+
     return Positioned(
       left: position.dx,
       top: position.dy,
@@ -152,13 +154,14 @@ class _DeviceBuilderGameState extends State<DeviceBuilderGame>
             width: width,
             height: height,
             decoration: BoxDecoration(
-              color: isOccupied 
+              color: isOccupied
                   ? Colors.green.withOpacity(0.3)
-                  : isHighlighted 
+                  : isHighlighted
                       ? Colors.blue.withOpacity(0.3)
                       : Colors.transparent,
               border: Border.all(
-                color: isHighlighted ? Colors.blue : Colors.grey.withOpacity(0.5),
+                color:
+                    isHighlighted ? Colors.blue : Colors.grey.withOpacity(0.5),
                 width: 2,
               ),
               borderRadius: BorderRadius.circular(8),
@@ -184,7 +187,7 @@ class _DeviceBuilderGameState extends State<DeviceBuilderGame>
   Widget _buildDraggableLabel(String label) {
     final isPlaced = placedLabels[label] == true;
     if (isPlaced) return const SizedBox.shrink();
-    
+
     return Positioned(
       left: labelPositions[label]!.dx,
       top: labelPositions[label]!.dy,
@@ -247,10 +250,10 @@ class _DeviceBuilderGameState extends State<DeviceBuilderGame>
         ),
       ),
     ).animate().scale(
-      duration: 200.ms,
-      begin: const Offset(1.0, 1.0),
-      end: isDragging ? const Offset(1.1, 1.1) : const Offset(1.0, 1.0),
-    );
+          duration: 200.ms,
+          begin: const Offset(1.0, 1.0),
+          end: isDragging ? const Offset(1.1, 1.1) : const Offset(1.0, 1.0),
+        );
   }
 
   @override
@@ -290,8 +293,10 @@ class _DeviceBuilderGameState extends State<DeviceBuilderGame>
                 ],
               ),
               child: Text(
-                widget.gameData['instructions'] ?? 
-                'Drag each label to the matching part of the device',
+                LevelContentLocalizer.getLocalizedInstruction(
+                    context,
+                    widget.gameData['instructions'] ??
+                        'Drag each label to the matching part of the device'),
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,

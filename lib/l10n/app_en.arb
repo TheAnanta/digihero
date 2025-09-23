@@ -1,0 +1,1852 @@
+{
+  "@@locale": "en",
+  "appTitle": "DigiHero",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "appTagline": "Digital Literacy Adventure",
+  "@appTagline": {
+    "description": "The tagline of the application"
+  },
+  "appSubtitle": "Learn • Play • Protect • Explore",
+  "@appSubtitle": {
+    "description": "The subtitle of the application"
+  },
+  "welcomeToDigiHero": "Welcome to DigiHero!",
+  "@welcomeToDigiHero": {
+    "description": "Welcome message"
+  },
+  "learnDigitalLiteracy": "Learn digital literacy through fun games",
+  "@learnDigitalLiteracy": {
+    "description": "Description of what the app does"
+  },
+  "howOldAreYou": "How old are you?",
+  "@howOldAreYou": {
+    "description": "Age input question"
+  },
+  "ageHelpText": "This helps us adjust the game difficulty for you",
+  "@ageHelpText": {
+    "description": "Help text for age input"
+  },
+  "yourAge": "Your Age",
+  "@yourAge": {
+    "description": "Age input label"
+  },
+  "enterYourAge": "Enter your age (6-99)",
+  "@enterYourAge": {
+    "description": "Age input placeholder"
+  },
+  "startLearning": "Start Learning!",
+  "@startLearning": {
+    "description": "Start button text"
+  },
+  "chooseYourLevel": "Choose Your Level",
+  "@chooseYourLevel": {
+    "description": "Level selection screen title"
+  },
+  "selectDigitalLiteracyChallenge": "Select a digital literacy challenge",
+  "@selectDigitalLiteracyChallenge": {
+    "description": "Level selection description"
+  },
+  "levelLocked": "Level Locked",
+  "@levelLocked": {
+    "description": "Locked level title"
+  },
+  "levelLockedMessage": "Complete the previous level to unlock this one!",
+  "@levelLockedMessage": {
+    "description": "Message shown when level is locked"
+  },
+  "ok": "OK",
+  "@ok": {
+    "description": "OK button text"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button text"
+  },
+  "yes": "Yes",
+  "@yes": {
+    "description": "Yes button text"
+  },
+  "no": "No",
+  "@no": {
+    "description": "No button text"
+  },
+  "excellent": "Excellent!",
+  "@excellent": {
+    "description": "Positive feedback"
+  },
+  "perfect": "Perfect!",
+  "@perfect": {
+    "description": "Positive feedback"
+  },
+  "great": "Great!",
+  "@great": {
+    "description": "Positive feedback"
+  },
+  "tryAgain": "Try Again",
+  "@tryAgain": {
+    "description": "Try again button text"
+  },
+  "loading": "Loading...",
+  "@loading": {
+    "description": "Loading text"
+  },
+  "congratulations": "Congratulations!",
+  "@congratulations": {
+    "description": "Congratulations text"
+  },
+  "nabha": "Nabha",
+  "@nabha": {
+    "description": "City name Nabha"
+  },
+  "punjab": "Punjab",
+  "@punjab": {
+    "description": "State name Punjab"
+  },
+  "chandigarh": "Chandigarh",
+  "@chandigarh": {
+    "description": "City name Chandigarh"
+  },
+  "village": "Village",
+  "@village": {
+    "description": "Village"
+  },
+  "city": "City",
+  "@city": {
+    "description": "City"
+  },
+  
+  "splashTagline": "Digital Literacy Adventure",
+  "@splashTagline": {
+    "description": "Splash screen tagline"
+  },
+  
+  "splashStartButton": "Tap to Start Adventure",
+  "@splashStartButton": {
+    "description": "Start button text on splash screen"
+  },
+  
+  "ageLabel": "Your Age",
+  "@ageLabel": {
+    "description": "Label for age input field"
+  },
+  
+  "agePlaceholder": "Enter your age (6-99)",
+  "@agePlaceholder": {
+    "description": "Placeholder text for age input"
+  },
+  
+  "beginner": "6-8 years (Beginner)",
+  "@beginner": {
+    "description": "Beginner age group"
+  },
+  
+  "intermediate": "9-12 years (Intermediate)",
+  "@intermediate": {
+    "description": "Intermediate age group"
+  },
+  
+  "advanced": "13-16 years (Advanced)",
+  "@advanced": {
+    "description": "Advanced age group"
+  },
+  
+  "expert": "17+ years (Expert)",
+  "@expert": {
+    "description": "Expert age group"
+  },
+  
+  "chooseLevel": "Choose Your Level",
+  "@chooseLevel": {
+    "description": "Level selection header"
+  },
+  
+  "selectChallenge": "Select a digital literacy challenge",
+  "@selectChallenge": {
+    "description": "Challenge selection subtitle"
+  },
+  
+  "settings": "Settings",
+  "@settings": {
+    "description": "Settings menu title"
+  },
+  
+  "language": "Language",
+  "@language": {
+    "description": "Language setting"
+  },
+  
+  "music": "Music",
+  "@music": {
+    "description": "Music setting"
+  },
+  
+  "soundEffects": "Sound Effects",
+  "@soundEffects": {
+    "description": "Sound effects setting"
+  },
+  
+  "musicVolume": "Music Volume",
+  "@musicVolume": {
+    "description": "Music volume setting"
+  },
+  
+  "sfxVolume": "SFX Volume",
+  "@sfxVolume": {
+    "description": "Sound effects volume setting"
+  },
+  
+  "progress": "PROGRESS",
+  "@progress": {
+    "description": "Progress button text"
+  },
+  
+  "achievements": "ACHIEVEMENTS",
+  "@achievements": {
+    "description": "Achievements button text"
+  },
+  
+  "yourProgress": "Your Progress",
+  "@yourProgress": {
+    "description": "Progress screen title"
+  },
+  
+  "achievementsTitle": "Achievements",
+  "@achievementsTitle": {
+    "description": "Achievements screen title"
+  },
+  
+  "noAchievements": "No achievements yet. Keep playing to unlock them!",
+  "@noAchievements": {
+    "description": "No achievements message"
+  },
+  
+  "player": "Player",
+  "@player": {
+    "description": "Player label"
+  },
+  
+  "levelsCompleted": "Levels Completed",
+  "@levelsCompleted": {
+    "description": "Levels completed stat"
+  },
+  
+  "totalPlayTime": "Total Play Time",
+  "@totalPlayTime": {
+    "description": "Total play time stat"
+  },
+  
+  "currentStreak": "Current Streak",
+  "@currentStreak": {
+    "description": "Current streak stat"
+  },
+  
+  "days": "days",
+  "@days": {
+    "description": "Days unit"
+  },
+  
+  "levelComplete": "Level Complete!",
+  "@levelComplete": {
+    "description": "Level complete dialog title"
+  },
+  
+  "gameOver": "Game Over",
+  "@gameOver": {
+    "description": "Game over dialog title"
+  },
+  
+  "gameOverMessage": "Don't give up! Try again to master this level.",
+  "@gameOverMessage": {
+    "description": "Game over dialog message"
+  },
+  
+  "backToLevelSelect": "Back to Level Select",
+  "@backToLevelSelect": {
+    "description": "Back to level select button"
+  },
+  
+  "exitLevel": "Exit Level?",
+  "@exitLevel": {
+    "description": "Exit level dialog title"
+  },
+  
+  "exitLevelMessage": "Your progress will be lost.",
+  "@exitLevelMessage": {
+    "description": "Exit level dialog message"
+  },
+  
+  "exit": "Exit",
+  "@exit": {
+    "description": "Exit button text"
+  },
+  
+  "wrongAnswer": "Wrong Answer",
+  "@wrongAnswer": {
+    "description": "Wrong answer dialog title"
+  },
+  
+  "wrongAnswerMessage": "That's not correct. Try again!",
+  "@wrongAnswerMessage": {
+    "description": "Wrong answer dialog message"
+  },
+  
+  "hint": "Hint",
+  "@hint": {
+    "description": "Hint button text"
+  },
+  
+  "timeBonus": "Time Bonus",
+  "@timeBonus": {
+    "description": "Time bonus label"
+  },
+  
+  "score": "Score",
+  "@score": {
+    "description": "Score label"
+  },
+  
+  "continueButton": "Continue",
+  "@continueButton": {
+    "description": "Continue button text"
+  },
+  
+  "save": "Save",
+  "@save": {
+    "description": "Save button text"
+  },
+  
+  "play": "Play",
+  "@play": {
+    "description": "Play button text"
+  },
+  
+  "replay": "Replay",
+  "@replay": {
+    "description": "Replay button text"
+  },
+  
+  "close": "Close",
+  "@close": {
+    "description": "Close button text"
+  },
+
+  "startAdventure": "START ADVENTURE",
+  "@startAdventure": {
+    "description": "Start adventure button text"
+  },
+
+  "overallProgress": "Overall Progress",
+  "@overallProgress": {
+    "description": "Overall progress label"
+  },
+
+  "readyForAdventure": "Ready for another digital adventure?",
+  "@readyForAdventure": {
+    "description": "Character speech text"
+  },
+
+  "coins": "Coins",
+  "@coins": {
+    "description": "Coins label"
+  },
+
+  "lives": "Lives",
+  "@lives": {
+    "description": "Lives label"
+  },
+
+  "anonymous": "Anonymous",
+  "@anonymous": {
+    "description": "Default player name"
+  },
+
+  "deviceExplorer": "Device Explorer",
+  "@deviceExplorer": {
+    "description": "Level 1 title"
+  },
+
+  "meetYourDigitalDevice": "Meet Your Digital Device",
+  "@meetYourDigitalDevice": {
+    "description": "Level 1 theme"
+  },
+
+  "learnDevicesDescription": "Learn about different types of devices and identify their main parts through interactive games.",
+  "@learnDevicesDescription": {
+    "description": "Level 1 description"
+  },
+
+  "deviceLearningObjective": "Students will identify different types of devices and understand their main parts.",
+  "@deviceLearningObjective": {
+    "description": "Level 1 learning objective"
+  },
+
+  "deviceTip1": "Look for common device parts like screen, keyboard, and mouse",
+  "@deviceTip1": {
+    "description": "Device level tip 1"
+  },
+
+  "deviceTip2": "Different devices have different purposes",
+  "@deviceTip2": {
+    "description": "Device level tip 2"
+  },
+
+  "deviceTip3": "Practice turning devices on and off safely",
+  "@deviceTip3": {
+    "description": "Device level tip 3"
+  },
+
+  "deviceTip4": "Ask for help when handling new devices",
+  "@deviceTip4": {
+    "description": "Device level tip 4"
+  },
+
+  "deviceBuilderQuestion": "Device Builder: Drag and drop the labels onto the correct parts of this computer!",
+  "@deviceBuilderQuestion": {
+    "description": "Device builder challenge question"
+  },
+
+  "monitor": "Monitor",
+  "@monitor": {
+    "description": "Computer monitor label"
+  },
+
+  "cpu": "CPU",
+  "@cpu": {
+    "description": "Computer CPU label"
+  },
+
+  "keyboard": "Keyboard",
+  "@keyboard": {
+    "description": "Computer keyboard label"
+  },
+
+  "mouse": "Mouse",
+  "@mouse": {
+    "description": "Computer mouse label"
+  },
+
+  "deviceBuilderExplanation": "Great job! You correctly identified the main parts of a computer: Monitor (screen), CPU (main unit), Keyboard (for typing), and Mouse (for pointing).",
+  "@deviceBuilderExplanation": {
+    "description": "Device builder challenge explanation"
+  },
+
+  "powerUpQuestion": "Power Up! Put these steps in the correct order to turn on a computer safely:",
+  "@powerUpQuestion": {
+    "description": "Power up sequence challenge question"
+  },
+
+  "plugPowerCable": "Plug in power cable",
+  "@plugPowerCable": {
+    "description": "Power up step 1"
+  },
+
+  "pressCpuButton": "Press CPU power button",
+  "@pressCpuButton": {
+    "description": "Power up step 2"
+  },
+
+  "pressMonitorButton": "Press monitor power button",
+  "@pressMonitorButton": {
+    "description": "Power up step 3"
+  },
+
+  "waitForStartup": "Wait for startup",
+  "@waitForStartup": {
+    "description": "Power up step 4"
+  },
+
+  "powerUpExplanation": "Perfect! The correct order is: 1. Plug in power, 2. Press CPU power button, 3. Press monitor power button, 4. Wait for startup.",
+  "@powerUpExplanation": {
+    "description": "Power up sequence explanation"
+  },
+
+  "deviceTypesQuestion": "Which device is best for making phone calls while traveling?",
+  "@deviceTypesQuestion": {
+    "description": "Device types challenge question"
+  },
+
+  "desktopComputer": "Desktop Computer",
+  "@desktopComputer": {
+    "description": "Desktop computer option"
+  },
+
+  "smartphone": "Smartphone",
+  "@smartphone": {
+    "description": "Smartphone option"
+  },
+
+  "television": "Television",
+  "@television": {
+    "description": "Television option"
+  },
+
+  "printer": "Printer",
+  "@printer": {
+    "description": "Printer option"
+  },
+
+  "smartphoneExplanation": "Smartphones are portable and designed for communication, making them perfect for calls while traveling.",
+  "@smartphoneExplanation": {
+    "description": "Smartphone explanation"
+  },
+
+  "deviceShutdownQuestion": "You finished your work on a tablet. What is the safest way to turn it off?",
+  "@deviceShutdownQuestion": {
+    "description": "Device shutdown challenge question"
+  },
+
+  "justCloseCover": "Just close the cover",
+  "@justCloseCover": {
+    "description": "Shutdown option 1"
+  },
+
+  "usePowerButton": "Use the power button to shut down properly",
+  "@usePowerButton": {
+    "description": "Shutdown option 2"
+  },
+
+  "removeBattery": "Remove the battery",
+  "@removeBattery": {
+    "description": "Shutdown option 3"
+  },
+
+  "waitAutoShutdown": "Wait for it to turn off automatically",
+  "@waitAutoShutdown": {
+    "description": "Shutdown option 4"
+  },
+
+  "shutdownExplanation": "Always use the proper shutdown process to save your work and protect the device.",
+  "@shutdownExplanation": {
+    "description": "Shutdown explanation"
+  },
+
+  "screenNavigator": "Screen Navigator",
+  "@screenNavigator": {
+    "description": "Level 2 title"
+  },
+
+  "understandingYourScreen": "Understanding Your Screen",
+  "@understandingYourScreen": {
+    "description": "Level 2 theme"
+  },
+
+  "masterDesktopNavigation": "Master desktop navigation through Icon Hunt and Cursor Maestro mini-games!",
+  "@masterDesktopNavigation": {
+    "description": "Level 2 description"
+  },
+
+  "screenLearningObjective": "Students will identify common desktop icons and master basic mouse/touch navigation.",
+  "@screenLearningObjective": {
+    "description": "Level 2 learning objective"
+  },
+
+  "screenTip1": "Icons are small pictures that represent apps or files",
+  "@screenTip1": {
+    "description": "Screen level tip 1"
+  },
+
+  "screenTip2": "Look carefully - each icon has a unique shape and meaning",
+  "@screenTip2": {
+    "description": "Screen level tip 2"
+  },
+
+  "screenTip3": "Practice different mouse actions: click, double-click, drag",
+  "@screenTip3": {
+    "description": "Screen level tip 3"
+  },
+
+  "screenTip4": "On touch screens, tap and swipe with confidence",
+  "@screenTip4": {
+    "description": "Screen level tip 4"
+  },
+
+  "iconHuntQuestion1": "Icon Hunt: Find and tap the Folder icon on this desktop!",
+  "@iconHuntQuestion1": {
+    "description": "Icon hunt challenge 1 question"
+  },
+
+  "folderFound": "Folder found!",
+  "@folderFound": {
+    "description": "Folder found message"
+  },
+
+  "needHint": "Need a hint?",
+  "@needHint": {
+    "description": "Need hint option"
+  },
+
+  "timeUp": "Time up!",
+  "@timeUp": {
+    "description": "Time up message"
+  },
+
+  "folderExplanation": "Perfect! Folder icons usually look like manila file folders and help organize your files.",
+  "@folderExplanation": {
+    "description": "Folder icon explanation"
+  },
+
+  "iconHuntQuestion2": "Icon Hunt: Quick! Tap the Recycle Bin before time runs out!",
+  "@iconHuntQuestion2": {
+    "description": "Icon hunt challenge 2 question"
+  },
+
+  "recycleBinFound": "Recycle Bin found!",
+  "@recycleBinFound": {
+    "description": "Recycle bin found message"
+  },
+
+  "recycleBinExplanation": "Excellent! The Recycle Bin holds deleted files and usually looks like a trash can.",
+  "@recycleBinExplanation": {
+    "description": "Recycle bin explanation"
+  },
+
+  "workingWithApps": "Working with Apps",
+  "@workingWithApps": {
+    "description": "Level 3 theme"
+  },
+
+  "whyDigitalSkillsMatter": "Why Digital Skills Matter",
+  "@whyDigitalSkillsMatter": {
+    "description": "Level 4 theme"
+  },
+
+  "masteringOurLearningApp": "Mastering Our Learning App",
+  "@masteringOurLearningApp": {
+    "description": "Level 5 theme"
+  },
+
+  "writingAndTyping": "Writing and Typing",
+  "@writingAndTyping": {
+    "description": "Level 6 theme"
+  },
+
+  "creatingPresentations": "Creating Presentations",
+  "@creatingPresentations": {
+    "description": "Level 7 theme"
+  },
+
+  "organizingDigitalWork": "Organizing Digital Work",
+  "@organizingDigitalWork": {
+    "description": "Level 8 theme"
+  },
+
+  "whatIsTheInternet": "What is the Internet",
+  "@whatIsTheInternet": {
+    "description": "Level 9 theme"
+  },
+
+  "searchingForInformation": "Searching for Information",
+  "@searchingForInformation": {
+    "description": "Level 10 theme"
+  },
+
+  "stayingSafeOnline": "Staying Safe Online",
+  "@stayingSafeOnline": {
+    "description": "Level 11 theme"
+  },
+
+  "beingAGoodDigitalCitizen": "Being a Good Digital Citizen",
+  "@beingAGoodDigitalCitizen": {
+    "description": "Level 12 theme"
+  },
+
+  "introductionToEmail": "Introduction to Email",
+  "@introductionToEmail": {
+    "description": "Level 13 theme"
+  },
+
+  "messagingAppsSafety": "Messaging Apps Safety",
+  "@messagingAppsSafety": {
+    "description": "Level 14 theme"
+  },
+
+  "understandingProgress": "Understanding Progress",
+  "@understandingProgress": {
+    "description": "Level 15 theme"
+  },
+
+  "workingTogetherOnline": "Working Together Online",
+  "@workingTogetherOnline": {
+    "description": "Level 16 theme"
+  },
+
+  "exploringHobbiesOnline": "Exploring Hobbies Online",
+  "@exploringHobbiesOnline": {
+    "description": "Level 17 theme"
+  },
+
+  "digitalPaymentsSafety": "Digital Payments Safety",
+  "@digitalPaymentsSafety": {
+    "description": "Level 18 theme"
+  },
+
+  "careerOpportunities": "Career Opportunities",
+  "@careerOpportunities": {
+    "description": "Level 19 theme"
+  },
+
+  "digitalPortfolioProject": "Digital Portfolio Project",
+  "@digitalPortfolioProject": {
+    "description": "Level 20 theme"
+  },
+
+  "levelTitle1": "Device Explorer",
+  "@levelTitle1": {
+    "description": "Level 1 title"
+  },
+  "levelTitle2": "Screen Navigator",
+  "@levelTitle2": {
+    "description": "Level 2 title"
+  },
+  "levelTitle3": "App Master",
+  "@levelTitle3": {
+    "description": "Level 3 title"
+  },
+  "levelTitle4": "Future Hero",
+  "@levelTitle4": {
+    "description": "Level 4 title"
+  },
+  "levelTitle5": "Learning App Expert",
+  "@levelTitle5": {
+    "description": "Level 5 title"
+  },
+  "levelTitle6": "Typing Champion",
+  "@levelTitle6": {
+    "description": "Level 6 title"
+  },
+  "levelTitle7": "Presentation Pro",
+  "@levelTitle7": {
+    "description": "Level 7 title"
+  },
+  "levelTitle8": "File Organizer",
+  "@levelTitle8": {
+    "description": "Level 8 title"
+  },
+  "levelTitle9": "Internet Explorer",
+  "@levelTitle9": {
+    "description": "Level 9 title"
+  },
+  "levelTitle10": "Search Master",
+  "@levelTitle10": {
+    "description": "Level 10 title"
+  },
+  "levelTitle11": "Safety Guardian",
+  "@levelTitle11": {
+    "description": "Level 11 title"
+  },
+  "levelTitle12": "Digital Citizen",
+  "@levelTitle12": {
+    "description": "Level 12 title"
+  },
+  "levelTitle13": "Email Expert",
+  "@levelTitle13": {
+    "description": "Level 13 title"
+  },
+  "levelTitle14": "Message Master",
+  "@levelTitle14": {
+    "description": "Level 14 title"
+  },
+  "levelTitle15": "Progress Tracker",
+  "@levelTitle15": {
+    "description": "Level 15 title"
+  },
+  "levelTitle16": "Team Player",
+  "@levelTitle16": {
+    "description": "Level 16 title"
+  },
+  "levelTitle17": "Hobby Hunter",
+  "@levelTitle17": {
+    "description": "Level 17 title"
+  },
+  "levelTitle18": "Money Guardian",
+  "@levelTitle18": {
+    "description": "Level 18 title"
+  },
+  "levelTitle19": "Career Explorer",
+  "@levelTitle19": {
+    "description": "Level 19 title"
+  },
+  "levelTitle20": "Portfolio Creator",
+  "@levelTitle20": {
+    "description": "Level 20 title"
+  },
+
+  "levelDescription1": "Learn about different types of devices and identify their main parts through interactive games.",
+  "@levelDescription1": {
+    "description": "Level 1 description"
+  },
+  "levelDescription2": "Master desktop navigation through Icon Hunt and Cursor Maestro mini-games!",
+  "@levelDescription2": {
+    "description": "Level 2 description"
+  },
+  "levelDescription3": "Explore app categories and learn smart organization through the App Sorter challenge!",
+  "@levelDescription3": {
+    "description": "Level 3 description"
+  },
+  "levelDescription4": "Discover the importance of digital skills through engaging challenges and real-world scenarios.",
+  "@levelDescription4": {
+    "description": "Level 4 description"
+  },
+  "levelDescription5": "Master our learning platform and become confident using educational apps.",
+  "@levelDescription5": {
+    "description": "Level 5 description"
+  },
+  "levelDescription6": "Develop typing skills and learn proper keyboard techniques through fun games.",
+  "@levelDescription6": {
+    "description": "Level 6 description"
+  },
+  "levelDescription7": "Create engaging presentations using digital tools and design principles.",
+  "@levelDescription7": {
+    "description": "Level 7 description"
+  },
+  "levelDescription8": "Learn to organize files, folders, and digital documents efficiently.",
+  "@levelDescription8": {
+    "description": "Level 8 description"
+  },
+  "levelDescription9": "Understand how the internet works and explore safe browsing practices.",
+  "@levelDescription9": {
+    "description": "Level 9 description"
+  },
+  "levelDescription10": "Master search techniques and learn to find reliable information online.",
+  "@levelDescription10": {
+    "description": "Level 10 description"
+  },
+  "levelDescription11": "Learn essential online safety practices and how to protect yourself.",
+  "@levelDescription11": {
+    "description": "Level 11 description"
+  },
+  "levelDescription12": "Understand digital citizenship and responsible online behavior.",
+  "@levelDescription12": {
+    "description": "Level 12 description"
+  },
+  "levelDescription13": "Learn email basics, etiquette, and communication skills.",
+  "@levelDescription13": {
+    "description": "Level 13 description"
+  },
+  "levelDescription14": "Understand messaging app safety and proper communication practices.",
+  "@levelDescription14": {
+    "description": "Level 14 description"
+  },
+  "levelDescription15": "Learn to track your learning progress and set digital goals.",
+  "@levelDescription15": {
+    "description": "Level 15 description"
+  },
+  "levelDescription16": "Discover online collaboration tools and teamwork skills.",
+  "@levelDescription16": {
+    "description": "Level 16 description"
+  },
+  "levelDescription17": "Explore hobbies and interests safely in the digital world.",
+  "@levelDescription17": {
+    "description": "Level 17 description"
+  },
+  "levelDescription18": "Learn about digital payments, online shopping safety, and financial literacy.",
+  "@levelDescription18": {
+    "description": "Level 18 description"
+  },
+  "levelDescription19": "Explore digital career opportunities and future skills.",
+  "@levelDescription19": {
+    "description": "Level 19 description"
+  },
+  "levelDescription20": "Create your own digital portfolio showcasing your skills and achievements.",
+  "@levelDescription20": {
+    "description": "Level 20 description"
+  },
+
+  "levelObjective1": "Students will identify different types of devices and understand their main parts.",
+  "@levelObjective1": {
+    "description": "Level 1 learning objective"
+  },
+  "levelObjective2": "Students will identify common desktop icons and master basic mouse/touch navigation.",
+  "@levelObjective2": {
+    "description": "Level 2 learning objective"
+  },
+  "levelObjective3": "Students will categorize apps by purpose and understand app organization principles.",
+  "@levelObjective3": {
+    "description": "Level 3 learning objective"
+  },
+  "levelObjective4": "Students will understand the importance of digital skills in modern life and future careers.",
+  "@levelObjective4": {
+    "description": "Level 4 learning objective"
+  },
+  "levelObjective5": "Students will confidently navigate educational apps and utilize learning features.",
+  "@levelObjective5": {
+    "description": "Level 5 learning objective"
+  },
+  "levelObjective6": "Students will develop proper typing technique and improve keyboarding speed.",
+  "@levelObjective6": {
+    "description": "Level 6 learning objective"
+  },
+  "levelObjective7": "Students will create effective presentations using digital design principles.",
+  "@levelObjective7": {
+    "description": "Level 7 learning objective"
+  },
+  "levelObjective8": "Students will organize digital files systematically and understand folder structures.",
+  "@levelObjective8": {
+    "description": "Level 8 learning objective"
+  },
+  "levelObjective9": "Students will understand internet fundamentals and practice safe browsing.",
+  "@levelObjective9": {
+    "description": "Level 9 learning objective"
+  },
+  "levelObjective10": "Students will master search strategies and evaluate information credibility.",
+  "@levelObjective10": {
+    "description": "Level 10 learning objective"
+  },
+  "levelObjective11": "Students will implement online safety practices and recognize digital threats.",
+  "@levelObjective11": {
+    "description": "Level 11 learning objective"
+  },
+  "levelObjective12": "Students will demonstrate responsible digital citizenship and ethical online behavior.",
+  "@levelObjective12": {
+    "description": "Level 12 learning objective"
+  },
+  "levelObjective13": "Students will compose professional emails and understand communication etiquette.",
+  "@levelObjective13": {
+    "description": "Level 13 learning objective"
+  },
+  "levelObjective14": "Students will use messaging apps safely and communicate appropriately.",
+  "@levelObjective14": {
+    "description": "Level 14 learning objective"
+  },
+  "levelObjective15": "Students will track learning progress and set achievable digital goals.",
+  "@levelObjective15": {
+    "description": "Level 15 learning objective"
+  },
+  "levelObjective16": "Students will collaborate effectively using digital tools and platforms.",
+  "@levelObjective16": {
+    "description": "Level 16 learning objective"
+  },
+  "levelObjective17": "Students will explore interests safely and discover positive online communities.",
+  "@levelObjective17": {
+    "description": "Level 17 learning objective"
+  },
+  "levelObjective18": "Students will understand digital payments and practice safe online financial transactions.",
+  "@levelObjective18": {
+    "description": "Level 18 learning objective"
+  },
+  "levelObjective19": "Students will explore digital career paths and understand future skill requirements.",
+  "@levelObjective19": {
+    "description": "Level 19 learning objective"
+  },
+  "levelObjective20": "Students will create a comprehensive digital portfolio showcasing their skills.",
+  "@levelObjective20": {
+    "description": "Level 20 learning objective"
+  },
+
+  "levelTip1_1": "Look for common device parts like screen, keyboard, and mouse",
+  "@levelTip1_1": {
+    "description": "Level 1 tip 1"
+  },
+  "levelTip1_2": "Different devices have different purposes",
+  "@levelTip1_2": {
+    "description": "Level 1 tip 2"
+  },
+  "levelTip1_3": "Practice turning devices on and off safely",
+  "@levelTip1_3": {
+    "description": "Level 1 tip 3"
+  },
+  "levelTip1_4": "Ask for help when handling new devices",
+  "@levelTip1_4": {
+    "description": "Level 1 tip 4"
+  },
+
+  "levelTip2_1": "Icons are small pictures that represent apps or files",
+  "@levelTip2_1": {
+    "description": "Level 2 tip 1"
+  },
+  "levelTip2_2": "Look carefully - each icon has a unique shape and meaning",
+  "@levelTip2_2": {
+    "description": "Level 2 tip 2"
+  },
+  "levelTip2_3": "Practice different mouse actions: click, double-click, drag",
+  "@levelTip2_3": {
+    "description": "Level 2 tip 3"
+  },
+  "levelTip2_4": "On touch screens, tap and swipe with confidence",
+  "@levelTip2_4": {
+    "description": "Level 2 tip 4"
+  },
+
+  "levelTip3_1": "Group similar apps together for easy access",
+  "@levelTip3_1": {
+    "description": "Level 3 tip 1"
+  },
+  "levelTip3_2": "Learn what each app category is used for",
+  "@levelTip3_2": {
+    "description": "Level 3 tip 2"
+  },
+  "levelTip3_3": "Check app reviews before downloading new ones",
+  "@levelTip3_3": {
+    "description": "Level 3 tip 3"
+  },
+  "levelTip3_4": "Close apps when you're done to save battery",
+  "@levelTip3_4": {
+    "description": "Level 3 tip 4"
+  },
+
+  "levelTip4_1": "Digital skills open doors to new opportunities",
+  "@levelTip4_1": {
+    "description": "Level 4 tip 1"
+  },
+  "levelTip4_2": "Technology changes how we work, learn, and connect",
+  "@levelTip4_2": {
+    "description": "Level 4 tip 2"
+  },
+  "levelTip4_3": "Start learning digital skills early for future success",
+  "@levelTip4_3": {
+    "description": "Level 4 tip 3"
+  },
+  "levelTip4_4": "Practice regularly to build confidence with technology",
+  "@levelTip4_4": {
+    "description": "Level 4 tip 4"
+  },
+
+  "levelTip5_1": "Explore all features of educational apps to maximize learning",
+  "@levelTip5_1": {
+    "description": "Level 5 tip 1"
+  },
+  "levelTip5_2": "Use help sections when you're stuck",
+  "@levelTip5_2": {
+    "description": "Level 5 tip 2"
+  },
+  "levelTip5_3": "Track your progress to stay motivated",
+  "@levelTip5_3": {
+    "description": "Level 5 tip 3"
+  },
+  "levelTip5_4": "Take breaks during long learning sessions",
+  "@levelTip5_4": {
+    "description": "Level 5 tip 4"
+  },
+
+  "levelTip6_1": "Keep your fingers curved and relaxed while typing",
+  "@levelTip6_1": {
+    "description": "Level 6 tip 1"
+  },
+  "levelTip6_2": "Use the correct finger for each key",
+  "@levelTip6_2": {
+    "description": "Level 6 tip 2"
+  },
+  "levelTip6_3": "Start slowly and focus on accuracy over speed",
+  "@levelTip6_3": {
+    "description": "Level 6 tip 3"
+  },
+  "levelTip6_4": "Practice typing for short periods daily",
+  "@levelTip6_4": {
+    "description": "Level 6 tip 4"
+  },
+
+  "levelTip7_1": "Keep slides simple with clear, readable text",
+  "@levelTip7_1": {
+    "description": "Level 7 tip 1"
+  },
+  "levelTip7_2": "Use images and graphics to support your message",
+  "@levelTip7_2": {
+    "description": "Level 7 tip 2"
+  },
+  "levelTip7_3": "Practice your presentation before presenting",
+  "@levelTip7_3": {
+    "description": "Level 7 tip 3"
+  },
+  "levelTip7_4": "Make eye contact with your audience",
+  "@levelTip7_4": {
+    "description": "Level 7 tip 4"
+  },
+
+  "levelTip8_1": "Create folders with descriptive names",
+  "@levelTip8_1": {
+    "description": "Level 8 tip 1"
+  },
+  "levelTip8_2": "Sort files by date, name, or type",
+  "@levelTip8_2": {
+    "description": "Level 8 tip 2"
+  },
+  "levelTip8_3": "Regularly delete files you no longer need",
+  "@levelTip8_3": {
+    "description": "Level 8 tip 3"
+  },
+  "levelTip8_4": "Back up important files in multiple locations",
+  "@levelTip8_4": {
+    "description": "Level 8 tip 4"
+  },
+
+  "levelTip9_1": "The internet connects computers worldwide",
+  "@levelTip9_1": {
+    "description": "Level 9 tip 1"
+  },
+  "levelTip9_2": "Websites have addresses called URLs",
+  "@levelTip9_2": {
+    "description": "Level 9 tip 2"
+  },
+  "levelTip9_3": "Look for https:// for secure connections",
+  "@levelTip9_3": {
+    "description": "Level 9 tip 3"
+  },
+  "levelTip9_4": "Use reliable browsers with updated security",
+  "@levelTip9_4": {
+    "description": "Level 9 tip 4"
+  },
+
+  "levelTip10_1": "Use specific keywords for better search results",
+  "@levelTip10_1": {
+    "description": "Level 10 tip 1"
+  },
+  "levelTip10_2": "Check multiple sources to verify information",
+  "@levelTip10_2": {
+    "description": "Level 10 tip 2"
+  },
+  "levelTip10_3": "Look for recent dates and credible authors",
+  "@levelTip10_3": {
+    "description": "Level 10 tip 3"
+  },
+  "levelTip10_4": "Use quotation marks for exact phrases",
+  "@levelTip10_4": {
+    "description": "Level 10 tip 4"
+  },
+
+  "levelTip11_1": "Never share personal information with strangers online",
+  "@levelTip11_1": {
+    "description": "Level 11 tip 1"
+  },
+  "levelTip11_2": "Use strong, unique passwords for each account",
+  "@levelTip11_2": {
+    "description": "Level 11 tip 2"
+  },
+  "levelTip11_3": "Be careful what you post publicly",
+  "@levelTip11_3": {
+    "description": "Level 11 tip 3"
+  },
+  "levelTip11_4": "Tell a trusted adult about suspicious online activity",
+  "@levelTip11_4": {
+    "description": "Level 11 tip 4"
+  },
+
+  "levelTip12_1": "Treat others online with respect and kindness",
+  "@levelTip12_1": {
+    "description": "Level 12 tip 1"
+  },
+  "levelTip12_2": "Think before you post - words can hurt",
+  "@levelTip12_2": {
+    "description": "Level 12 tip 2"
+  },
+  "levelTip12_3": "Don't participate in cyberbullying",
+  "@levelTip12_3": {
+    "description": "Level 12 tip 3"
+  },
+  "levelTip12_4": "Report inappropriate behavior to authorities",
+  "@levelTip12_4": {
+    "description": "Level 12 tip 4"
+  },
+
+  "levelTip13_1": "Write clear, polite subject lines",
+  "@levelTip13_1": {
+    "description": "Level 13 tip 1"
+  },
+  "levelTip13_2": "Use proper greeting and closing",
+  "@levelTip13_2": {
+    "description": "Level 13 tip 2"
+  },
+  "levelTip13_3": "Check for spelling and grammar before sending",
+  "@levelTip13_3": {
+    "description": "Level 13 tip 3"
+  },
+  "levelTip13_4": "Keep emails concise and to the point",
+  "@levelTip13_4": {
+    "description": "Level 13 tip 4"
+  },
+
+  "levelTip14_1": "Only message people you know in real life",
+  "@levelTip14_1": {
+    "description": "Level 14 tip 1"
+  },
+  "levelTip14_2": "Don't share photos or personal details",
+  "@levelTip14_2": {
+    "description": "Level 14 tip 2"
+  },
+  "levelTip14_3": "Use privacy settings to control who can contact you",
+  "@levelTip14_3": {
+    "description": "Level 14 tip 3"
+  },
+  "levelTip14_4": "Report and block inappropriate contacts",
+  "@levelTip14_4": {
+    "description": "Level 14 tip 4"
+  },
+
+  "levelTip15_1": "Set realistic, achievable goals",
+  "@levelTip15_1": {
+    "description": "Level 15 tip 1"
+  },
+  "levelTip15_2": "Celebrate small wins along the way",
+  "@levelTip15_2": {
+    "description": "Level 15 tip 2"
+  },
+  "levelTip15_3": "Track your progress regularly",
+  "@levelTip15_3": {
+    "description": "Level 15 tip 3"
+  },
+  "levelTip15_4": "Adjust goals as you learn and grow",
+  "@levelTip15_4": {
+    "description": "Level 15 tip 4"
+  },
+
+  "levelTip16_1": "Listen to team members' ideas respectfully",
+  "@levelTip16_1": {
+    "description": "Level 16 tip 1"
+  },
+  "levelTip16_2": "Share tasks fairly among team members",
+  "@levelTip16_2": {
+    "description": "Level 16 tip 2"
+  },
+  "levelTip16_3": "Communicate clearly about deadlines and expectations",
+  "@levelTip16_3": {
+    "description": "Level 16 tip 3"
+  },
+  "levelTip16_4": "Use collaboration tools to stay organized",
+  "@levelTip16_4": {
+    "description": "Level 16 tip 4"
+  },
+
+  "levelTip17_1": "Research hobbies from reliable sources",
+  "@levelTip17_1": {
+    "description": "Level 17 tip 1"
+  },
+  "levelTip17_2": "Join moderated communities for safe interaction",
+  "@levelTip17_2": {
+    "description": "Level 17 tip 2"
+  },
+  "levelTip17_3": "Be cautious about meeting online friends in person",
+  "@levelTip17_3": {
+    "description": "Level 17 tip 3"
+  },
+  "levelTip17_4": "Keep personal information private",
+  "@levelTip17_4": {
+    "description": "Level 17 tip 4"
+  },
+
+  "levelTip18_1": "Only shop on secure, reputable websites",
+  "@levelTip18_1": {
+    "description": "Level 18 tip 1"
+  },
+  "levelTip18_2": "Check your account statements regularly",
+  "@levelTip18_2": {
+    "description": "Level 18 tip 2"
+  },
+  "levelTip18_3": "Never share your passwords or PINs",
+  "@levelTip18_3": {
+    "description": "Level 18 tip 3"
+  },
+  "levelTip18_4": "Be aware of online scams and fraud",
+  "@levelTip18_4": {
+    "description": "Level 18 tip 4"
+  },
+
+  "levelTip19_1": "Explore different tech career paths",
+  "@levelTip19_1": {
+    "description": "Level 19 tip 1"
+  },
+  "levelTip19_2": "Build a portfolio of your digital projects",
+  "@levelTip19_2": {
+    "description": "Level 19 tip 2"
+  },
+  "levelTip19_3": "Network with professionals in fields of interest",
+  "@levelTip19_3": {
+    "description": "Level 19 tip 3"
+  },
+  "levelTip19_4": "Keep learning new technologies and skills",
+  "@levelTip19_4": {
+    "description": "Level 19 tip 4"
+  },
+
+  "levelTip20_1": "Showcase your best work and achievements",
+  "@levelTip20_1": {
+    "description": "Level 20 tip 1"
+  },
+  "levelTip20_2": "Include projects from different subject areas",
+  "@levelTip20_2": {
+    "description": "Level 20 tip 2"
+  },
+  "levelTip20_3": "Write clear descriptions of your learning process",
+  "@levelTip20_3": {
+    "description": "Level 20 tip 3"
+  },
+  "levelTip20_4": "Update your portfolio regularly with new work",
+  "@levelTip20_4": {
+    "description": "Level 20 tip 4"
+  },
+
+  "challengeAppSorterQuestion": "App Sorter: Drag these apps into the correct boxes - System Software or Application Software!",
+  "@challengeAppSorterQuestion": {
+    "description": "App sorter challenge question"
+  },
+  "challengeAppSorterExplanation": "Perfect sorting! System Software (Android, Windows, iOS) runs the device. Application Software (Calculator, Paint, Notes) does specific tasks.",
+  "@challengeAppSorterExplanation": {
+    "description": "App sorter challenge explanation"
+  },
+  "challengeAppManagementQuestion": "You opened a drawing app and finished your artwork. What should you do next?",
+  "@challengeAppManagementQuestion": {
+    "description": "App management challenge question"
+  },
+  "challengeAppManagementExplanation": "Always save your work first, then close apps properly to keep your device running smoothly.",
+  "@challengeAppManagementExplanation": {
+    "description": "App management challenge explanation"
+  },
+  "challengeAppSafetyQuestion": "Which of these is the safest way to get new apps for your device?",
+  "@challengeAppSafetyQuestion": {
+    "description": "App safety challenge question"
+  },
+  "challengeAppSafetyExplanation": "Official app stores check apps for safety before making them available to download.",
+  "@challengeAppSafetyExplanation": {
+    "description": "App safety challenge explanation"
+  },
+  "challengeAppTypesQuestion": "Match each app type with its purpose:",
+  "@challengeAppTypesQuestion": {
+    "description": "App types challenge question"
+  },
+  "challengeAppTypesExplanation": "Great job! Each app is designed for a specific purpose to help you with different tasks.",
+  "@challengeAppTypesExplanation": {
+    "description": "App types challenge explanation"
+  },
+  "challengeDigitalHeroesQuestion": "Digital Heroes Match-Up: Connect each person with how digital skills help them!",
+  "@challengeDigitalHeroesQuestion": {
+    "description": "Digital heroes challenge question"
+  },
+  "challengeDigitalHeroesExplanation": "Amazing! You connected each digital hero with their tools: Farmers check weather, shopkeepers accept digital payments, students learn online, and doctors keep digital records.",
+  "@challengeDigitalHeroesExplanation": {
+    "description": "Digital heroes challenge explanation"
+  },
+  "challengeCareerBenefitsQuestion": "How do digital skills help a rural teacher improve their teaching?",
+  "@challengeCareerBenefitsQuestion": {
+    "description": "Career benefits challenge question"
+  },
+  "challengeCareerBenefitsExplanation": "Digital skills help teachers find better educational resources, create engaging lessons, and even teach students remotely when needed.",
+  "@challengeCareerBenefitsExplanation": {
+    "description": "Career benefits challenge explanation"
+  },
+  "challengeCommunityImpactQuestion": "A village needs to apply for a government program online. Who can help using digital skills?",
+  "@challengeCommunityImpactQuestion": {
+    "description": "Community impact challenge question"
+  },
+  "challengeCommunityImpactExplanation": "With basic digital skills, anyone can help their community access government services, apply for programs, and connect with resources online.",
+  "@challengeCommunityImpactExplanation": {
+    "description": "Community impact challenge explanation"
+  },
+  "challengeFutureOpportunitiesQuestion": "Drag these digital skills to match the opportunities they create:",
+  "@challengeFutureOpportunitiesQuestion": {
+    "description": "Future opportunities challenge question"
+  },
+  "challengeCursorMaestroQuestion1": "Cursor Maestro: Drag the file into the folder!",
+  "@challengeCursorMaestroQuestion1": {
+    "description": "Cursor maestro challenge 1 question"
+  },
+  "challengeCursorMaestroExplanation1": "Great dragging technique! Click and hold, then move the mouse to drag files into folders.",
+  "@challengeCursorMaestroExplanation1": {
+    "description": "Cursor maestro challenge 1 explanation"
+  },
+  "challengeCursorMaestroQuestion2": "Cursor Maestro: Double-click to open the picture!",
+  "@challengeCursorMaestroQuestion2": {
+    "description": "Cursor maestro challenge 2 question"
+  },
+  "challengeCursorMaestroExplanation2": "Perfect double-click! Two quick clicks in the same spot opens files and programs.",
+  "@challengeCursorMaestroExplanation2": {
+    "description": "Cursor maestro challenge 2 explanation"
+  },
+  "challengeSlideDesignerQuestion1": "Slide Designer: Task 1 - Create a title slide for \"My Village\"",
+  "@challengeSlideDesignerQuestion1": {
+    "description": "Slide designer challenge 1 question"
+  },
+  "challengeSlideDesignerExplanation1": "Excellent! You created a beautiful title slide. A good title slide introduces your presentation topic clearly.",
+  "@challengeSlideDesignerExplanation1": {
+    "description": "Slide designer challenge 1 explanation"
+  },
+  "challengeSlideDesignerQuestion2": "Slide Designer: Task 2 - Add a picture of a flower to your slide",
+  "@challengeSlideDesignerQuestion2": {
+    "description": "Slide designer challenge 2 question"
+  },
+  "challengeSlideDesignerExplanation2": "Wonderful! Pictures make presentations more interesting and help explain your ideas better.",
+  "@challengeSlideDesignerExplanation2": {
+    "description": "Slide designer challenge 2 explanation"
+  },
+  "challengeSlideDesignerQuestion3": "Slide Designer: Task 3 - Choose a nice background color for your presentation",
+  "@challengeSlideDesignerQuestion3": {
+    "description": "Slide designer challenge 3 question"
+  },
+  "challengeSlideDesignerExplanation3": "Great color choice! The right background makes your text easy to read and your presentation look professional.",
+  "@challengeSlideDesignerExplanation3": {
+    "description": "Slide designer challenge 3 explanation"
+  },
+  "challengePresentationTipsQuestion": "What makes a good presentation slide?",
+  "@challengePresentationTipsQuestion": {
+    "description": "Presentation tips challenge question"
+  },
+  "challengePresentationTipsExplanation": "Perfect! Good slides have clear titles, simple text that is easy to read, and pictures that support your message.",
+  "@challengePresentationTipsExplanation": {
+    "description": "Presentation tips challenge explanation"
+  },
+  "challengeFileOrganizerQuestion": "File Organizer: This desktop is messy! Create folders for \"Schoolwork\" and \"Personal\" then organize these files.",
+  "@challengeFileOrganizerQuestion": {
+    "description": "File organizer challenge question"
+  },
+  "challengeFileOrganizerExplanation": "Excellent organization! You created proper folders and sorted all files correctly. Now you can find your work easily!",
+  "@challengeFileOrganizerExplanation": {
+    "description": "File organizer challenge explanation"
+  },
+  "challengeFileNamingQuestion": "Which is the best name for a file containing your math homework from Monday?",
+  "@challengeFileNamingQuestion": {
+    "description": "File naming challenge question"
+  },
+  "challengeFileNamingExplanation": "Perfect! \"Math_Homework_Monday.txt\" tells you exactly what the file contains and when it was from.",
+  "@challengeFileNamingExplanation": {
+    "description": "File naming challenge explanation"
+  },
+  "challengeFolderStructureQuestion": "You have many school subjects. How should you organize your schoolwork folder?",
+  "@challengeFolderStructureQuestion": {
+    "description": "Folder structure challenge question"
+  },
+  "challengeFolderStructureExplanation": "Excellent choice! Separate folders for each subject make it easy to find specific homework or notes quickly.",
+  "@challengeFolderStructureExplanation": {
+    "description": "Folder structure challenge explanation"
+  },
+  "challengeBackupImportanceQuestion": "It is important to back up your important school files to prevent losing them.",
+  "@challengeBackupImportanceQuestion": {
+    "description": "Backup importance challenge question"
+  },
+  "challengeBackupImportanceExplanation": "True! Backing up files protects your hard work. Save important files in multiple places or cloud storage.",
+  "@challengeBackupImportanceExplanation": {
+    "description": "Backup importance challenge explanation"
+  },
+  "challengePasswordSafetyQuestion": "Which is the strongest password?",
+  "@challengePasswordSafetyQuestion": {
+    "description": "Password safety challenge question"
+  },
+  "challengePasswordSafetyExplanation": "Excellent! \"MyVillage2024!\" is strong because it combines letters, numbers, and symbols. It is also something you can remember.",
+  "@challengePasswordSafetyExplanation": {
+    "description": "Password safety challenge explanation"
+  },
+  "challengePositiveCommunicationQuestion": "What is the best way to disagree with someone online?",
+  "@challengePositiveCommunicationQuestion": {
+    "description": "Positive communication challenge question"
+  },
+  "challengePositiveCommunicationExplanation": "Perfect! Respectful disagreement shows maturity and helps create positive online discussions where everyone can learn.",
+  "@challengePositiveCommunicationExplanation": {
+    "description": "Positive communication challenge explanation"
+  },
+  "challengeAppropriateLanguageQuestion": "Which message is most appropriate for a school group chat?",
+  "@challengeAppropriateLanguageQuestion": {
+    "description": "Appropriate language challenge question"
+  },
+  "challengeAppropriateLanguageExplanation": "Perfect! Asking for help politely keeps the conversation positive and focused on learning.",
+  "@challengeAppropriateLanguageExplanation": {
+    "description": "Appropriate language challenge explanation"
+  },
+  "challengePaymentSafetyQuestion": "Your friend asks for your UPI PIN to help transfer money. What should you do?",
+  "@challengePaymentSafetyQuestion": {
+    "description": "Payment safety challenge question"
+  },
+  "challengePaymentSafetyExplanation": "Perfect! PINs are like the keys to your money - never share them with anyone, not even close friends or family.",
+  "@challengePaymentSafetyExplanation": {
+    "description": "Payment safety challenge explanation"
+  },
+
+  "optionLeaveRunning": "Leave it running in the background",
+  "@optionLeaveRunning": {
+    "description": "Option: Leave it running in the background"
+  },
+  "optionSaveAndClose": "Save your work and close the app properly",
+  "@optionSaveAndClose": {
+    "description": "Option: Save your work and close the app properly"
+  },
+  "optionTurnOffImmediately": "Turn off the device immediately",
+  "@optionTurnOffImmediately": {
+    "description": "Option: Turn off the device immediately"
+  },
+  "optionOpenMoreApps": "Open more apps",
+  "@optionOpenMoreApps": {
+    "description": "Option: Open more apps"
+  },
+  "optionDownloadUnknown": "Download from unknown websites",
+  "@optionDownloadUnknown": {
+    "description": "Option: Download from unknown websites"
+  },
+  "optionUseOfficialStores": "Use official app stores like Google Play or App Store",
+  "@optionUseOfficialStores": {
+    "description": "Option: Use official app stores like Google Play or App Store"
+  },
+  "optionGetFromFriends": "Get apps from friends via email",
+  "@optionGetFromFriends": {
+    "description": "Option: Get apps from friends via email"
+  },
+  "optionDownloadAnyWebsite": "Download from any website",
+  "@optionDownloadAnyWebsite": {
+    "description": "Option: Download from any website"
+  },
+  "optionCalculatorMath": "Calculator - Math tasks",
+  "@optionCalculatorMath": {
+    "description": "Option: Calculator - Math tasks"
+  },
+  "optionMusicPlayerSongs": "Music Player - Playing songs",
+  "@optionMusicPlayerSongs": {
+    "description": "Option: Music Player - Playing songs"
+  },
+  "optionNotesReminders": "Notes - Writing reminders",
+  "@optionNotesReminders": {
+    "description": "Option: Notes - Writing reminders"
+  },
+  "optionCameraPhotos": "Camera - Taking photos",
+  "@optionCameraPhotos": {
+    "description": "Option: Camera - Taking photos"
+  },
+  "optionFarmerWeather": "Farmer using weather app",
+  "@optionFarmerWeather": {
+    "description": "Option: Farmer using weather app"
+  },
+  "optionShopkeeperQR": "Shopkeeper with payment QR code",
+  "@optionShopkeeperQR": {
+    "description": "Option: Shopkeeper with payment QR code"
+  },
+  "optionStudentOnline": "Student learning online",
+  "@optionStudentOnline": {
+    "description": "Option: Student learning online"
+  },
+  "optionDoctorRecords": "Doctor using digital records",
+  "@optionDoctorRecords": {
+    "description": "Option: Doctor using digital records"
+  },
+  "optionMakeTeachingHarder": "They make teaching harder",
+  "@optionMakeTeachingHarder": {
+    "description": "Option: They make teaching harder"
+  },
+  "optionAllowAccessResources": "They allow access to online resources, educational videos, and virtual classrooms",
+  "@optionAllowAccessResources": {
+    "description": "Option: They allow access to online resources, educational videos, and virtual classrooms"
+  },
+  "optionOnlyEntertainment": "They are only useful for entertainment",
+  "@optionOnlyEntertainment": {
+    "description": "Option: They are only useful for entertainment"
+  },
+  "optionReplaceStudents": "They replace the need for students",
+  "@optionReplaceStudents": {
+    "description": "Option: They replace the need for students"
+  },
+  "optionNoOneRural": "No one - rural people cannot use technology",
+  "@optionNoOneRural": {
+    "description": "Option: No one - rural people cannot use technology"
+  },
+  "optionAnyoneBasicSkills": "Anyone who has learned basic computer and internet skills",
+  "@optionAnyoneBasicSkills": {
+    "description": "Option: Anyone who has learned basic computer and internet skills"
+  },
+  "optionOnlyCityPeople": "Only city people can do this",
+  "@optionOnlyCityPeople": {
+    "description": "Option: Only city people can do this"
+  },
+  "optionImpossibleVillage": "It is impossible to do from a village",
+  "@optionImpossibleVillage": {
+    "description": "Option: It is impossible to do from a village"
+  },
+  "optionOnlineSellingBusiness": "Online selling - Start your own business",
+  "@optionOnlineSellingBusiness": {
+    "description": "Option: Online selling - Start your own business"
+  },
+  "optionVideoCallingFamily": "Video calling - Connect with family far away",
+  "@optionVideoCallingFamily": {
+    "description": "Option: Video calling - Connect with family far away"
+  },
+  "optionDigitalBankingSafe": "Digital banking - Save money safely",
+  "@optionDigitalBankingSafe": {
+    "description": "Option: Digital banking - Save money safely"
+  },
+  "optionOnlineLearningCourse": "Online learning - Access any course worldwide",
+  "@optionOnlineLearningCourse": {
+    "description": "Option: Online learning - Access any course worldwide"
+  },
+  "optionLotsTextColors": "Lots of text and many colors",
+  "@optionLotsTextColors": {
+    "description": "Option: Lots of text and many colors"
+  },
+  "optionClearTitleSimple": "Clear title, simple text, and relevant pictures",
+  "@optionClearTitleSimple": {
+    "description": "Option: Clear title, simple text, and relevant pictures"
+  },
+  "optionFancyAnimations": "Fancy animations and loud colors",
+  "@optionFancyAnimations": {
+    "description": "Option: Fancy animations and loud colors"
+  },
+  "optionOnlyPictures": "Only pictures with no text",
+  "@optionOnlyPictures": {
+    "description": "Option: Only pictures with no text"
+  },
+  "optionFile1Txt": "file1.txt",
+  "@optionFile1Txt": {
+    "description": "Option: file1.txt"
+  },
+  "optionMathHomeworkMonday": "Math_Homework_Monday.txt",
+  "@optionMathHomeworkMonday": {
+    "description": "Option: Math_Homework_Monday.txt"
+  },
+  "optionHomeworkTxt": "homework.txt",
+  "@optionHomeworkTxt": {
+    "description": "Option: homework.txt"
+  },
+  "optionUntitledTxt": "untitled.txt",
+  "@optionUntitledTxt": {
+    "description": "Option: untitled.txt"
+  },
+  "optionOneBigFolder": "Put everything in one big folder",
+  "@optionOneBigFolder": {
+    "description": "Option: Put everything in one big folder"
+  },
+  "optionSeparateSubjectFolders": "Create separate folders for each subject (Math, English, Science, etc.)",
+  "@optionSeparateSubjectFolders": {
+    "description": "Option: Create separate folders for each subject (Math, English, Science, etc.)"
+  },
+  "optionFoldersByDate": "Create folders by date only",
+  "@optionFoldersByDate": {
+    "description": "Option: Create folders by date only"
+  },
+  "optionNoFolders": "Do not use folders at all",
+  "@optionNoFolders": {
+    "description": "Option: Do not use folders at all"
+  },
+  "optionPassword123456": "123456",
+  "@optionPassword123456": {
+    "description": "Option: 123456"
+  },
+  "optionPasswordPassword": "password",
+  "@optionPasswordPassword": {
+    "description": "Option: password"
+  },
+  "optionPasswordMyVillage": "MyVillage2024!",
+  "@optionPasswordMyVillage": {
+    "description": "Option: MyVillage2024!"
+  },
+  "optionPasswordAbcdef": "abcdef",
+  "@optionPasswordAbcdef": {
+    "description": "Option: abcdef"
+  },
+  "optionUseCapitalLetters": "Use all capital letters to show you are serious",
+  "@optionUseCapitalLetters": {
+    "description": "Option: Use all capital letters to show you are serious"
+  },
+  "optionExplainPolitely": "Explain your different opinion politely and respectfully",
+  "@optionExplainPolitely": {
+    "description": "Option: Explain your different opinion politely and respectfully"
+  },
+  "optionPostMeanComments": "Post mean comments about the person",
+  "@optionPostMeanComments": {
+    "description": "Option: Post mean comments about the person"
+  },
+  "optionGetFriendsArgue": "Get all your friends to argue with them",
+  "@optionGetFriendsArgue": {
+    "description": "Option: Get all your friends to argue with them"
+  },
+  "optionHomeworkBoring": "OMG this homework is sooooo boring 😴",
+  "@optionHomeworkBoring": {
+    "description": "Option: OMG this homework is sooooo boring 😴"
+  },
+  "optionHelpQuestion3": "Can someone help me understand question 3?",
+  "@optionHelpQuestion3": {
+    "description": "Option: Can someone help me understand question 3?"
+  },
+  "optionHateClass": "I hate this class!!!",
+  "@optionHateClass": {
+    "description": "Option: I hate this class!!!"
+  },
+  "optionTeacherAnnoying": "The teacher is so annoying",
+  "@optionTeacherAnnoying": {
+    "description": "Option: The teacher is so annoying"
+  },
+  "optionGivePinFriend": "Give them the PIN since they are your friend",
+  "@optionGivePinFriend": {
+    "description": "Option: Give them the PIN since they are your friend"
+  },
+  "optionNeverSharePin": "Never share your PIN with anyone, even friends",
+  "@optionNeverSharePin": {
+    "description": "Option: Never share your PIN with anyone, even friends"
+  },
+  "optionShareOnlyOnce": "Share it only this once",
+  "@optionShareOnlyOnce": {
+    "description": "Option: Share it only this once"
+  },
+  "optionWriteDownPin": "Write it down for them",
+  "@optionWriteDownPin": {
+    "description": "Option: Write it down for them"
+  },
+
+  "gameActionTitleSlideCreated": "Title slide created!",
+  "@gameActionTitleSlideCreated": {
+    "description": "Game action: Title slide created!"
+  },
+  "gameActionLetMeTryAgain": "Let me try again",
+  "@gameActionLetMeTryAgain": {
+    "description": "Game action: Let me try again"
+  },
+  "gameActionShowMeHow": "Show me how",
+  "@gameActionShowMeHow": {
+    "description": "Game action: Show me how"
+  },
+  "gameActionPerfectDesign": "Perfect design!",
+  "@gameActionPerfectDesign": {
+    "description": "Game action: Perfect design!"
+  },
+  "gameActionPictureAdded": "Picture added!",
+  "@gameActionPictureAdded": {
+    "description": "Game action: Picture added!"
+  },
+  "gameActionHelpPosition": "Help me position it",
+  "@gameActionHelpPosition": {
+    "description": "Game action: Help me position it"
+  },
+  "gameActionChooseDifferentPicture": "Choose different picture",
+  "@gameActionChooseDifferentPicture": {
+    "description": "Game action: Choose different picture"
+  },
+  "gameActionLooksGreat": "Looks great!",
+  "@gameActionLooksGreat": {
+    "description": "Game action: Looks great!"
+  },
+  "gameActionBackgroundChosen": "Background chosen!",
+  "@gameActionBackgroundChosen": {
+    "description": "Game action: Background chosen!"
+  },
+  "gameActionTryDifferentColor": "Try different color",
+  "@gameActionTryDifferentColor": {
+    "description": "Game action: Try different color"
+  },
+  "gameActionLooksBeautiful": "Looks beautiful!",
+  "@gameActionLooksBeautiful": {
+    "description": "Game action: Looks beautiful!"
+  },
+  "gameActionPerfectChoice": "Perfect choice!",
+  "@gameActionPerfectChoice": {
+    "description": "Game action: Perfect choice!"
+  },
+  "gameActionAllFilesOrganized": "All files organized!",
+  "@gameActionAllFilesOrganized": {
+    "description": "Game action: All files organized!"
+  },
+  "gameActionHelpMeSort": "Help me sort",
+  "@gameActionHelpMeSort": {
+    "description": "Game action: Help me sort"
+  },
+  "gameActionPerfectOrganization": "Perfect organization!",
+  "@gameActionPerfectOrganization": {
+    "description": "Game action: Perfect organization!"
+  },
+  "gameActionSuccessfullyMoved": "Successfully moved!",
+  "@gameActionSuccessfullyMoved": {
+    "description": "Game action: Successfully moved!"
+  },
+  "gameActionTryAgain": "Try again",
+  "@gameActionTryAgain": {
+    "description": "Game action: Try again"
+  },
+  "gameActionAlmostThere": "Almost there!",
+  "@gameActionAlmostThere": {
+    "description": "Game action: Almost there!"
+  },
+  "gameActionPerfectTechnique": "Perfect technique!",
+  "@gameActionPerfectTechnique": {
+    "description": "Game action: Perfect technique!"
+  },
+  "gameActionPictureOpened": "Picture opened!",
+  "@gameActionPictureOpened": {
+    "description": "Game action: Picture opened!"
+  },
+  "gameActionSingleClickDetected": "Single click detected",
+  "@gameActionSingleClickDetected": {
+    "description": "Game action: Single click detected"
+  },
+  "gameActionPerfectTiming": "Perfect timing!",
+  "@gameActionPerfectTiming": {
+    "description": "Game action: Perfect timing!"
+  },
+  "instructionDragDeviceLabels": "Drag each label to the matching part of the device",
+  "@instructionDragDeviceLabels": {
+    "description": "Instruction: Drag device labels"
+  },
+  "instructionArrangeStepsOrder": "Arrange the steps in the right order",
+  "@instructionArrangeStepsOrder": {
+    "description": "Instruction: Arrange steps in order"
+  },
+  "instructionTapFolderIcon": "Tap the folder icon as quickly as you can!",
+  "@instructionTapFolderIcon": {
+    "description": "Instruction: Tap folder icon quickly"
+  },
+  "instructionFindRecycleBin": "Find the Recycle Bin icon!",
+  "@instructionFindRecycleBin": {
+    "description": "Instruction: Find recycle bin icon"
+  },
+  "instructionDragDocumentToFolder": "Click and drag the document into the folder",
+  "@instructionDragDocumentToFolder": {
+    "description": "Instruction: Drag document to folder"
+  },
+  "instructionDoubleClickPicture": "Double-click the picture to open it",
+  "@instructionDoubleClickPicture": {
+    "description": "Instruction: Double-click picture"
+  },
+  "instructionDragAppIcons": "Drag each app icon to the correct category box",
+  "@instructionDragAppIcons": {
+    "description": "Instruction: Drag app icons to categories"
+  },
+  "instructionTapGuidedLesson": "Tap the lesson your guide highlights for you",
+  "@instructionTapGuidedLesson": {
+    "description": "Instruction: Tap guided lesson"
+  },
+  "instructionTypeLettersFalling": "Type each letter as it falls down the screen",
+  "@instructionTypeLettersFalling": {
+    "description": "Instruction: Type falling letters"
+  },
+  "instructionTypeWordBeforeDisappear": "Type the complete word before it disappears",
+  "@instructionTypeWordBeforeDisappear": {
+    "description": "Instruction: Type word before it disappears"
+  },
+  "instructionTypeLocalLanguage": "Type words in your local language",
+  "@instructionTypeLocalLanguage": {
+    "description": "Instruction: Type in local language"
+  },
+  "instructionTypeSentenceAccurate": "Type the complete sentence accurately",
+  "@instructionTypeSentenceAccurate": {
+    "description": "Instruction: Type sentence accurately"
+  },
+  "instructionAddTitleSubtitle": "Use the text tool to add your title and subtitle",
+  "@instructionAddTitleSubtitle": {
+    "description": "Instruction: Add title and subtitle"
+  },
+  "instructionSelectFlowerImage": "Select a flower image and place it on your slide",
+  "@instructionSelectFlowerImage": {
+    "description": "Instruction: Select and place flower image"
+  },
+  "instructionChooseSlideBackground": "Choose a beautiful background for your slide",
+  "@instructionChooseSlideBackground": {
+    "description": "Instruction: Choose slide background"
+  },
+  "instructionOrganizeFilesIntoFolders": "Create folders for 'Schoolwork' and 'Personal' then organize these files",
+  "@instructionOrganizeFilesIntoFolders": {
+    "description": "Instruction: Organize files into folders"
+  },
+  "instructionFindAddressBar": "Find and click on the Address Bar",
+  "@instructionFindAddressBar": {
+    "description": "Instruction: Find address bar"
+  },
+  "instructionFindBackButton": "Locate the Back Button on the browser",
+  "@instructionFindBackButton": {
+    "description": "Instruction: Locate back button"
+  },
+  "instructionSearchKeywordsResults": "Type keywords to search, then click on a credible result",
+  "@instructionSearchKeywordsResults": {
+    "description": "Instruction: Search keywords and choose results"
+  },
+  "instructionFillEmailFields": "Fill in each field of the email properly",
+  "@instructionFillEmailFields": {
+    "description": "Instruction: Fill email fields"
+  },
+  "instructionConnectPersonDescription": "Tap a person, then tap their matching description to connect them!",
+  "@instructionConnectPersonDescription": {
+    "description": "Instruction: Connect person to description"
+  },
+  "instructionSearchChooseHobby": "Pick your hobby, then search for learning resources from trusted sites",
+  "@instructionSearchChooseHobby": {
+    "description": "Instruction: Search for hobby resources"
+  }
+}

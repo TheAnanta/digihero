@@ -4,6 +4,8 @@ import 'package:flutter_animate/flutter_animate.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/services/game_service.dart';
 import '../../../core/services/audio_service.dart';
+import '../../../l10n/app_localizations.dart';
+import '../../../core/widgets/language_selection.dart';
 import '../../ui/widgets/animated_button.dart';
 import '../widgets/level_card_widget.dart';
 import 'level_play_screen.dart';
@@ -103,7 +105,8 @@ class _LevelSelectScreenState extends State<LevelSelectScreen>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Choose Your Level',
+                  AppLocalizations.of(context)?.chooseLevel ??
+                      'Choose Your Level',
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -111,7 +114,8 @@ class _LevelSelectScreenState extends State<LevelSelectScreen>
                 ).animate().fadeIn(duration: 600.ms).slideX(begin: -0.3),
                 const SizedBox(height: 4),
                 Text(
-                  'Select a digital literacy challenge',
+                  AppLocalizations.of(context)?.selectChallenge ??
+                      'Select a digital literacy challenge',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Colors.white.withOpacity(0.8),
                       ),
@@ -119,6 +123,26 @@ class _LevelSelectScreenState extends State<LevelSelectScreen>
               ],
             ),
           ),
+          // Language selection button
+          AnimatedButton(
+            onPressed: () {
+              audioService.playButtonClick();
+              LanguageSelectionDialog.show(context);
+            },
+            child: Container(
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(25),
+              ),
+              child: const Icon(
+                Icons.language,
+                color: Colors.white,
+                size: 24,
+              ),
+            ),
+          ).animate().fadeIn(delay: 400.ms, duration: 600.ms),
         ],
       ),
     );
@@ -220,18 +244,19 @@ class _LevelSelectScreenState extends State<LevelSelectScreen>
               size: 24,
             ),
             const SizedBox(width: 8),
-            const Text('Level Locked'),
+            Text(AppLocalizations.of(context)?.levelLocked ?? 'Level Locked'),
           ],
         ),
-        content: const Text(
-          'Complete the previous level to unlock this one!',
-          style: TextStyle(fontSize: 16),
+        content: Text(
+          AppLocalizations.of(context)?.levelLockedMessage ??
+              'Complete the previous level to unlock this one!',
+          style: const TextStyle(fontSize: 16),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'OK',
+              AppLocalizations.of(context)?.ok ?? 'OK',
               style: TextStyle(
                 color: AppConstants.primaryColor,
                 fontWeight: FontWeight.bold,

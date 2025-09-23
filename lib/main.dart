@@ -4,8 +4,10 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'core/services/game_service.dart';
 import 'core/services/audio_service.dart';
 import 'core/services/progress_service.dart';
+import 'core/services/language_service.dart';
 import 'core/constants/app_constants.dart';
 import 'app_router.dart';
+import 'l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,22 +27,30 @@ class DigiHeroApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => LanguageService()),
         ChangeNotifierProvider(create: (_) => GameService()),
         ChangeNotifierProvider(create: (_) => AudioService()),
         ChangeNotifierProvider(create: (_) => ProgressService()),
       ],
-      child: MaterialApp(
-        title: AppConstants.appName,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: AppConstants.primaryColor,
-            brightness: Brightness.light,
-          ),
-          useMaterial3: true,
-          fontFamily: 'GameFont',
-        ),
-        home: const AppRouter(),
-        debugShowCheckedModeBanner: false,
+      child: Consumer<LanguageService>(
+        builder: (context, languageService, child) {
+          return MaterialApp(
+            title: AppConstants.appName,
+            locale: languageService.currentLocale, // Use app-controlled locale
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: AppConstants.primaryColor,
+                brightness: Brightness.light,
+              ),
+              useMaterial3: true,
+              fontFamily: languageService.fontFamily,
+            ),
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            home: const AppRouter(),
+            debugShowCheckedModeBanner: false,
+          );
+        },
       ),
     );
   }

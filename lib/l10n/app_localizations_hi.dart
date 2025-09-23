@@ -1,0 +1,1225 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for Hindi (`hi`).
+class AppLocalizationsHi extends AppLocalizations {
+  AppLocalizationsHi([String locale = 'hi']) : super(locale);
+
+  @override
+  String get appTitle => 'डिजीहीरो';
+
+  @override
+  String get appTagline => 'डिजिटल साक्षरता रोमांच';
+
+  @override
+  String get appSubtitle => 'सीखें • खेलें • सुरक्षा करें • खोजें';
+
+  @override
+  String get welcomeToDigiHero => 'डिजीहीरो में आपका स्वागत है!';
+
+  @override
+  String get learnDigitalLiteracy => 'मज़ेदार खेलों के माध्यम से डिजिटल साक्षरता सीखें';
+
+  @override
+  String get howOldAreYou => 'आपकी उम्र कितनी है?';
+
+  @override
+  String get ageHelpText => 'इससे हमें आपके लिए खेल की कठिनाई को समायोजित करने में मदद मिलती है';
+
+  @override
+  String get yourAge => 'आपकी उम्र';
+
+  @override
+  String get enterYourAge => 'अपनी उम्र दर्ज करें (6-99)';
+
+  @override
+  String get startLearning => 'सीखना शुरू करें!';
+
+  @override
+  String get chooseYourLevel => 'अपना स्तर चुनें';
+
+  @override
+  String get selectDigitalLiteracyChallenge => 'एक डिजिटल साक्षरता चुनौती चुनें';
+
+  @override
+  String get levelLocked => 'स्तर बंद है';
+
+  @override
+  String get levelLockedMessage => 'इसे खोलने के लिए पिछला स्तर पूरा करें!';
+
+  @override
+  String get ok => 'ठीक है';
+
+  @override
+  String get cancel => 'रद्द करें';
+
+  @override
+  String get yes => 'हां';
+
+  @override
+  String get no => 'नहीं';
+
+  @override
+  String get excellent => 'उत्कृष्ट!';
+
+  @override
+  String get perfect => 'बिल्कुल सही!';
+
+  @override
+  String get great => 'बहुत अच्छा!';
+
+  @override
+  String get tryAgain => 'फिर से कोशिश करें';
+
+  @override
+  String get loading => 'लोड हो रहा है...';
+
+  @override
+  String get congratulations => 'बधाई हो!';
+
+  @override
+  String get nabha => 'नाभा';
+
+  @override
+  String get punjab => 'पंजाब';
+
+  @override
+  String get chandigarh => 'चंडीगढ़';
+
+  @override
+  String get village => 'गांव';
+
+  @override
+  String get city => 'शहर';
+
+  @override
+  String get splashTagline => 'डिजिटल साक्षरता रोमांच';
+
+  @override
+  String get splashStartButton => 'रोमांच शुरू करने के लिए टैप करें';
+
+  @override
+  String get ageLabel => 'आपकी उम्र';
+
+  @override
+  String get agePlaceholder => 'अपनी उम्र दर्ज करें (6-99)';
+
+  @override
+  String get beginner => '6-8 साल (शुरुआती)';
+
+  @override
+  String get intermediate => '9-12 साल (मध्यम)';
+
+  @override
+  String get advanced => '13-16 साल (उन्नत)';
+
+  @override
+  String get expert => '17+ साल (विशेषज्ञ)';
+
+  @override
+  String get chooseLevel => 'अपना स्तर चुनें';
+
+  @override
+  String get selectChallenge => 'एक डिजिटल साक्षरता चुनौती चुनें';
+
+  @override
+  String get settings => 'सेटिंग्स';
+
+  @override
+  String get language => 'भाषा';
+
+  @override
+  String get music => 'संगीत';
+
+  @override
+  String get soundEffects => 'ध्वनि प्रभाव';
+
+  @override
+  String get musicVolume => 'संगीत की आवाज़';
+
+  @override
+  String get sfxVolume => 'ध्वनि प्रभाव की आवाज़';
+
+  @override
+  String get progress => 'प्रगति';
+
+  @override
+  String get achievements => 'उपलब्धियां';
+
+  @override
+  String get yourProgress => 'आपकी प्रगति';
+
+  @override
+  String get achievementsTitle => 'उपलब्धियां';
+
+  @override
+  String get noAchievements => 'अभी तक कोई उपलब्धि नहीं। उन्हें अनलॉक करने के लिए खेलते रहें!';
+
+  @override
+  String get player => 'खिलाड़ी';
+
+  @override
+  String get levelsCompleted => 'पूरे किए गए स्तर';
+
+  @override
+  String get totalPlayTime => 'कुल खेल समय';
+
+  @override
+  String get currentStreak => 'वर्तमान श्रृंखला';
+
+  @override
+  String get days => 'दिन';
+
+  @override
+  String get levelComplete => 'स्तर पूरा!';
+
+  @override
+  String get gameOver => 'गेम ओवर';
+
+  @override
+  String get gameOverMessage => 'हार न मानें! इस स्तर में महारत हासिल करने के लिए फिर से कोशिश करें।';
+
+  @override
+  String get backToLevelSelect => 'स्तर चयन पर वापस जाएं';
+
+  @override
+  String get exitLevel => 'स्तर से बाहर निकलें?';
+
+  @override
+  String get exitLevelMessage => 'आपकी प्रगति खो जाएगी।';
+
+  @override
+  String get exit => 'बाहर निकलें';
+
+  @override
+  String get wrongAnswer => 'गलत उत्तर';
+
+  @override
+  String get wrongAnswerMessage => 'यह सही नहीं है। फिर से कोशिश करें!';
+
+  @override
+  String get hint => 'संकेत';
+
+  @override
+  String get timeBonus => 'समय बोनस';
+
+  @override
+  String get score => 'स्कोर';
+
+  @override
+  String get continueButton => 'जारी रखें';
+
+  @override
+  String get save => 'सेव करें';
+
+  @override
+  String get play => 'खेलें';
+
+  @override
+  String get replay => 'फिर से खेलें';
+
+  @override
+  String get close => 'बंद करें';
+
+  @override
+  String get startAdventure => 'एडवेंचर शुरू करें';
+
+  @override
+  String get overallProgress => 'कुल प्रगति';
+
+  @override
+  String get readyForAdventure => 'एक और डिजिटल एडवेंचर के लिए तैयार हैं?';
+
+  @override
+  String get coins => 'सिक्के';
+
+  @override
+  String get lives => 'जीवन';
+
+  @override
+  String get anonymous => 'अज्ञात';
+
+  @override
+  String get deviceExplorer => 'डिवाइस एक्सप्लोरर';
+
+  @override
+  String get meetYourDigitalDevice => 'अपने डिजिटल डिवाइस से मिलें';
+
+  @override
+  String get learnDevicesDescription => 'इंटरैक्टिव गेम्स के माध्यम से विभिन्न प्रकार के डिवाइसेस और उनके मुख्य भागों के बारे में सीखें।';
+
+  @override
+  String get deviceLearningObjective => 'छात्र विभिन्न प्रकार के डिवाइसेस की पहचान करेंगे और उनके मुख्य भागों को समझेंगे।';
+
+  @override
+  String get deviceTip1 => 'स्क्रीन, कीबोर्ड और माउस जैसे सामान्य डिवाइस भागों की तलाश करें';
+
+  @override
+  String get deviceTip2 => 'अलग-अलग डिवाइसेस के अलग-अलग उद्देश्य होते हैं';
+
+  @override
+  String get deviceTip3 => 'डिवाइसेस को सुरक्षित रूप से चालू और बंद करने का अभ्यास करें';
+
+  @override
+  String get deviceTip4 => 'नए डिवाइसेस को संभालते समय मदद मांगें';
+
+  @override
+  String get deviceBuilderQuestion => 'डिवाइस बिल्डर: लेबल्स को कंप्यूटर के सही भागों पर ड्रैग और ड्रॉप करें!';
+
+  @override
+  String get monitor => 'मॉनिटर';
+
+  @override
+  String get cpu => 'सीपीयू';
+
+  @override
+  String get keyboard => 'कीबोर्ड';
+
+  @override
+  String get mouse => 'माउस';
+
+  @override
+  String get deviceBuilderExplanation => 'बहुत बढ़िया! आपने कंप्यूटर के मुख्य भागों की सही पहचान की: मॉनिटर (स्क्रीन), सीपीयू (मुख्य यूनिट), कीबोर्ड (टाइपिंग के लिए), और माउस (पॉइंटिंग के लिए)।';
+
+  @override
+  String get powerUpQuestion => 'पावर अप! कंप्यूटर को सुरक्षित रूप से चालू करने के लिए इन चरणों को सही क्रम में रखें:';
+
+  @override
+  String get plugPowerCable => 'पावर केबल लगाएं';
+
+  @override
+  String get pressCpuButton => 'सीपीयू पावर बटन दबाएं';
+
+  @override
+  String get pressMonitorButton => 'मॉनिटर पावर बटन दबाएं';
+
+  @override
+  String get waitForStartup => 'स्टार्टअप का इंतजार करें';
+
+  @override
+  String get powerUpExplanation => 'बहुत बढ़िया! सही क्रम है: 1. पावर लगाएं, 2. सीपीयू पावर बटन दबाएं, 3. मॉनिटर पावर बटन दबाएं, 4. स्टार्टअप का इंतजार करें।';
+
+  @override
+  String get deviceTypesQuestion => 'यात्रा के दौरान फोन कॉल करने के लिए कौन सा डिवाइस सबसे अच्छा है?';
+
+  @override
+  String get desktopComputer => 'डेस्कटॉप कंप्यूटर';
+
+  @override
+  String get smartphone => 'स्मार्टफोन';
+
+  @override
+  String get television => 'टेलीविजन';
+
+  @override
+  String get printer => 'प्रिंटर';
+
+  @override
+  String get smartphoneExplanation => 'स्मार्टफोन पोर्टेबल हैं और संचार के लिए डिज़ाइन किए गए हैं, जो उन्हें यात्रा के दौरान कॉल के लिए परफेक्ट बनाता है।';
+
+  @override
+  String get deviceShutdownQuestion => 'आपने टैबलेट पर अपना काम पूरा कर लिया है। इसे बंद करने का सबसे सुरक्षित तरीका क्या है?';
+
+  @override
+  String get justCloseCover => 'बस कवर बंद करें';
+
+  @override
+  String get usePowerButton => 'ठीक से शट डाउन करने के लिए पावर बटन का उपयोग करें';
+
+  @override
+  String get removeBattery => 'बैटरी निकालें';
+
+  @override
+  String get waitAutoShutdown => 'इसके अपने आप बंद होने का इंतजार करें';
+
+  @override
+  String get shutdownExplanation => 'अपने काम को सेव करने और डिवाइस की सुरक्षा के लिए हमेशा उचित शटडाउन प्रक्रिया का उपयोग करें।';
+
+  @override
+  String get screenNavigator => 'स्क्रीन नेवीगेटर';
+
+  @override
+  String get understandingYourScreen => 'अपनी स्क्रीन को समझना';
+
+  @override
+  String get masterDesktopNavigation => 'आइकन हंट और कर्सर मैस्ट्रो मिनी-गेम्स के माध्यम से डेस्कटॉप नेवीगेशन में महारत हासिल करें!';
+
+  @override
+  String get screenLearningObjective => 'छात्र सामान्य डेस्कटॉप आइकनों की पहचान करेंगे और बुनियादी माउस/टच नेवीगेशन में महारत हासिल करेंगे।';
+
+  @override
+  String get screenTip1 => 'आइकन छोटी तस्वीरें हैं जो ऐप्स या फाइलों का प्रतिनिधित्व करती हैं';
+
+  @override
+  String get screenTip2 => 'ध्यान से देखें - प्रत्येक आइकन का एक अनूठा आकार और अर्थ होता है';
+
+  @override
+  String get screenTip3 => 'विभिन्न माउस क्रियाओं का अभ्यास करें: क्लिक, डबल-क्लिक, ड्रैग';
+
+  @override
+  String get screenTip4 => 'टच स्क्रीन पर, आत्मविश्वास के साथ टैप और स्वाइप करें';
+
+  @override
+  String get iconHuntQuestion1 => 'आइकन हंट: इस डेस्कटॉप पर फोल्डर आइकन ढूंढें और टैप करें!';
+
+  @override
+  String get folderFound => 'फोल्डर मिल गया!';
+
+  @override
+  String get needHint => 'संकेत चाहिए?';
+
+  @override
+  String get timeUp => 'समय खत्म!';
+
+  @override
+  String get folderExplanation => 'बहुत बढ़िया! फोल्डर आइकन आमतौर पर मनीला फाइल फोल्डर की तरह दिखते हैं और आपकी फाइलों को व्यवस्थित करने में मदद करते हैं।';
+
+  @override
+  String get iconHuntQuestion2 => 'आइकन हंट: जल्दी! समय खत्म होने से पहले रीसाइकल बिन पर टैप करें!';
+
+  @override
+  String get recycleBinFound => 'रीसाइकल बिन मिल गया!';
+
+  @override
+  String get recycleBinExplanation => 'उत्कृष्ट! रीसाइकल बिन डिलीट की गई फाइलों को रखता है और आमतौर पर कूड़ेदान की तरह दिखता है।';
+
+  @override
+  String get workingWithApps => 'ऐप्स के साथ काम करना';
+
+  @override
+  String get whyDigitalSkillsMatter => 'डिजिटल स्किल्स क्यों मायने रखते हैं';
+
+  @override
+  String get masteringOurLearningApp => 'हमारे लर्निंग ऐप में महारत हासिल करना';
+
+  @override
+  String get writingAndTyping => 'लेखन और टाइपिंग';
+
+  @override
+  String get creatingPresentations => 'प्रेजेंटेशन बनाना';
+
+  @override
+  String get organizingDigitalWork => 'डिजिटल कार्य को व्यवस्थित करना';
+
+  @override
+  String get whatIsTheInternet => 'इंटरनेट क्या है';
+
+  @override
+  String get searchingForInformation => 'जानकारी की खोज';
+
+  @override
+  String get stayingSafeOnline => 'ऑनलाइन सुरक्षित रहना';
+
+  @override
+  String get beingAGoodDigitalCitizen => 'एक अच्छा डिजिटल नागरिक बनना';
+
+  @override
+  String get introductionToEmail => 'ईमेल का परिचय';
+
+  @override
+  String get messagingAppsSafety => 'मैसेजिंग ऐप्स की सुरक्षा';
+
+  @override
+  String get understandingProgress => 'प्रगति को समझना';
+
+  @override
+  String get workingTogetherOnline => 'ऑनलाइन मिलकर काम करना';
+
+  @override
+  String get exploringHobbiesOnline => 'ऑनलाइन शौक खोजना';
+
+  @override
+  String get digitalPaymentsSafety => 'डिजिटल भुगतान की सुरक्षा';
+
+  @override
+  String get careerOpportunities => 'करियर के अवसर';
+
+  @override
+  String get digitalPortfolioProject => 'डिजिटल पोर्टफोलियो प्रोजेक्ट';
+
+  @override
+  String get levelTitle1 => 'डिवाइस एक्सप्लोरर';
+
+  @override
+  String get levelTitle2 => 'स्क्रीन नेवीगेटर';
+
+  @override
+  String get levelTitle3 => 'ऐप मास्टर';
+
+  @override
+  String get levelTitle4 => 'भविष्य हीरो';
+
+  @override
+  String get levelTitle5 => 'शिक्षण ऐप विशेषज्ञ';
+
+  @override
+  String get levelTitle6 => 'टाइपिंग चैंपियन';
+
+  @override
+  String get levelTitle7 => 'प्रेजेंटेशन प्रो';
+
+  @override
+  String get levelTitle8 => 'फाइल ऑर्गनाइज़र';
+
+  @override
+  String get levelTitle9 => 'इंटरनेट एक्सप्लोरर';
+
+  @override
+  String get levelTitle10 => 'सर्च मास्टर';
+
+  @override
+  String get levelTitle11 => 'सुरक्षा अभिभावक';
+
+  @override
+  String get levelTitle12 => 'डिजिटल नागरिक';
+
+  @override
+  String get levelTitle13 => 'ईमेल विशेषज्ञ';
+
+  @override
+  String get levelTitle14 => 'संदेश मास्टर';
+
+  @override
+  String get levelTitle15 => 'प्रगति ट्रैकर';
+
+  @override
+  String get levelTitle16 => 'टीम प्लेयर';
+
+  @override
+  String get levelTitle17 => 'शौक शिकारी';
+
+  @override
+  String get levelTitle18 => 'पैसे संरक्षक';
+
+  @override
+  String get levelTitle19 => 'करियर एक्सप्लोरर';
+
+  @override
+  String get levelTitle20 => 'पोर्टफोलियो निर्माता';
+
+  @override
+  String get levelDescription1 => 'इंटरैक्टिव गेम्स के माध्यम से विभिन्न प्रकार के उपकरणों के बारे में जानें और उनके मुख्य भागों की पहचान करें।';
+
+  @override
+  String get levelDescription2 => 'आइकन हंट और कर्सर माएस्त्रो मिनी-गेम्स के माध्यम से डेस्कटॉप नेवीगेशन में महारत हासिल करें!';
+
+  @override
+  String get levelDescription3 => 'ऐप कैटेगरीज़ का अन्वेषण करें और ऐप सॉर्टर चैलेंज के माध्यम से स्मार्ट संगठन सीखें!';
+
+  @override
+  String get levelDescription4 => 'आकर्षक चुनौतियों और वास्तविक जीवन के परिदृश्यों के माध्यम से डिजिटल कौशल के महत्व की खोज करें।';
+
+  @override
+  String get levelDescription5 => 'हमारे शिक्षण प्लेटफॉर्म में महारत हासिल करें और शैक्षणिक ऐप्स का उपयोग करने में आत्मविश्वास बनाएं।';
+
+  @override
+  String get levelDescription6 => 'मज़ेदार खेलों के माध्यम से टाइपिंग कौशल विकसित करें और उचित कीबोर्ड तकनीकें सीखें।';
+
+  @override
+  String get levelDescription7 => 'डिजिटल टूल्स और डिज़ाइन सिद्धांतों का उपयोग करके आकर्षक प्रेजेंटेशन बनाएं।';
+
+  @override
+  String get levelDescription8 => 'फाइलों, फ़ोल्डरों और डिजिटल दस्तावेज़ों को कुशलता से व्यवस्थित करना सीखें।';
+
+  @override
+  String get levelDescription9 => 'समझें कि इंटरनेट कैसे काम करता है और सुरक्षित ब्राउज़िंग प्रथाओं का अन्वेषण करें।';
+
+  @override
+  String get levelDescription10 => 'सर्च तकनीकों में महारत हासिल करें और ऑनलाइन विश्वसनीय जानकारी खोजना सीखें।';
+
+  @override
+  String get levelDescription11 => 'आवश्यक ऑनलाइन सुरक्षा प्रथाएं सीखें और अपनी सुरक्षा करने का तरीका जानें।';
+
+  @override
+  String get levelDescription12 => 'डिजिटल नागरिकता और जिम्मेदार ऑनलाइन व्यवहार को समझें।';
+
+  @override
+  String get levelDescription13 => 'ईमेल की मूल बातें, शिष्टाचार और संचार कौशल सीखें।';
+
+  @override
+  String get levelDescription14 => 'मैसेजिंग ऐप सुरक्षा और उचित संचार प्रथाओं को समझें।';
+
+  @override
+  String get levelDescription15 => 'अपनी शिक्षण प्रगति को ट्रैक करना और डिजिटल लक्ष्य निर्धारित करना सीखें।';
+
+  @override
+  String get levelDescription16 => 'ऑनलाइन सहयोग उपकरण और टीमवर्क कौशल की खोज करें।';
+
+  @override
+  String get levelDescription17 => 'डिजिटल दुनिया में शौक और रुचियों का सुरक्षित अन्वेषण करें।';
+
+  @override
+  String get levelDescription18 => 'डिजिटल भुगतान, ऑनलाइन शॉपिंग सुरक्षा और वित्तीय साक्षरता के बारे में जानें।';
+
+  @override
+  String get levelDescription19 => 'डिजिटल करियर अवसरों और भविष्य के कौशल का अन्वेषण करें।';
+
+  @override
+  String get levelDescription20 => 'अपने कौशल और उपलब्धियों को प्रदर्शित करने वाला अपना डिजिटल पोर्टफोलियो बनाएं।';
+
+  @override
+  String get levelObjective1 => 'छात्र विभिन्न प्रकार के उपकरणों की पहचान करेंगे और उनके मुख्य भागों को समझेंगे।';
+
+  @override
+  String get levelObjective2 => 'छात्र सामान्य डेस्कटॉप आइकन की पहचान करेंगे और बुनियादी माउस/टच नेवीगेशन में महारत हासिल करेंगे।';
+
+  @override
+  String get levelObjective3 => 'छात्र ऐप्स को उद्देश्य के अनुसार वर्गीकृत करेंगे और ऐप संगठन सिद्धांतों को समझेंगे।';
+
+  @override
+  String get levelObjective4 => 'छात्र आधुनिक जीवन और भविष्य के करियर में डिजिटल कौशल के महत्व को समझेंगे।';
+
+  @override
+  String get levelObjective5 => 'छात्र आत्मविश्वास से शैक्षणिक ऐप्स का नेवीगेशन करेंगे और शिक्षण सुविधाओं का उपयोग करेंगे।';
+
+  @override
+  String get levelObjective6 => 'छात्र उचित टाइपिंग तकनीक विकसित करेंगे और कीबोर्डिंग गति में सुधार करेंगे।';
+
+  @override
+  String get levelObjective7 => 'छात्र डिजिटल डिज़ाइन सिद्धांतों का उपयोग करके प्रभावी प्रेजेंटेशन बनाएंगे।';
+
+  @override
+  String get levelObjective8 => 'छात्र डिजिटल फाइलों को व्यवस्थित रूप से व्यवस्थित करेंगे और फ़ोल्डर संरचनाओं को समझेंगे।';
+
+  @override
+  String get levelObjective9 => 'छात्र इंटरनेट की बुनियादी बातें समझेंगे और सुरक्षित ब्राउज़िंग का अभ्यास करेंगे।';
+
+  @override
+  String get levelObjective10 => 'छात्र सर्च रणनीतियों में महारत हासिल करेंगे और जानकारी की विश्वसनीयता का मूल्यांकन करेंगे।';
+
+  @override
+  String get levelObjective11 => 'छात्र ऑनलाइन सुरक्षा प्रथाओं को लागू करेंगे और डिजिटल खतरों को पहचानेंगे।';
+
+  @override
+  String get levelObjective12 => 'छात्र जिम्मेदार डिजिटल नागरिकता और नैतिक ऑनलाइन व्यवहार का प्रदर्शन करेंगे।';
+
+  @override
+  String get levelObjective13 => 'छात्र पेशेवर ईमेल लिखेंगे और संचार शिष्टाचार को समझेंगे।';
+
+  @override
+  String get levelObjective14 => 'छात्र मैसेजिंग ऐप्स का सुरक्षित उपयोग करेंगे और उचित रूप से संवाद करेंगे।';
+
+  @override
+  String get levelObjective15 => 'छात्र शिक्षण प्रगति को ट्रैक करेंगे और प्राप्त करने योग्य डिजिटल लक्ष्य निर्धारित करेंगे।';
+
+  @override
+  String get levelObjective16 => 'छात्र डिजिटल टूल्स और प्लेटफॉर्म का उपयोग करके प्रभावी रूप से सहयोग करेंगे।';
+
+  @override
+  String get levelObjective17 => 'छात्र सुरक्षित रूप से रुचियों का अन्वेषण करेंगे और सकारात्मक ऑनलाइन समुदायों की खोज करेंगे।';
+
+  @override
+  String get levelObjective18 => 'छात्र डिजिटल भुगतानों को समझेंगे और सुरक्षित ऑनलाइन वित्तीय लेनदेन का अभ्यास करेंगे।';
+
+  @override
+  String get levelObjective19 => 'छात्र डिजिटल करियर पथों का अन्वेषण करेंगे और भविष्य की कौशल आवश्यकताओं को समझेंगे।';
+
+  @override
+  String get levelObjective20 => 'छात्र अपने कौशल को प्रदर्शित करने वाला एक व्यापक डिजिटल पोर्टफोलियो बनाएंगे।';
+
+  @override
+  String get levelTip1_1 => 'स्क्रीन, कीबोर्ड और माउस जैसे सामान्य डिवाइस भागों को देखें';
+
+  @override
+  String get levelTip1_2 => 'विभिन्न उपकरणों के अलग-अलग उद्देश्य होते हैं';
+
+  @override
+  String get levelTip1_3 => 'उपकरणों को सुरक्षित रूप से चालू और बंद करने का अभ्यास करें';
+
+  @override
+  String get levelTip1_4 => 'नए उपकरणों को संभालते समय मदद मांगें';
+
+  @override
+  String get levelTip2_1 => 'आइकन छोटी तस्वीरें हैं जो ऐप्स या फाइलों का प्रतिनिधित्व करती हैं';
+
+  @override
+  String get levelTip2_2 => 'ध्यान से देखें - प्रत्येक आइकन का अनोखा आकार और अर्थ होता है';
+
+  @override
+  String get levelTip2_3 => 'विभिन्न माउस क्रियाओं का अभ्यास करें: क्लिक, डबल-क्लिक, ड्रैग';
+
+  @override
+  String get levelTip2_4 => 'टच स्क्रीन पर, आत्मविश्वास से टैप और स्वाइप करें';
+
+  @override
+  String get levelTip3_1 => 'आसान पहुंच के लिए समान ऐप्स को एक साथ समूहीकृत करें';
+
+  @override
+  String get levelTip3_2 => 'जानें कि प्रत्येक ऐप कैटेगरी का उपयोग किस लिए किया जाता है';
+
+  @override
+  String get levelTip3_3 => 'नए ऐप्स डाउनलोड करने से पहले ऐप समीक्षाएं जांचें';
+
+  @override
+  String get levelTip3_4 => 'बैटरी बचाने के लिए काम पूरा होने पर ऐप्स बंद करें';
+
+  @override
+  String get levelTip4_1 => 'डिजिटल कौशल नए अवसरों के दरवाजे खोलते हैं';
+
+  @override
+  String get levelTip4_2 => 'तकनीक हमारे काम करने, सीखने और जुड़ने के तरीके को बदलती है';
+
+  @override
+  String get levelTip4_3 => 'भविष्य की सफलता के लिए जल्दी डिजिटल कौशल सीखना शुरू करें';
+
+  @override
+  String get levelTip4_4 => 'तकनीक के साथ आत्मविश्वास बनाने के लिए नियमित अभ्यास करें';
+
+  @override
+  String get levelTip5_1 => 'शिक्षण को अधिकतम करने के लिए शैक्षणिक ऐप्स की सभी सुविधाओं का अन्वेषण करें';
+
+  @override
+  String get levelTip5_2 => 'जब आप फंस जाएं तो सहायता अनुभागों का उपयोग करें';
+
+  @override
+  String get levelTip5_3 => 'प्रेरित रहने के लिए अपनी प्रगति को ट्रैक करें';
+
+  @override
+  String get levelTip5_4 => 'लंबे शिक्षण सत्रों के दौरान ब्रेक लें';
+
+  @override
+  String get levelTip6_1 => 'टाइपिंग करते समय अपनी उंगलियों को घुमावदार और तनावमुक्त रखें';
+
+  @override
+  String get levelTip6_2 => 'प्रत्येक कुंजी के लिए सही उंगली का उपयोग करें';
+
+  @override
+  String get levelTip6_3 => 'धीरे-धीरे शुरू करें और गति पर सटीकता पर ध्यान दें';
+
+  @override
+  String get levelTip6_4 => 'दैनिक छोटी अवधि के लिए टाइपिंग का अभ्यास करें';
+
+  @override
+  String get levelTip7_1 => 'स्लाइड्स को स्पष्ट, पढ़ने योग्य टेक्स्ट के साथ सरल रखें';
+
+  @override
+  String get levelTip7_2 => 'अपने संदेश का समर्थन करने के लिए छवियों और ग्राफिक्स का उपयोग करें';
+
+  @override
+  String get levelTip7_3 => 'प्रस्तुत करने से पहले अपनी प्रेजेंटेशन का अभ्यास करें';
+
+  @override
+  String get levelTip7_4 => 'अपने दर्शकों के साथ आंखों का संपर्क बनाएं';
+
+  @override
+  String get levelTip8_1 => 'वर्णनात्मक नामों के साथ फ़ोल्डर बनाएं';
+
+  @override
+  String get levelTip8_2 => 'फाइलों को तारीख, नाम या प्रकार के अनुसार क्रमबद्ध करें';
+
+  @override
+  String get levelTip8_3 => 'नियमित रूप से उन फाइलों को हटाएं जिनकी आपको अब आवश्यकता नहीं है';
+
+  @override
+  String get levelTip8_4 => 'महत्वपूर्ण फाइलों का कई स्थानों पर बैकअप लें';
+
+  @override
+  String get levelTip9_1 => 'इंटरनेट दुनिया भर के कंप्यूटरों को जोड़ता है';
+
+  @override
+  String get levelTip9_2 => 'वेबसाइटों के पते होते हैं जिन्हें URL कहा जाता है';
+
+  @override
+  String get levelTip9_3 => 'सुरक्षित कनेक्शन के लिए https:// देखें';
+
+  @override
+  String get levelTip9_4 => 'अपडेटेड सुरक्षा के साथ विश्वसनीय ब्राउज़र का उपयोग करें';
+
+  @override
+  String get levelTip10_1 => 'बेहतर सर्च परिणामों के लिए विशिष्ट कीवर्ड का उपयोग करें';
+
+  @override
+  String get levelTip10_2 => 'जानकारी की पुष्टि के लिए कई स्रोतों की जांच करें';
+
+  @override
+  String get levelTip10_3 => 'हाल की तारीखों और विश्वसनीय लेखकों की तलाश करें';
+
+  @override
+  String get levelTip10_4 => 'सटीक वाक्यांशों के लिए उद्धरण चिह्नों का उपयोग करें';
+
+  @override
+  String get levelTip11_1 => 'ऑनलाइन अजनबियों के साथ कभी भी व्यक्तिगत जानकारी साझा न करें';
+
+  @override
+  String get levelTip11_2 => 'प्रत्येक खाते के लिए मजबूत, अनोखे पासवर्ड का उपयोग करें';
+
+  @override
+  String get levelTip11_3 => 'सावधान रहें कि आप सार्वजनिक रूप से क्या पोस्ट करते हैं';
+
+  @override
+  String get levelTip11_4 => 'संदिग्ध ऑनलाइन गतिविधि के बारे में किसी विश्वसनीय वयस्क को बताएं';
+
+  @override
+  String get levelTip12_1 => 'ऑनलाइन दूसरों के साथ सम्मान और दयालुता से पेश आएं';
+
+  @override
+  String get levelTip12_2 => 'पोस्ट करने से पहले सोचें - शब्द दुख पहुंचा सकते हैं';
+
+  @override
+  String get levelTip12_3 => 'साइबर बुलिंग में भाग न लें';
+
+  @override
+  String get levelTip12_4 => 'अनुचित व्यवहार की रिपोर्ट अधिकारियों को करें';
+
+  @override
+  String get levelTip13_1 => 'स्पष्ट, विनम्र विषय पंक्तियां लिखें';
+
+  @override
+  String get levelTip13_2 => 'उचित अभिवादन और समापन का उपयोग करें';
+
+  @override
+  String get levelTip13_3 => 'भेजने से पहले वर्तनी और व्याकरण की जांच करें';
+
+  @override
+  String get levelTip13_4 => 'ईमेल को संक्षिप्त और मुद्दे पर रखें';
+
+  @override
+  String get levelTip14_1 => 'केवल उन लोगों को संदेश भेजें जिन्हें आप वास्तविक जीवन में जानते हैं';
+
+  @override
+  String get levelTip14_2 => 'फोटो या व्यक्तिगत विवरण साझा न करें';
+
+  @override
+  String get levelTip14_3 => 'यह नियंत्रित करने के लिए गोपनीयता सेटिंग्स का उपयोग करें कि कौन आपसे संपर्क कर सकता है';
+
+  @override
+  String get levelTip14_4 => 'अनुचित संपर्कों की रिपोर्ट करें और उन्हें ब्लॉक करें';
+
+  @override
+  String get levelTip15_1 => 'यथार्थवादी, प्राप्त करने योग्य लक्ष्य निर्धारित करें';
+
+  @override
+  String get levelTip15_2 => 'रास्ते में छोटी जीत का जश्न मनाएं';
+
+  @override
+  String get levelTip15_3 => 'नियमित रूप से अपनी प्रगति को ट्रैक करें';
+
+  @override
+  String get levelTip15_4 => 'जैसे-जैसे आप सीखते और बढ़ते हैं लक्ष्यों को समायोजित करें';
+
+  @override
+  String get levelTip16_1 => 'टीम के सदस्यों के विचारों को सम्मानपूर्वक सुनें';
+
+  @override
+  String get levelTip16_2 => 'टीम के सदस्यों के बीच कार्यों को निष्पक्ष रूप से साझा करें';
+
+  @override
+  String get levelTip16_3 => 'समय सीमा और अपेक्षाओं के बारे में स्पष्ट रूप से संवाद करें';
+
+  @override
+  String get levelTip16_4 => 'व्यवस्थित रहने के लिए सहयोग उपकरणों का उपयोग करें';
+
+  @override
+  String get levelTip17_1 => 'विश्वसनीय स्रोतों से शौकों पर अनुसंधान करें';
+
+  @override
+  String get levelTip17_2 => 'सुरक्षित बातचीत के लिए नियंत्रित समुदायों में शामिल हों';
+
+  @override
+  String get levelTip17_3 => 'ऑनलाइन मित्रों से व्यक्तिगत रूप से मिलने के बारे में सावधान रहें';
+
+  @override
+  String get levelTip17_4 => 'व्यक्तिगत जानकारी को निजी रखें';
+
+  @override
+  String get levelTip18_1 => 'केवल सुरक्षित, प्रतिष्ठित वेबसाइटों पर खरीदारी करें';
+
+  @override
+  String get levelTip18_2 => 'नियमित रूप से अपने खाते के विवरण की जांच करें';
+
+  @override
+  String get levelTip18_3 => 'कभी भी अपने पासवर्ड या पिन साझा न करें';
+
+  @override
+  String get levelTip18_4 => 'ऑनलाइन घोटालों और धोखाधड़ी से अवगत रहें';
+
+  @override
+  String get levelTip19_1 => 'विभिन्न तकनीकी करियर पथों का अन्वेषण करें';
+
+  @override
+  String get levelTip19_2 => 'अपनी डिजिटल परियोजनाओं का पोर्टफोलियो बनाएं';
+
+  @override
+  String get levelTip19_3 => 'रुचि के क्षेत्रों में पेशेवरों के साथ नेटवर्क बनाएं';
+
+  @override
+  String get levelTip19_4 => 'नई तकनीकों और कौशल सीखते रहें';
+
+  @override
+  String get levelTip20_1 => 'अपने सर्वोत्तम काम और उपलब्धियों को प्रदर्शित करें';
+
+  @override
+  String get levelTip20_2 => 'विभिन्न विषय क्षेत्रों की परियोजनाओं को शामिल करें';
+
+  @override
+  String get levelTip20_3 => 'अपनी शिक्षण प्रक्रिया का स्पष्ट विवरण लिखें';
+
+  @override
+  String get levelTip20_4 => 'नए काम के साथ नियमित रूप से अपने पोर्टफोलियो को अपडेट करें';
+
+  @override
+  String get challengeAppSorterQuestion => 'ऐप सॉर्टर: इन ऐप्स को सही बॉक्स में खींचें - सिस्टम सॉफ्टवेयर या एप्लिकेशन सॉफ्टवेयर!';
+
+  @override
+  String get challengeAppSorterExplanation => 'पूर्ण छँटाई! सिस्टम सॉफ्टवेयर (एंड्रॉइड, विंडोज, iOS) डिवाइस चलाता है। एप्लिकेशन सॉफ्टवेयर (कैलकुलेटर, पेंट, नोट्स) विशिष्ट कार्य करता है।';
+
+  @override
+  String get challengeAppManagementQuestion => 'आपने एक ड्राइंग ऐप खोला और अपनी कलाकृति पूरी की। आगे आपको क्या करना चाहिए?';
+
+  @override
+  String get challengeAppManagementExplanation => 'हमेशा पहले अपना काम सेव करें, फिर ऐप्स को ठीक से बंद करें ताकि आपका डिवाइस सुचारू रूप से चलता रहे।';
+
+  @override
+  String get challengeAppSafetyQuestion => 'अपने डिवाइस के लिए नए ऐप्स पाने का सबसे सुरक्षित तरीका कौन सा है?';
+
+  @override
+  String get challengeAppSafetyExplanation => 'आधिकारिक ऐप स्टोर उन्हें डाउनलोड के लिए उपलब्ध कराने से पहले ऐप्स की सुरक्षा जांचते हैं।';
+
+  @override
+  String get challengeAppTypesQuestion => 'प्रत्येक ऐप प्रकार को उसके उद्देश्य से मिलाएं:';
+
+  @override
+  String get challengeAppTypesExplanation => 'बहुत बढ़िया! प्रत्येक ऐप को विभिन्न कार्यों में आपकी मदद करने के लिए एक विशिष्ट उद्देश्य के लिए डिज़ाइन किया गया है।';
+
+  @override
+  String get challengeDigitalHeroesQuestion => 'डिजिटल हीरो मैच-अप: प्रत्येक व्यक्ति को इससे जोड़ें कि डिजिटल कौशल उनकी कैसे मदद करते हैं!';
+
+  @override
+  String get challengeDigitalHeroesExplanation => 'अद्भुत! आपने प्रत्येक डिजिटल हीरो को उनके उपकरणों से जोड़ा: किसान मौसम देखते हैं, दुकानदार डिजिटल भुगतान स्वीकार करते हैं, छात्र ऑनलाइन सीखते हैं, और डॉक्टर डिजिटल रिकॉर्ड रखते हैं।';
+
+  @override
+  String get challengeCareerBenefitsQuestion => 'डिजिटल कौशल एक ग्रामीण शिक्षक को अपने शिक्षण में सुधार करने में कैसे मदद करते हैं?';
+
+  @override
+  String get challengeCareerBenefitsExplanation => 'डिजिटल कौशल शिक्षकों को बेहतर शैक्षणिक संसाधन खोजने, आकर्षक पाठ बनाने और आवश्यकता पड़ने पर छात्रों को दूर से भी पढ़ाने में मदद करते हैं।';
+
+  @override
+  String get challengeCommunityImpactQuestion => 'एक गांव को सरकारी कार्यक्रम के लिए ऑनलाइन आवेदन करना है। डिजिटल कौशल का उपयोग करके कौन मदद कर सकता है?';
+
+  @override
+  String get challengeCommunityImpactExplanation => 'बुनियादी डिजिटल कौशल के साथ, कोई भी अपने समुदाय की सरकारी सेवाओं तक पहुंच, कार्यक्रमों के लिए आवेदन और ऑनलाइन संसाधनों से जुड़ने में मदद कर सकता है।';
+
+  @override
+  String get challengeFutureOpportunitiesQuestion => 'इन डिजिटल कौशलों को उनके द्वारा बनाए गए अवसरों से मिलाने के लिए खींचें:';
+
+  @override
+  String get challengeCursorMaestroQuestion1 => 'कर्सर मास्ट्रो: फाइल को फोल्डर में खींचें!';
+
+  @override
+  String get challengeCursorMaestroExplanation1 => 'बेहतरीन ड्रैगिंग तकनीक! क्लिक करें और होल्ड करें, फिर फाइलों को फोल्डर में खींचने के लिए माउस घुमाएं।';
+
+  @override
+  String get challengeCursorMaestroQuestion2 => 'कर्सर मास्ट्रो: तस्वीर खोलने के लिए डबल-क्लिक करें!';
+
+  @override
+  String get challengeCursorMaestroExplanation2 => 'परफेक्ट डबल-क्लिक! एक ही स्थान पर दो तेज़ क्लिक फाइलें और प्रोग्राम खोलते हैं।';
+
+  @override
+  String get challengeSlideDesignerQuestion1 => 'स्लाइड डिज़ाइनर: कार्य 1 - \"मेरा गांव\" के लिए एक शीर्षक स्लाइड बनाएं';
+
+  @override
+  String get challengeSlideDesignerExplanation1 => 'उत्कृष्ट! आपने एक सुंदर शीर्षक स्लाइड बनाई। एक अच्छी शीर्षक स्लाइड आपकी प्रस्तुति के विषय को स्पष्ट रूप से प्रस्तुत करती है।';
+
+  @override
+  String get challengeSlideDesignerQuestion2 => 'स्लाइड डिज़ाइनर: कार्य 2 - अपनी स्लाइड में फूल की तस्वीर जोड़ें';
+
+  @override
+  String get challengeSlideDesignerExplanation2 => 'शानदार! तस्वीरें प्रस्तुतियों को अधिक दिलचस्प बनाती हैं और आपके विचारों को बेहतर तरीके से समझाने में मदद करती हैं।';
+
+  @override
+  String get challengeSlideDesignerQuestion3 => 'स्लाइड डिज़ाइनर: कार्य 3 - अपनी प्रस्तुति के लिए एक अच्छा पृष्ठभूमि रंग चुनें';
+
+  @override
+  String get challengeSlideDesignerExplanation3 => 'बेहतरीन रंग पसंद! सही पृष्ठभूमि आपके टेक्स्ट को पढ़ने में आसान बनाती है और आपकी प्रस्तुति को पेशेवर दिखाती है।';
+
+  @override
+  String get challengePresentationTipsQuestion => 'एक अच्छी प्रस्तुति स्लाइड क्या बनाती है?';
+
+  @override
+  String get challengePresentationTipsExplanation => 'परफेक्ट! अच्छी स्लाइड्स में स्पष्ट शीर्षक, सरल टेक्स्ट जो पढ़ने में आसान हो, और तस्वीरें होती हैं जो आपके संदेश का समर्थन करती हैं।';
+
+  @override
+  String get challengeFileOrganizerQuestion => 'फाइल ऑर्गनाइज़र: यह डेस्कटॉप गंदा है! \"स्कूलवर्क\" और \"व्यक्तिगत\" के लिए फोल्डर बनाएं फिर इन फाइलों को व्यवस्थित करें।';
+
+  @override
+  String get challengeFileOrganizerExplanation => 'उत्कृष्ट संगठन! आपने उचित फोल्डर बनाए और सभी फाइलों को सही तरीके से छांटा। अब आप आसानी से अपना काम खोज सकते हैं!';
+
+  @override
+  String get challengeFileNamingQuestion => 'सोमवार के आपके गणित गृहकार्य वाली फाइल के लिए सबसे अच्छा नाम कौन सा है?';
+
+  @override
+  String get challengeFileNamingExplanation => 'परफेक्ट! \"Math_Homework_Monday.txt\" आपको बताता है कि फाइल में वास्तव में क्या है और यह कब से है।';
+
+  @override
+  String get challengeFolderStructureQuestion => 'आपके पास कई स्कूली विषय हैं। आपको अपने स्कूलवर्क फोल्डर को कैसे व्यवस्थित करना चाहिए?';
+
+  @override
+  String get challengeFolderStructureExplanation => 'उत्कृष्ट पसंद! प्रत्येक विषय के लिए अलग फोल्डर विशिष्ट गृहकार्य या नोट्स को जल्दी खोजना आसान बनाता है।';
+
+  @override
+  String get challengeBackupImportanceQuestion => 'अपनी महत्वपूर्ण स्कूली फाइलों को खोने से बचाने के लिए उनका बैकअप लेना महत्वपूर्ण है।';
+
+  @override
+  String get challengeBackupImportanceExplanation => 'सत्य! फाइलों का बैकअप लेना आपकी मेहनत की सुरक्षा करता है। महत्वपूर्ण फाइलों को कई स्थानों या क्लाउड स्टोरेज में सेव करें।';
+
+  @override
+  String get challengePasswordSafetyQuestion => 'सबसे मजबूत पासवर्ड कौन सा है?';
+
+  @override
+  String get challengePasswordSafetyExplanation => 'उत्कृष्ट! \"MyVillage2024!\" मजबूत है क्योंकि यह अक्षरों, संख्याओं और प्रतीकों को जोड़ता है। यह कुछ ऐसा भी है जिसे आप याद रख सकते हैं।';
+
+  @override
+  String get challengePositiveCommunicationQuestion => 'ऑनलाइन किसी से असहमत होने का सबसे अच्छा तरीका क्या है?';
+
+  @override
+  String get challengePositiveCommunicationExplanation => 'परफेक्ट! सम्मानजनक असहमति परिपक्वता दिखाती है और सकारात्मक ऑनलाइन चर्चा बनाने में मदद करती है जहां हर कोई सीख सकता है।';
+
+  @override
+  String get challengeAppropriateLanguageQuestion => 'स्कूल ग्रुप चैट के लिए कौन सा संदेश सबसे उपयुक्त है?';
+
+  @override
+  String get challengeAppropriateLanguageExplanation => 'परफेक्ट! विनम्रता से मदद मांगना बातचीत को सकारात्मक और सीखने पर केंद्रित रखता है।';
+
+  @override
+  String get challengePaymentSafetyQuestion => 'आपका दोस्त पैसे ट्रांसफर करने में मदद के लिए आपका UPI PIN मांगता है। आपको क्या करना चाहिए?';
+
+  @override
+  String get challengePaymentSafetyExplanation => 'परफेक्ट! PIN आपके पैसे की चाबी की तरह हैं - उन्हें कभी भी किसी के साथ साझा न करें, यहां तक कि करीबी दोस्तों या परिवार के साथ भी नहीं।';
+
+  @override
+  String get optionLeaveRunning => 'इसे बैकग्राउंड में चलने दें';
+
+  @override
+  String get optionSaveAndClose => 'अपना काम सेव करें और ऐप को ठीक से बंद करें';
+
+  @override
+  String get optionTurnOffImmediately => 'डिवाइस को तुरंत बंद कर दें';
+
+  @override
+  String get optionOpenMoreApps => 'और ऐप्स खोलें';
+
+  @override
+  String get optionDownloadUnknown => 'अज्ञात वेबसाइटों से डाउनलोड करें';
+
+  @override
+  String get optionUseOfficialStores => 'Google Play या App Store जैसे आधिकारिक ऐप स्टोर का उपयोग करें';
+
+  @override
+  String get optionGetFromFriends => 'ईमेल के माध्यम से दोस्तों से ऐप्स प्राप्त करें';
+
+  @override
+  String get optionDownloadAnyWebsite => 'किसी भी वेबसाइट से डाउनलोड करें';
+
+  @override
+  String get optionCalculatorMath => 'कैलकुलेटर - गणित के कार्य';
+
+  @override
+  String get optionMusicPlayerSongs => 'म्यूजिक प्लेयर - गाने बजाना';
+
+  @override
+  String get optionNotesReminders => 'नोट्स - रिमाइंडर लिखना';
+
+  @override
+  String get optionCameraPhotos => 'कैमरा - तस्वीरें लेना';
+
+  @override
+  String get optionFarmerWeather => 'मौसम ऐप का उपयोग करने वाला किसान';
+
+  @override
+  String get optionShopkeeperQR => 'भुगतान QR कोड वाला दुकानदार';
+
+  @override
+  String get optionStudentOnline => 'ऑनलाइन सीखने वाला छात्र';
+
+  @override
+  String get optionDoctorRecords => 'डिजिटल रिकॉर्ड का उपयोग करने वाला डॉक्टर';
+
+  @override
+  String get optionMakeTeachingHarder => 'वे शिक्षण को कठिन बनाते हैं';
+
+  @override
+  String get optionAllowAccessResources => 'वे ऑनलाइन संसाधनों, शैक्षणिक वीडियो और वर्चुअल क्लासरूम तक पहुंच की अनुमति देते हैं';
+
+  @override
+  String get optionOnlyEntertainment => 'वे केवल मनोरंजन के लिए उपयोगी हैं';
+
+  @override
+  String get optionReplaceStudents => 'वे छात्रों की आवश्यकता को बदल देते हैं';
+
+  @override
+  String get optionNoOneRural => 'कोई नहीं - ग्रामीण लोग प्रौद्योगिकी का उपयोग नहीं कर सकते';
+
+  @override
+  String get optionAnyoneBasicSkills => 'कोई भी जिसने बुनियादी कंप्यूटर और इंटरनेट कौशल सीखे हैं';
+
+  @override
+  String get optionOnlyCityPeople => 'केवल शहरी लोग यह कर सकते हैं';
+
+  @override
+  String get optionImpossibleVillage => 'गांव से यह करना असंभव है';
+
+  @override
+  String get optionOnlineSellingBusiness => 'ऑनलाइन बिक्री - अपना व्यवसाय शुरू करें';
+
+  @override
+  String get optionVideoCallingFamily => 'वीडियो कॉलिंग - दूर के परिवार से जुड़ें';
+
+  @override
+  String get optionDigitalBankingSafe => 'डिजिटल बैंकिंग - पैसे सुरक्षित रूप से बचाएं';
+
+  @override
+  String get optionOnlineLearningCourse => 'ऑनलाइन सीखना - दुनिया भर में कोई भी कोर्स एक्सेस करें';
+
+  @override
+  String get optionLotsTextColors => 'बहुत सारा टेक्स्ट और कई रंग';
+
+  @override
+  String get optionClearTitleSimple => 'स्पष्ट शीर्षक, सरल टेक्स्ट, और प्रासंगिक तस्वीरें';
+
+  @override
+  String get optionFancyAnimations => 'फैंसी एनीमेशन और तेज़ रंग';
+
+  @override
+  String get optionOnlyPictures => 'केवल तस्वीरें बिना टेक्स्ट के';
+
+  @override
+  String get optionFile1Txt => 'file1.txt';
+
+  @override
+  String get optionMathHomeworkMonday => 'Math_Homework_Monday.txt';
+
+  @override
+  String get optionHomeworkTxt => 'homework.txt';
+
+  @override
+  String get optionUntitledTxt => 'untitled.txt';
+
+  @override
+  String get optionOneBigFolder => 'सब कुछ एक बड़े फोल्डर में डालें';
+
+  @override
+  String get optionSeparateSubjectFolders => 'प्रत्येक विषय के लिए अलग फोल्डर बनाएं (गणित, अंग्रेजी, विज्ञान, आदि)';
+
+  @override
+  String get optionFoldersByDate => 'केवल तारीख के अनुसार फोल्डर बनाएं';
+
+  @override
+  String get optionNoFolders => 'बिल्कुल फोल्डर का उपयोग न करें';
+
+  @override
+  String get optionPassword123456 => '123456';
+
+  @override
+  String get optionPasswordPassword => 'password';
+
+  @override
+  String get optionPasswordMyVillage => 'MyVillage2024!';
+
+  @override
+  String get optionPasswordAbcdef => 'abcdef';
+
+  @override
+  String get optionUseCapitalLetters => 'गंभीरता दिखाने के लिए सभी बड़े अक्षरों का उपयोग करें';
+
+  @override
+  String get optionExplainPolitely => 'अपनी अलग राय को विनम्रता और सम्मान के साथ समझाएं';
+
+  @override
+  String get optionPostMeanComments => 'व्यक्ति के बारे में मीन कमेंट पोस्ट करें';
+
+  @override
+  String get optionGetFriendsArgue => 'अपने सभी दोस्तों से उनके साथ बहस करवाएं';
+
+  @override
+  String get optionHomeworkBoring => 'OMG यह होमवर्क बहुत बोरिंग है 😴';
+
+  @override
+  String get optionHelpQuestion3 => 'क्या कोई मुझे प्रश्न 3 को समझने में मदद कर सकता है?';
+
+  @override
+  String get optionHateClass => 'मुझे यह क्लास से नफरत है!!!';
+
+  @override
+  String get optionTeacherAnnoying => 'शिक्षक बहुत परेशान करने वाला है';
+
+  @override
+  String get optionGivePinFriend => 'उन्हें PIN दे दें क्योंकि वे आपके दोस्त हैं';
+
+  @override
+  String get optionNeverSharePin => 'अपना PIN कभी भी किसी के साथ साझा न करें, यहां तक कि दोस्तों के साथ भी नहीं';
+
+  @override
+  String get optionShareOnlyOnce => 'इसे केवल इस बार साझा करें';
+
+  @override
+  String get optionWriteDownPin => 'उनके लिए इसे लिख दें';
+
+  @override
+  String get gameActionTitleSlideCreated => 'शीर्षक स्लाइड बनाई गई!';
+
+  @override
+  String get gameActionLetMeTryAgain => 'मुझे फिर से कोशिश करने दें';
+
+  @override
+  String get gameActionShowMeHow => 'मुझे दिखाएं कि कैसे';
+
+  @override
+  String get gameActionPerfectDesign => 'परफेक्ट डिज़ाइन!';
+
+  @override
+  String get gameActionPictureAdded => 'तस्वीर जोड़ी गई!';
+
+  @override
+  String get gameActionHelpPosition => 'इसे स्थिति में रखने में मेरी मदद करें';
+
+  @override
+  String get gameActionChooseDifferentPicture => 'अलग तस्वीर चुनें';
+
+  @override
+  String get gameActionLooksGreat => 'बहुत अच्छा लग रहा है!';
+
+  @override
+  String get gameActionBackgroundChosen => 'पृष्ठभूमि चुनी गई!';
+
+  @override
+  String get gameActionTryDifferentColor => 'अलग रंग आज़माएं';
+
+  @override
+  String get gameActionLooksBeautiful => 'सुंदर दिख रहा है!';
+
+  @override
+  String get gameActionPerfectChoice => 'परफेक्ट चॉइस!';
+
+  @override
+  String get gameActionAllFilesOrganized => 'सभी फाइलें व्यवस्थित!';
+
+  @override
+  String get gameActionHelpMeSort => 'मुझे छांटने में मदद करें';
+
+  @override
+  String get gameActionPerfectOrganization => 'परफेक्ट ऑर्गनाइज़ेशन!';
+
+  @override
+  String get gameActionSuccessfullyMoved => 'सफलतापूर्वक स्थानांतरित!';
+
+  @override
+  String get gameActionTryAgain => 'फिर से कोशिश करें';
+
+  @override
+  String get gameActionAlmostThere => 'लगभग हो गया!';
+
+  @override
+  String get gameActionPerfectTechnique => 'परफेक्ट तकनीक!';
+
+  @override
+  String get gameActionPictureOpened => 'तस्वीर खोली गई!';
+
+  @override
+  String get gameActionSingleClickDetected => 'सिंगल क्लिक का पता चला';
+
+  @override
+  String get gameActionPerfectTiming => 'परफेक्ट टाइमिंग!';
+}

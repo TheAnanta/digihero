@@ -5,6 +5,7 @@ import 'dart:async';
 import 'dart:math' as math;
 import '../../../core/constants/app_constants.dart';
 import '../../../core/services/game_service.dart';
+import '../../../l10n/app_localizations.dart';
 import 'age_input_screen.dart';
 import '../../game/screens/game_home_screen.dart';
 
@@ -266,7 +267,8 @@ class _SplashScreenState extends State<SplashScreen>
     return Column(
       children: [
         Text(
-          'Digital Literacy Adventure',
+          AppLocalizations.of(context)?.splashTagline ??
+              'Digital Literacy Adventure',
           style: TextStyle(
             fontSize: 20,
             color: Colors.white.withOpacity(0.9),
@@ -316,8 +318,9 @@ class _SplashScreenState extends State<SplashScreen>
                 size: 24,
               ),
               const SizedBox(width: 12),
-              const Text(
-                'Tap to Start Adventure',
+              Text(
+                AppLocalizations.of(context)?.splashStartButton ??
+                    'Tap to Start Adventure',
                 style: TextStyle(
                   fontSize: 18,
                   color: Colors.white,

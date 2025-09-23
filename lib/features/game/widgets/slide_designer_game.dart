@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import '../../../core/utils/level_content_localizer.dart';
 import 'dart:math' as math;
 
 class SlideDesignerGame extends StatefulWidget {
@@ -20,11 +21,11 @@ class _SlideDesignerGameState extends State<SlideDesignerGame>
     with TickerProviderStateMixin {
   late AnimationController _glowController;
   late AnimationController _successController;
-  
+
   String task = '';
   Map<String, dynamic> requirements = {};
   List<String> availableTools = [];
-  
+
   // Slide content
   String slideTitle = '';
   String slideSubtitle = '';
@@ -34,36 +35,37 @@ class _SlideDesignerGameState extends State<SlideDesignerGame>
   bool hasSubtitle = false;
   bool hasBackground = false;
   bool hasImage = false;
-  
+
   bool isComplete = false;
   List<String> completedRequirements = [];
-  
+
   // UI controllers
   TextEditingController titleController = TextEditingController();
   TextEditingController subtitleController = TextEditingController();
-  
+
   @override
   void initState() {
     super.initState();
-    
+
     _glowController = AnimationController(
       duration: const Duration(milliseconds: 2000),
       vsync: this,
     )..repeat(reverse: true);
-    
+
     _successController = AnimationController(
       duration: const Duration(milliseconds: 1500),
       vsync: this,
     );
-    
+
     _initializeGame();
   }
 
   void _initializeGame() {
     task = widget.gameData['task'] ?? 'create_title_slide';
-    requirements = Map<String, dynamic>.from(widget.gameData['requirements'] ?? {});
+    requirements =
+        Map<String, dynamic>.from(widget.gameData['requirements'] ?? {});
     availableTools = List<String>.from(widget.gameData['tools'] ?? []);
-    
+
     // Set default values based on requirements
     if (requirements['title'] != null) {
       slideTitle = requirements['title'];
@@ -259,7 +261,7 @@ class _SlideDesignerGameState extends State<SlideDesignerGame>
       setState(() {
         completedRequirements.add(requirement);
       });
-      
+
       // Check if all requirements are met
       _checkCompletion();
     }
@@ -268,7 +270,7 @@ class _SlideDesignerGameState extends State<SlideDesignerGame>
   void _checkCompletion() {
     final requiredTasks = requirements.keys.toList();
     bool allCompleted = true;
-    
+
     for (String requirement in requiredTasks) {
       switch (requirement) {
         case 'title':
@@ -285,14 +287,14 @@ class _SlideDesignerGameState extends State<SlideDesignerGame>
           break;
       }
     }
-    
+
     if (allCompleted && !isComplete) {
       setState(() {
         isComplete = true;
       });
-      
+
       _successController.forward();
-      
+
       Future.delayed(const Duration(milliseconds: 1500), () {
         widget.onComplete(true, 100);
       });
@@ -334,7 +336,7 @@ class _SlideDesignerGameState extends State<SlideDesignerGame>
                 ),
               ),
             ),
-          
+
           // Title
           if (hasTitle && slideTitle.isNotEmpty)
             Positioned(
@@ -351,7 +353,7 @@ class _SlideDesignerGameState extends State<SlideDesignerGame>
                 textAlign: TextAlign.center,
               ),
             ),
-          
+
           // Subtitle
           if (hasSubtitle && slideSubtitle.isNotEmpty)
             Positioned(
@@ -367,7 +369,7 @@ class _SlideDesignerGameState extends State<SlideDesignerGame>
                 textAlign: TextAlign.center,
               ),
             ),
-          
+
           // Image
           if (hasImage && selectedImage.isNotEmpty)
             Positioned(
@@ -391,8 +393,9 @@ class _SlideDesignerGameState extends State<SlideDesignerGame>
             ),
         ],
       ),
-    ).animate(target: isComplete ? 1 : 0)
-     .shimmer(duration: 1000.ms, color: Colors.gold.withOpacity(0.3));
+    )
+        .animate(target: isComplete ? 1 : 0)
+        .shimmer(duration: 1000.ms, color: Colors.amber.withOpacity(0.3));
   }
 
   Widget _buildToolbox() {
@@ -432,13 +435,17 @@ class _SlideDesignerGameState extends State<SlideDesignerGame>
             runSpacing: 8,
             children: [
               if (availableTools.contains('text_box'))
-                _buildToolButton('Add Title', Icons.title, Colors.blue, _addTitle),
+                _buildToolButton(
+                    'Add Title', Icons.title, Colors.blue, _addTitle),
               if (availableTools.contains('text_box'))
-                _buildToolButton('Add Subtitle', Icons.subtitles, Colors.green, _addSubtitle),
+                _buildToolButton('Add Subtitle', Icons.subtitles, Colors.green,
+                    _addSubtitle),
               if (availableTools.contains('image_gallery'))
-                _buildToolButton('Add Picture', Icons.image, Colors.orange, _addImage),
+                _buildToolButton(
+                    'Add Picture', Icons.image, Colors.orange, _addImage),
               if (availableTools.contains('background_selector'))
-                _buildToolButton('Background', Icons.color_lens, Colors.purple, _changeBackground),
+                _buildToolButton('Background', Icons.color_lens, Colors.purple,
+                    _changeBackground),
             ],
           ),
         ],
@@ -446,7 +453,8 @@ class _SlideDesignerGameState extends State<SlideDesignerGame>
     );
   }
 
-  Widget _buildToolButton(String label, IconData icon, Color color, VoidCallback onPressed) {
+  Widget _buildToolButton(
+      String label, IconData icon, Color color, VoidCallback onPressed) {
     return ElevatedButton.icon(
       onPressed: onPressed,
       icon: Icon(icon, size: 18),
@@ -501,7 +509,7 @@ class _SlideDesignerGameState extends State<SlideDesignerGame>
   Widget _buildTaskItem(String requirement) {
     bool completed = completedRequirements.contains(requirement);
     String taskName = _getTaskName(requirement);
-    
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
@@ -522,9 +530,10 @@ class _SlideDesignerGameState extends State<SlideDesignerGame>
           ),
         ],
       ),
-    ).animate(target: completed ? 1 : 0)
-     .scale(begin: const Offset(1.0, 1.0), end: const Offset(1.02, 1.02))
-     .shimmer(duration: 500.ms, color: Colors.green.withOpacity(0.3));
+    )
+        .animate(target: completed ? 1 : 0)
+        .scale(begin: const Offset(1.0, 1.0), end: const Offset(1.02, 1.02))
+        .shimmer(duration: 500.ms, color: Colors.green.withOpacity(0.3));
   }
 
   String _getTaskName(String requirement) {
@@ -574,7 +583,7 @@ class _SlideDesignerGameState extends State<SlideDesignerGame>
 
   Widget _buildSuccessOverlay() {
     if (!isComplete) return const SizedBox.shrink();
-    
+
     return Positioned.fill(
       child: Container(
         color: Colors.green.withOpacity(0.9),
@@ -586,12 +595,13 @@ class _SlideDesignerGameState extends State<SlideDesignerGame>
                 Icons.slideshow,
                 size: 100,
                 color: Colors.white,
-              ).animate(controller: _successController)
-               .rotate(begin: 0, end: 0.5)
-               .scale(begin: const Offset(0.8, 0.8), end: const Offset(1.2, 1.2)),
-              
+              )
+                  .animate(controller: _successController)
+                  .rotate(begin: 0, end: 0.5)
+                  .scale(
+                      begin: const Offset(0.8, 0.8),
+                      end: const Offset(1.2, 1.2)),
               const SizedBox(height: 20),
-              
               const Text(
                 'Slide Created!',
                 style: TextStyle(
@@ -600,9 +610,7 @@ class _SlideDesignerGameState extends State<SlideDesignerGame>
                   color: Colors.white,
                 ),
               ),
-              
               const SizedBox(height: 10),
-              
               const Text(
                 'You\'ve designed a beautiful presentation slide!',
                 style: TextStyle(
@@ -611,9 +619,7 @@ class _SlideDesignerGameState extends State<SlideDesignerGame>
                 ),
                 textAlign: TextAlign.center,
               ),
-              
               const SizedBox(height: 10),
-              
               const Text(
                 'Great presentations communicate ideas clearly!',
                 style: TextStyle(
@@ -666,8 +672,10 @@ class _SlideDesignerGameState extends State<SlideDesignerGame>
                     ],
                   ),
                   child: Text(
-                    widget.gameData['instructions'] ?? 
-                    'Use the toolbox to design your slide!',
+                    LevelContentLocalizer.getLocalizedInstruction(
+                        context,
+                        widget.gameData['instructions'] ??
+                            'Use the toolbox to design your slide!'),
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
@@ -695,9 +703,9 @@ class _SlideDesignerGameState extends State<SlideDesignerGame>
                           ],
                         ),
                       ),
-                      
+
                       const SizedBox(width: 20),
-                      
+
                       // Right column - Slide preview
                       Expanded(
                         flex: 3,

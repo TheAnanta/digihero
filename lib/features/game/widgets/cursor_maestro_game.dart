@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'dart:math' as math;
+import '../../../core/utils/level_content_localizer.dart';
 
 class CursorMaestroGame extends StatefulWidget {
   final Map<String, dynamic> gameData;
@@ -19,7 +21,7 @@ class _CursorMaestroGameState extends State<CursorMaestroGame>
     with TickerProviderStateMixin {
   late AnimationController _instructionController;
   late AnimationController _successController;
-  
+
   String action = '';
   String sourceItem = '';
   String targetLocation = '';
@@ -27,7 +29,7 @@ class _CursorMaestroGameState extends State<CursorMaestroGame>
   bool showInstructions = true;
   int clickCount = 0;
   DateTime? lastClickTime;
-  
+
   Offset? dragStart;
   Offset? dragEnd;
   bool isDragging = false;
@@ -36,17 +38,17 @@ class _CursorMaestroGameState extends State<CursorMaestroGame>
   @override
   void initState() {
     super.initState();
-    
+
     _instructionController = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,
     )..repeat(reverse: true);
-    
+
     _successController = AnimationController(
       duration: const Duration(milliseconds: 800),
       vsync: this,
     );
-    
+
     _initializeGame();
   }
 
@@ -54,7 +56,7 @@ class _CursorMaestroGameState extends State<CursorMaestroGame>
     action = widget.gameData['action'] ?? 'drag_to_folder';
     sourceItem = widget.gameData['sourceItem'] ?? 'document_file';
     targetLocation = widget.gameData['targetLocation'] ?? 'my_folder';
-    
+
     // Show instructions for a few seconds then hide
     Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
@@ -74,16 +76,17 @@ class _CursorMaestroGameState extends State<CursorMaestroGame>
 
   void _handleSingleClick() {
     final now = DateTime.now();
-    
-    if (lastClickTime != null && now.difference(lastClickTime!).inMilliseconds < 500) {
+
+    if (lastClickTime != null &&
+        now.difference(lastClickTime!).inMilliseconds < 500) {
       // This is a double click
       _handleDoubleClick();
       return;
     }
-    
+
     lastClickTime = now;
     clickCount = 1;
-    
+
     // Wait to see if there's a second click
     Future.delayed(const Duration(milliseconds: 500), () {
       if (clickCount == 1 && action == 'single_click') {
@@ -138,9 +141,9 @@ class _CursorMaestroGameState extends State<CursorMaestroGame>
     setState(() {
       isComplete = true;
     });
-    
+
     _successController.forward();
-    
+
     Future.delayed(const Duration(milliseconds: 1200), () {
       widget.onComplete(true, 90);
     });
@@ -190,9 +193,10 @@ class _CursorMaestroGameState extends State<CursorMaestroGame>
             ],
           ),
         ),
-      ).animate(target: showInstructions ? 1 : 0)
-       .shimmer(duration: 1000.ms, color: Colors.yellow.withOpacity(0.3))
-       .scale(begin: const Offset(1.0, 1.0), end: const Offset(1.05, 1.05)),
+      )
+          .animate(target: showInstructions ? 1 : 0)
+          .shimmer(duration: 1000.ms, color: Colors.yellow.withOpacity(0.3))
+          .scale(begin: const Offset(1.0, 1.0), end: const Offset(1.05, 1.05)),
     );
   }
 
@@ -237,9 +241,10 @@ class _CursorMaestroGameState extends State<CursorMaestroGame>
             ),
           ],
         ),
-      ).animate(target: isDragging ? 1 : 0)
-       .scale(begin: const Offset(1.0, 1.0), end: const Offset(1.1, 1.1))
-       .shimmer(duration: 800.ms, color: Colors.orange.withOpacity(0.3)),
+      )
+          .animate(target: isDragging ? 1 : 0)
+          .scale(begin: const Offset(1.0, 1.0), end: const Offset(1.1, 1.1))
+          .shimmer(duration: 800.ms, color: Colors.orange.withOpacity(0.3)),
     );
   }
 
@@ -250,7 +255,8 @@ class _CursorMaestroGameState extends State<CursorMaestroGame>
 
     return CustomPaint(
       painter: DragLinePainter(
-        start: Offset(dragStart!.dx + 140, dragStart!.dy + 300), // Adjust for file position
+        start: Offset(dragStart!.dx + 140,
+            dragStart!.dy + 300), // Adjust for file position
         end: Offset(dragEnd!.dx + 140, dragEnd!.dy + 300),
       ),
       size: Size.infinite,
@@ -259,10 +265,10 @@ class _CursorMaestroGameState extends State<CursorMaestroGame>
 
   Widget _buildInstructions() {
     if (!showInstructions) return const SizedBox.shrink();
-    
-    String instructionText = widget.gameData['instructions'] ?? 
-        _getDefaultInstructions();
-    
+
+    String instructionText = LevelContentLocalizer.getLocalizedInstruction(
+        context, widget.gameData['instructions'] ?? _getDefaultInstructions());
+
     return Positioned(
       top: 50,
       left: 20,
@@ -309,16 +315,19 @@ class _CursorMaestroGameState extends State<CursorMaestroGame>
           ],
         ),
       ),
-    ).animate().slideY(
-      begin: -1,
-      end: 0,
-      duration: 500.ms,
-    ).fadeIn();
+    )
+        .animate()
+        .slideY(
+          begin: -1,
+          end: 0,
+          duration: 500.ms,
+        )
+        .fadeIn();
   }
 
   Widget _buildSuccessOverlay() {
     if (!isComplete) return const SizedBox.shrink();
-    
+
     return Positioned.fill(
       child: Container(
         color: Colors.green.withOpacity(0.9),
@@ -330,15 +339,14 @@ class _CursorMaestroGameState extends State<CursorMaestroGame>
                 Icons.mouse,
                 size: 100,
                 color: Colors.white,
-              ).animate(controller: _successController)
-               .rotate(begin: 0, end: 0.1)
-               .then()
-               .rotate(begin: 0.1, end: -0.1)
-               .then()
-               .rotate(begin: -0.1, end: 0),
-              
+              )
+                  .animate(controller: _successController)
+                  .rotate(begin: 0, end: 0.1)
+                  .then()
+                  .rotate(begin: 0.1, end: -0.1)
+                  .then()
+                  .rotate(begin: -0.1, end: 0),
               const SizedBox(height: 20),
-              
               Text(
                 _getSuccessMessage(),
                 style: const TextStyle(
@@ -348,9 +356,7 @@ class _CursorMaestroGameState extends State<CursorMaestroGame>
                 ),
                 textAlign: TextAlign.center,
               ),
-              
               const SizedBox(height: 10),
-              
               Text(
                 _getSuccessDescription(),
                 style: const TextStyle(
@@ -473,19 +479,19 @@ class _CursorMaestroGameState extends State<CursorMaestroGame>
               ),
             ),
           ),
-          
+
           // Instructions
           _buildInstructions(),
-          
+
           // Drag line
           _buildDragLine(),
-          
+
           // Source file
           _buildSourceFile(),
-          
+
           // Target folder
           _buildTargetFolder(),
-          
+
           // Success overlay
           _buildSuccessOverlay(),
         ],
@@ -508,27 +514,27 @@ class DragLinePainter extends CustomPainter {
       ..style = PaintingStyle.stroke;
 
     canvas.drawLine(start, end, paint);
-    
+
     // Draw arrow head at end
     const arrowSize = 10;
     final angle = (end - start).direction;
-    
+
     final arrowP1 = Offset(
       end.dx - arrowSize * math.cos(angle - 0.5),
       end.dy - arrowSize * math.sin(angle - 0.5),
     );
-    
+
     final arrowP2 = Offset(
       end.dx - arrowSize * math.cos(angle + 0.5),
       end.dy - arrowSize * math.sin(angle + 0.5),
     );
-    
+
     final arrowPath = Path()
       ..moveTo(end.dx, end.dy)
       ..lineTo(arrowP1.dx, arrowP1.dy)
       ..lineTo(arrowP2.dx, arrowP2.dy)
       ..close();
-      
+
     canvas.drawPath(arrowPath, paint..style = PaintingStyle.fill);
   }
 

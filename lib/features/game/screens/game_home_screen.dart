@@ -5,6 +5,9 @@ import '../../../core/constants/app_constants.dart';
 import '../../../core/services/game_service.dart';
 import '../../../core/services/audio_service.dart';
 import '../../../core/services/progress_service.dart';
+import '../../../core/services/language_service.dart';
+import '../../../l10n/app_localizations.dart';
+import '../../../core/widgets/language_selection.dart';
 import '../../levels/screens/level_select_screen.dart';
 import '../../ui/widgets/animated_button.dart';
 import '../../ui/widgets/progress_indicator_widget.dart';
@@ -29,7 +32,7 @@ class _GameHomeScreenState extends State<GameHomeScreen>
       duration: const Duration(seconds: 20),
       vsync: this,
     )..repeat();
-    
+
     _characterController = AnimationController(
       duration: const Duration(seconds: 3),
       vsync: this,
@@ -64,38 +67,39 @@ class _GameHomeScreenState extends State<GameHomeScreen>
         ),
         child: SafeArea(
           child: Consumer3<GameService, AudioService, ProgressService>(
-            builder: (context, gameService, audioService, progressService, child) {
+            builder:
+                (context, gameService, audioService, progressService, child) {
               return Stack(
                 children: [
                   // Animated background elements
                   _buildAnimatedBackground(),
-                  
+
                   // Main content
                   Column(
                     children: [
                       // Header with title and progress
                       _buildHeader(progressService),
-                      
+
                       const SizedBox(height: 20),
-                      
+
                       // Main character
                       Expanded(
                         flex: 3,
                         child: _buildMainCharacter(),
                       ),
-                      
+
                       // Game stats
                       _buildGameStats(gameService, progressService),
-                      
+
                       const SizedBox(height: 30),
-                      
+
                       // Main action buttons
                       _buildActionButtons(context, gameService, audioService),
-                      
+
                       const SizedBox(height: 20),
                     ],
                   ),
-                  
+
                   // Settings button
                   Positioned(
                     top: 16,
@@ -120,14 +124,20 @@ class _GameHomeScreenState extends State<GameHomeScreen>
             // Floating elements
             ...List.generate(6, (index) {
               final offset = _backgroundController.value * 2 * 3.14159;
-              final x = 50.0 + (index * 60.0) + (30 * (index % 2 == 0 ? 1 : -1) * 
-                  (0.5 + 0.5 * (index / 6.0)) * 
-                  (index % 2 == 0 ? 1 : -1) * 
-                  (offset + index * 0.5));
-              final y = 100.0 + (index * 80.0) + (20 * (index % 2 == 0 ? 1 : -1) * 
-                  (0.5 + 0.5 * (index / 6.0)) * 
-                  (offset + index * 0.3));
-              
+              final x = 50.0 +
+                  (index * 60.0) +
+                  (30 *
+                      (index % 2 == 0 ? 1 : -1) *
+                      (0.5 + 0.5 * (index / 6.0)) *
+                      (index % 2 == 0 ? 1 : -1) *
+                      (offset + index * 0.5));
+              final y = 100.0 +
+                  (index * 80.0) +
+                  (20 *
+                      (index % 2 == 0 ? 1 : -1) *
+                      (0.5 + 0.5 * (index / 6.0)) *
+                      (offset + index * 0.3));
+
               return Positioned(
                 left: x % MediaQuery.of(context).size.width,
                 top: y % MediaQuery.of(context).size.height,
@@ -155,26 +165,24 @@ class _GameHomeScreenState extends State<GameHomeScreen>
           Text(
             AppConstants.appName,
             style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 36,
-            ),
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 36,
+                ),
           ).animate().fadeIn(duration: 800.ms).slideY(begin: -0.3),
-          
           const SizedBox(height: 10),
-          
           Text(
-            'Digital Literacy Adventure',
+            AppLocalizations.of(context)?.appTagline ??
+                'Digital Literacy Adventure',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              color: Colors.white.withOpacity(0.9),
-            ),
+                  color: Colors.white.withOpacity(0.9),
+                ),
           ).animate().fadeIn(delay: 400.ms, duration: 800.ms),
-          
           const SizedBox(height: 15),
-          
           ProgressIndicatorWidget(
             progress: progressService.getOverallProgress(),
-            label: 'Overall Progress',
+            label: AppLocalizations.of(context)?.overallProgress ??
+                'Overall Progress',
           ).animate().fadeIn(delay: 600.ms, duration: 800.ms),
         ],
       ),
@@ -187,18 +195,20 @@ class _GameHomeScreenState extends State<GameHomeScreen>
       builder: (context, child) {
         return Transform.translate(
           offset: Offset(0, 10 * _characterController.value),
-          child: const CharacterWidget(
+          child: CharacterWidget(
             characterId: 'digiBuddy',
             size: 200,
             showSpeechBubble: true,
-            speechText: 'Ready for another digital adventure?',
+            speechText: AppLocalizations.of(context)?.readyForAdventure ??
+                'Ready for another digital adventure?',
           ),
         );
       },
     );
   }
 
-  Widget _buildGameStats(GameService gameService, ProgressService progressService) {
+  Widget _buildGameStats(
+      GameService gameService, ProgressService progressService) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
       padding: const EdgeInsets.all(16),
@@ -218,25 +228,25 @@ class _GameHomeScreenState extends State<GameHomeScreen>
         children: [
           _buildStatItem(
             icon: Icons.star,
-            label: 'Score',
+            label: AppLocalizations.of(context)?.score ?? 'Score',
             value: gameService.totalScore.toString(),
             color: AppConstants.warningColor,
           ),
           _buildStatItem(
             icon: Icons.monetization_on,
-            label: 'Coins',
+            label: AppLocalizations.of(context)?.coins ?? 'Coins',
             value: gameService.coins.toString(),
             color: AppConstants.secondaryColor,
           ),
           _buildStatItem(
             icon: Icons.favorite,
-            label: 'Lives',
+            label: AppLocalizations.of(context)?.lives ?? 'Lives',
             value: gameService.lives.toString(),
             color: AppConstants.accentColor,
           ),
           _buildStatItem(
             icon: Icons.emoji_events,
-            label: 'Achievements',
+            label: AppLocalizations.of(context)?.achievements ?? 'Achievements',
             value: progressService.achievements.length.toString(),
             color: AppConstants.primaryColor,
           ),
@@ -275,7 +285,8 @@ class _GameHomeScreenState extends State<GameHomeScreen>
     );
   }
 
-  Widget _buildActionButtons(BuildContext context, GameService gameService, AudioService audioService) {
+  Widget _buildActionButtons(BuildContext context, GameService gameService,
+      AudioService audioService) {
     return Column(
       children: [
         AnimatedButton(
@@ -283,7 +294,8 @@ class _GameHomeScreenState extends State<GameHomeScreen>
             audioService.playButtonClick();
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const LevelSelectScreen()),
+              MaterialPageRoute(
+                  builder: (context) => const LevelSelectScreen()),
             );
           },
           child: Container(
@@ -291,14 +303,18 @@ class _GameHomeScreenState extends State<GameHomeScreen>
             height: 60,
             decoration: BoxDecoration(
               gradient: const LinearGradient(
-                colors: [AppConstants.secondaryColor, AppConstants.primaryColor],
+                colors: [
+                  AppConstants.secondaryColor,
+                  AppConstants.primaryColor
+                ],
               ),
               borderRadius: BorderRadius.circular(30),
             ),
-            child: const Center(
+            child: Center(
               child: Text(
-                'START ADVENTURE',
-                style: TextStyle(
+                AppLocalizations.of(context)?.startAdventure ??
+                    'START ADVENTURE',
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -306,10 +322,11 @@ class _GameHomeScreenState extends State<GameHomeScreen>
               ),
             ),
           ),
-        ).animate().fadeIn(delay: 1000.ms, duration: 800.ms).scale(begin: const Offset(0.8, 0.8)),
-        
+        )
+            .animate()
+            .fadeIn(delay: 1000.ms, duration: 800.ms)
+            .scale(begin: const Offset(0.8, 0.8)),
         const SizedBox(height: 16),
-        
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -324,12 +341,13 @@ class _GameHomeScreenState extends State<GameHomeScreen>
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(25),
-                  border: Border.all(color: AppConstants.primaryColor, width: 2),
+                  border:
+                      Border.all(color: AppConstants.primaryColor, width: 2),
                 ),
-                child: const Center(
+                child: Center(
                   child: Text(
-                    'PROGRESS',
-                    style: TextStyle(
+                    AppLocalizations.of(context)?.progress ?? 'PROGRESS',
+                    style: const TextStyle(
                       color: AppConstants.primaryColor,
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -338,9 +356,7 @@ class _GameHomeScreenState extends State<GameHomeScreen>
                 ),
               ),
             ),
-            
             const SizedBox(width: 16),
-            
             AnimatedButton(
               onPressed: () {
                 audioService.playButtonClick();
@@ -352,12 +368,14 @@ class _GameHomeScreenState extends State<GameHomeScreen>
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(25),
-                  border: Border.all(color: AppConstants.warningColor, width: 2),
+                  border:
+                      Border.all(color: AppConstants.warningColor, width: 2),
                 ),
-                child: const Center(
+                child: Center(
                   child: Text(
-                    'ACHIEVEMENTS',
-                    style: TextStyle(
+                    AppLocalizations.of(context)?.achievements ??
+                        'ACHIEVEMENTS',
+                    style: const TextStyle(
                       color: AppConstants.warningColor,
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -398,7 +416,8 @@ class _GameHomeScreenState extends State<GameHomeScreen>
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Your Progress'),
+        title:
+            Text(AppLocalizations.of(context)?.yourProgress ?? 'Your Progress'),
         content: Consumer<ProgressService>(
           builder: (context, progressService, child) {
             final summary = progressService.getProgressSummary();
@@ -406,15 +425,20 @@ class _GameHomeScreenState extends State<GameHomeScreen>
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Player: ${summary['playerName'] ?? 'Anonymous'}'),
+                Text(
+                    '${AppLocalizations.of(context)?.player ?? 'Player'}: ${summary['playerName'] ?? AppLocalizations.of(context)?.anonymous ?? 'Anonymous'}'),
                 const SizedBox(height: 8),
-                Text('Levels Completed: ${summary['completedLevels']}/${AppConstants.totalLevels}'),
+                Text(
+                    '${AppLocalizations.of(context)?.levelsCompleted ?? 'Levels Completed'}: ${summary['completedLevels']}/${AppConstants.totalLevels}'),
                 const SizedBox(height: 8),
-                Text('Total Play Time: ${_formatDuration(summary['totalPlayTime'])}'),
+                Text(
+                    '${AppLocalizations.of(context)?.totalPlayTime ?? 'Total Play Time'}: ${_formatDuration(summary['totalPlayTime'])}'),
                 const SizedBox(height: 8),
-                Text('Current Streak: ${summary['currentStreak']} days'),
+                Text(
+                    '${AppLocalizations.of(context)?.currentStreak ?? 'Current Streak'}: ${summary['currentStreak']} ${AppLocalizations.of(context)?.days ?? 'days'}'),
                 const SizedBox(height: 8),
-                Text('Achievements: ${summary['totalAchievements']}'),
+                Text(
+                    '${AppLocalizations.of(context)?.achievements ?? 'Achievements'}: ${summary['totalAchievements']}'),
               ],
             );
           },
@@ -422,7 +446,7 @@ class _GameHomeScreenState extends State<GameHomeScreen>
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
+            child: Text(AppLocalizations.of(context)?.close ?? 'Close'),
           ),
         ],
       ),
@@ -437,9 +461,10 @@ class _GameHomeScreenState extends State<GameHomeScreen>
         content: Consumer<ProgressService>(
           builder: (context, progressService, child) {
             if (progressService.achievements.isEmpty) {
-              return const Text('No achievements yet. Keep playing to unlock them!');
+              return const Text(
+                  'No achievements yet. Keep playing to unlock them!');
             }
-            
+
             return SizedBox(
               width: double.maxFinite,
               height: 300,
@@ -448,7 +473,8 @@ class _GameHomeScreenState extends State<GameHomeScreen>
                 itemBuilder: (context, index) {
                   final achievement = progressService.achievements[index];
                   return ListTile(
-                    leading: const Icon(Icons.emoji_events, color: AppConstants.warningColor),
+                    leading: const Icon(Icons.emoji_events,
+                        color: AppConstants.warningColor),
                     title: Text(achievement.title),
                     subtitle: Text(achievement.description),
                   );
@@ -468,34 +494,50 @@ class _GameHomeScreenState extends State<GameHomeScreen>
   }
 
   void _showSettingsDialog(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Settings'),
-        content: Consumer<AudioService>(
-          builder: (context, audioService, child) {
+        title: Text(localizations?.settings ?? 'Settings'),
+        content: Consumer2<AudioService, LanguageService>(
+          builder: (context, audioService, languageService, child) {
             return Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                // Language selection
+                ListTile(
+                  leading: const Icon(Icons.language),
+                  title: Text(localizations?.language ?? 'Language'),
+                  subtitle: Text(
+                      '${languageService.currentLanguageFlag} ${languageService.currentLanguageName}'),
+                  trailing: const Icon(Icons.arrow_forward_ios),
+                  onTap: () {
+                    Navigator.pop(context); // Close settings first
+                    LanguageSelectionDialog.show(context);
+                  },
+                ),
+                const Divider(),
+
+                // Audio settings
                 SwitchListTile(
-                  title: const Text('Music'),
+                  title: Text(localizations?.music ?? 'Music'),
                   value: audioService.musicEnabled,
                   onChanged: (value) => audioService.toggleMusic(),
                 ),
                 SwitchListTile(
-                  title: const Text('Sound Effects'),
+                  title: Text(localizations?.soundEffects ?? 'Sound Effects'),
                   value: audioService.sfxEnabled,
                   onChanged: (value) => audioService.toggleSfx(),
                 ),
                 ListTile(
-                  title: const Text('Music Volume'),
+                  title: Text(localizations?.musicVolume ?? 'Music Volume'),
                   subtitle: Slider(
                     value: audioService.musicVolume,
                     onChanged: (value) => audioService.setMusicVolume(value),
                   ),
                 ),
                 ListTile(
-                  title: const Text('SFX Volume'),
+                  title: Text(localizations?.sfxVolume ?? 'SFX Volume'),
                   subtitle: Slider(
                     value: audioService.sfxVolume,
                     onChanged: (value) => audioService.setSfxVolume(value),
@@ -508,7 +550,7 @@ class _GameHomeScreenState extends State<GameHomeScreen>
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
+            child: Text(localizations?.close ?? 'Close'),
           ),
         ],
       ),
@@ -518,7 +560,7 @@ class _GameHomeScreenState extends State<GameHomeScreen>
   String _formatDuration(int seconds) {
     final hours = seconds ~/ 3600;
     final minutes = (seconds % 3600) ~/ 60;
-    
+
     if (hours > 0) {
       return '${hours}h ${minutes}m';
     } else {

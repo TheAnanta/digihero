@@ -1,0 +1,305 @@
+{
+    "app": {
+        "name": "DigiHero",
+        "version": "1.0.0",
+        "tagline": "Digital Literacy Adventure",
+        "subtitle": "Learn • Play • Protect • Explore"
+    },
+    "onboarding": {
+        "splash": {
+            "tagline": "Digital Literacy Adventure",
+            "subtitle": "Learn • Play • Protect • Explore",
+            "startButton": "Tap to Start Adventure"
+        },
+        "ageInput": {
+            "welcome": "Welcome to DigiHero!",
+            "description": "Learn digital literacy through fun games",
+            "questionTitle": "How old are you?",
+            "questionDescription": "This helps us adjust the game difficulty for you",
+            "ageLabel": "Your Age",
+            "agePlaceholder": "Enter your age (6-99)",
+            "startButton": "Start Learning!",
+            "ageGroups": {
+                "beginner": "6-8 years (Beginner)",
+                "intermediate": "9-12 years (Intermediate)",
+                "advanced": "13-16 years (Advanced)",
+                "expert": "17+ years (Expert)"
+            },
+            "ageGroupDescriptions": {
+                "easy": "Perfect! We'll start with simple concepts and colorful games.",
+                "medium": "Great! You'll get interactive challenges and detailed explanations.",
+                "hard": "Excellent! You'll face complex scenarios and advanced topics.",
+                "expert": "Amazing! You'll tackle professional-level digital literacy challenges."
+            }
+        }
+    },
+    "gameHome": {
+        "chooseLevel": "Choose Your Level",
+        "selectChallenge": "Select a digital literacy challenge",
+        "levelLocked": "Level Locked",
+        "levelLockedMessage": "Complete the previous level to unlock this one!",
+        "ok": "OK",
+        "settings": "Settings",
+        "language": "Language",
+        "music": "Music",
+        "soundEffects": "Sound Effects",
+        "musicVolume": "Music Volume",
+        "sfxVolume": "SFX Volume",
+        "progress": "PROGRESS",
+        "achievements": "ACHIEVEMENTS",
+        "yourProgress": "Your Progress",
+        "achievementsTitle": "Achievements",
+        "noAchievements": "No achievements yet. Keep playing to unlock them!",
+        "player": "Player",
+        "levelsCompleted": "Levels Completed",
+        "totalPlayTime": "Total Play Time",
+        "currentStreak": "Current Streak",
+        "days": "days",
+        "levelComplete": "Level Complete!",
+        "gameOver": "Game Over",
+        "gameOverMessage": "Don't give up! Try again to master this level.",
+        "backToLevelSelect": "Back to Level Select",
+        "exitLevel": "Exit Level?",
+        "exitLevelMessage": "Your progress will be lost.",
+        "exit": "Exit",
+        "wrongAnswer": "Wrong Answer",
+        "wrongAnswerMessage": "That's not correct. Try again!",
+        "hint": "Hint",
+        "timeBonus": "Time Bonus"
+    },
+    "units": {
+        "unit1": "My First Step into the Digital World",
+        "unit2": "Using Digital Tools for School and Learning",
+        "unit3": "Exploring the Internet Safely",
+        "unit4": "Communication and Collaboration",
+        "unit5": "Digital Skills for Life"
+    },
+    "levels": {
+        "themes": {
+            "meetDevice": "Meet Your Digital Device",
+            "understandScreen": "Understanding Your Screen",
+            "workingApps": "Working with Apps",
+            "whyDigitalSkills": "Why Digital Skills Matter",
+            "masteringApp": "Mastering Our Learning App",
+            "writingTyping": "Writing and Typing",
+            "presentations": "Creating Presentations",
+            "organizing": "Organizing Digital Work",
+            "internet": "What is the Internet",
+            "searching": "Searching for Information",
+            "stayingSafe": "Staying Safe Online",
+            "digitalCitizen": "Being a Good Digital Citizen",
+            "email": "Introduction to Email",
+            "messaging": "Messaging Apps Safety",
+            "progress": "Understanding Progress",
+            "collaboration": "Working Together Online",
+            "hobbies": "Exploring Hobbies Online",
+            "payments": "Digital Payments Safety",
+            "careers": "Career Opportunities",
+            "portfolio": "Digital Portfolio Project"
+        },
+        "descriptions": {
+            "meetDevice": "Learn about different devices and their parts",
+            "understandScreen": "Discover icons, menus and basic navigation",
+            "workingApps": "Learn to open and use applications safely",
+            "whyDigitalSkills": "Understand how technology helps your future",
+            "masteringApp": "Navigate and use educational apps effectively",
+            "writingTyping": "Practice typing in your language and English",
+            "presentations": "Make simple presentations with text and images",
+            "organizing": "Learn to save and organize your files",
+            "internet": "Understand the internet and how to connect",
+            "searching": "Learn to search effectively and safely",
+            "stayingSafe": "Protect yourself and your personal information",
+            "digitalCitizen": "Be kind and respectful online",
+            "email": "Learn to compose and send emails safely",
+            "messaging": "Use messaging apps responsibly for school",
+            "progress": "Track your learning journey and improvement",
+            "collaboration": "Collaborate on digital projects with others",
+            "hobbies": "Find reliable information about your interests",
+            "payments": "Understand and stay safe with digital money",
+            "careers": "Discover careers and educational opportunities",
+            "portfolio": "Create a showcase of your digital skills"
+        }
+    },
+    "characters": {
+        "names": {
+            "digiBuddy": "DigiBuddy",
+            "cyberPal": "CyberPal",
+            "safeBot": "SafeBot",
+            "privacyGuard": "PrivacyGuard",
+            "netHero": "NetHero"
+        }
+    },
+    "gameElements": {
+        "deviceParts": {
+            "monitor": "Monitor",
+            "cpu": "CPU",
+            "keyboard": "Keyboard",
+            "mouse": "Mouse"
+        },
+        "powerSteps": {
+            "plugPower": "Plug in power cable",
+            "pressCpu": "Press CPU power button",
+            "pressMonitor": "Press monitor power button",
+            "waitStartup": "Wait for startup"
+        },
+        "devices": {
+            "desktop": "Desktop Computer",
+            "smartphone": "Smartphone",
+            "television": "Television",
+            "printer": "Printer",
+            "tablet": "Tablet"
+        }
+    },
+    "games": {
+        "deviceBuilder": {
+            "instruction": "Device Builder: Drag and drop the labels onto the correct parts of this computer!",
+            "dragInstruction": "Drag each label to the matching part of the computer",
+            "success": "Great job! You correctly identified the main parts of a computer: Monitor (screen), CPU (main unit), Keyboard (for typing), and Mouse (for pointing)."
+        },
+        "powerUp": {
+            "instruction": "Power Up! Put these steps in the correct order to turn on a computer safely:",
+            "sequenceInstruction": "Arrange the steps in the right order",
+            "success": "Perfect! The correct order is: 1. Plug in power, 2. Press CPU power button, 3. Press monitor power button, 4. Wait for startup."
+        },
+        "deviceTypes": {
+            "question": "Which device is best for making phone calls while traveling?",
+            "explanation": "Smartphones are portable and designed for communication, making them perfect for calls while traveling."
+        },
+        "typingChallenge": {
+            "words": "Type the complete word before it disappears",
+            "sentences": "Type the complete sentence accurately",
+            "localLanguage": "Practice with your local language! (ਪੰਜਾਬੀ example: ਘਰ, ਸਕੂਲ, ਕਿਤਾਬ)",
+            "myVillage": "My Village",
+            "sampleWords": [
+                "CAT",
+                "DOG",
+                "SUN",
+                "TREE",
+                "BOOK",
+                "HOME",
+                "PLAY",
+                "LEARN"
+            ],
+            "sampleSentences": [
+                "My Village",
+                "I love learning",
+                "Digital skills are fun"
+            ]
+        },
+        "browserNavigator": {
+            "parts": {
+                "addressBar": "Address Bar",
+                "backButton": "Back Button",
+                "forwardButton": "Forward Button",
+                "refreshButton": "Refresh Button",
+                "tabs": "Tabs",
+                "bookmarks": "Bookmarks"
+            },
+            "descriptions": {
+                "addressBar": "Great! The Address Bar is where you type website addresses like www.google.com",
+                "backButton": "Perfect! The Back Button takes you to the previous page you visited.",
+                "forwardButton": "Excellent! The Forward Button moves you forward after going back.",
+                "refreshButton": "Correct! The Refresh Button reloads the current page."
+            }
+        },
+        "chatSimulator": {
+            "schoolGroupChat": "Chandigarh is the capital of Punjab",
+            "inappropriate1": "lol idk 😂😂😂",
+            "inappropriate2": "why do we need to know this???",
+            "inappropriate3": "CHANDIGARH!!!!!!",
+            "helpRequest": "Can someone help me understand question 3?",
+            "positive": "Perfect! Asking for help politely keeps the conversation positive and focused on learning."
+        }
+    },
+    "tips": {
+        "deviceExplorer": [
+            "Look for common device parts like screen, keyboard, and mouse",
+            "Different devices have different purposes",
+            "Practice turning devices on and off safely",
+            "Ask for help when handling new devices"
+        ],
+        "learningApp": [
+            "Follow your guide step-by-step for the best experience",
+            "Practice each feature until you feel comfortable",
+            "Download lessons for offline study",
+            "Celebrate each milestone you complete!"
+        ],
+        "presentations": [
+            "Follow each task step-by-step for best results",
+            "Keep slides simple and easy to read",
+            "Use pictures to make your message clearer",
+            "Practice presenting your work out loud"
+        ],
+        "fileOrganization": [
+            "Create folders for different types of work",
+            "Use clear, descriptive names for files and folders",
+            "Keep schoolwork separate from personal files",
+            "Organize regularly to avoid clutter"
+        ],
+        "messaging": [
+            "Only message people you know in real life",
+            "Keep conversations school-appropriate and respectful",
+            "Think before you send - messages can be screenshot",
+            "Ask for help if someone makes you uncomfortable"
+        ]
+    },
+    "achievements": {
+        "firstSteps": {
+            "title": "First Steps",
+            "description": "Complete your first level"
+        },
+        "explorer": {
+            "title": "Digital Explorer",
+            "description": "Complete 5 levels"
+        },
+        "smartLearner": {
+            "title": "Smart Learner",
+            "description": "Answer 50 questions correctly"
+        },
+        "weekStreak": {
+            "title": "Week Warrior",
+            "description": "Play for 7 consecutive days"
+        }
+    },
+    "places": {
+        "nabha": "Nabha",
+        "punjab": "Punjab",
+        "chandigarh": "Chandigarh",
+        "village": "Village",
+        "city": "City"
+    },
+    "common": {
+        "ok": "OK",
+        "cancel": "Cancel",
+        "yes": "Yes",
+        "no": "No",
+        "continue": "Continue",
+        "back": "Back",
+        "next": "Next",
+        "finish": "Finish",
+        "retry": "Try Again",
+        "help": "Help",
+        "loading": "Loading...",
+        "error": "Error",
+        "success": "Success!",
+        "congratulations": "Congratulations!",
+        "wellDone": "Well Done!",
+        "excellent": "Excellent!",
+        "perfect": "Perfect!",
+        "great": "Great!",
+        "amazing": "Amazing!",
+        "tryAgain": "Try Again",
+        "needHelp": "Need Help?",
+        "timeUp": "Time Up!",
+        "completed": "Completed!",
+        "progress": "Progress",
+        "level": "Level",
+        "score": "Score",
+        "stars": "Stars",
+        "coins": "Coins",
+        "achievements": "Achievements",
+        "play": "Play",
+        "replay": "Replay",
+        "close": "Close"
+    }
+}

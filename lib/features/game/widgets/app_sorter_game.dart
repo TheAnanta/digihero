@@ -20,47 +20,51 @@ class _AppSorterGameState extends State<AppSorterGame>
     with TickerProviderStateMixin {
   late AnimationController _pulseController;
   late AnimationController _celebrationController;
-  
+
   List<AppItem> availableApps = [];
   Map<String, List<AppItem>> categoryBoxes = {};
   List<String> categories = [];
   String? draggedApp;
   bool isComplete = false;
   int correctPlacements = 0;
-  
+
   @override
   void initState() {
     super.initState();
-    
+
     _pulseController = AnimationController(
       duration: const Duration(milliseconds: 1500),
       vsync: this,
     )..repeat(reverse: true);
-    
+
     _celebrationController = AnimationController(
       duration: const Duration(milliseconds: 2000),
       vsync: this,
     );
-    
+
     _initializeGame();
   }
 
   void _initializeGame() {
-    categories = List<String>.from(widget.gameData['categories'] ?? ['System Software', 'Application Software']);
-    
+    categories = List<String>.from(widget.gameData['categories'] ??
+        ['System Software', 'Application Software']);
+
     // Initialize category boxes
     for (String category in categories) {
       categoryBoxes[category] = [];
     }
-    
+
     // Parse app items from game data
-    final items = List<Map<String, dynamic>>.from(widget.gameData['items'] ?? []);
-    availableApps = items.map((item) => AppItem(
-      name: item['name'] ?? '',
-      type: item['type'] ?? '',
-      icon: item['icon'] ?? 'app.png',
-    )).toList();
-    
+    final items =
+        List<Map<String, dynamic>>.from(widget.gameData['items'] ?? []);
+    availableApps = items
+        .map((item) => AppItem(
+              name: item['name'] ?? '',
+              type: item['type'] ?? '',
+              icon: item['icon'] ?? 'app.png',
+            ))
+        .toList();
+
     // Shuffle available apps
     availableApps.shuffle();
   }
@@ -73,19 +77,20 @@ class _AppSorterGameState extends State<AppSorterGame>
   }
 
   void _onAppDropped(AppItem app, String category) {
-    final expectedCategory = app.type == 'system' ? 'System Software' : 'Application Software';
+    final expectedCategory =
+        app.type == 'system' ? 'System Software' : 'Application Software';
     final isCorrect = category == expectedCategory;
-    
+
     setState(() {
       availableApps.remove(app);
       categoryBoxes[category]!.add(app);
       draggedApp = null;
-      
+
       if (isCorrect) {
         correctPlacements++;
       }
     });
-    
+
     // Check if game is complete
     if (availableApps.isEmpty) {
       _completeGame();
@@ -93,15 +98,16 @@ class _AppSorterGameState extends State<AppSorterGame>
   }
 
   void _completeGame() {
-    final totalApps = categoryBoxes.values.fold(0, (sum, list) => sum + list.length);
+    final totalApps =
+        categoryBoxes.values.fold(0, (sum, list) => sum + list.length);
     final accuracy = (correctPlacements / totalApps * 100).round();
-    
+
     setState(() {
       isComplete = true;
     });
-    
+
     _celebrationController.forward();
-    
+
     Future.delayed(const Duration(milliseconds: 2000), () {
       final points = math.max(50, accuracy * 2);
       widget.onComplete(accuracy >= 80, points);
@@ -120,21 +126,21 @@ class _AppSorterGameState extends State<AppSorterGame>
           color: isDragging ? Colors.blue : Colors.grey[300]!,
           width: isDragging ? 3 : 1,
         ),
-        boxShadow: isDragging 
-          ? [
-              BoxShadow(
-                color: Colors.blue.withOpacity(0.3),
-                blurRadius: 8,
-                spreadRadius: 2,
-              ),
-            ]
-          : [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.2),
-                blurRadius: 4,
-                offset: const Offset(0, 2),
-              ),
-            ],
+        boxShadow: isDragging
+            ? [
+                BoxShadow(
+                  color: Colors.blue.withOpacity(0.3),
+                  blurRadius: 8,
+                  spreadRadius: 2,
+                ),
+              ]
+            : [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.2),
+                  blurRadius: 4,
+                  offset: const Offset(0, 2),
+                ),
+              ],
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -157,8 +163,9 @@ class _AppSorterGameState extends State<AppSorterGame>
           ),
         ],
       ),
-    ).animate(target: isDragging ? 1 : 0)
-     .scale(begin: const Offset(1.0, 1.0), end: const Offset(1.1, 1.1));
+    )
+        .animate(target: isDragging ? 1 : 0)
+        .scale(begin: const Offset(1.0, 1.0), end: const Offset(1.1, 1.1));
   }
 
   Widget _buildDraggableApp(AppItem app) {
@@ -185,7 +192,7 @@ class _AppSorterGameState extends State<AppSorterGame>
         decoration: BoxDecoration(
           color: Colors.grey.withOpacity(0.3),
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.grey, style: BorderStyle.dashed),
+          border: Border.all(color: Colors.grey.withOpacity(0.5), width: 2),
         ),
       ),
       child: _buildAppIcon(app),
@@ -195,7 +202,7 @@ class _AppSorterGameState extends State<AppSorterGame>
   Widget _buildCategoryBox(String category) {
     final isHighlighted = draggedApp != null;
     final apps = categoryBoxes[category] ?? [];
-    
+
     return DragTarget<AppItem>(
       onAccept: (app) => _onAppDropped(app, category),
       builder: (context, candidateData, rejectedData) {
@@ -205,16 +212,11 @@ class _AppSorterGameState extends State<AppSorterGame>
           margin: const EdgeInsets.all(10),
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: isHighlighted 
-              ? Colors.blue[50] 
-              : Colors.grey[100],
+            color: isHighlighted ? Colors.blue[50] : Colors.grey[100],
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: isHighlighted 
-                ? Colors.blue 
-                : Colors.grey[400]!,
-              width: 2,
-              style: isHighlighted ? BorderStyle.solid : BorderStyle.dashed,
+              color: isHighlighted ? Colors.blue : Colors.grey[400]!,
+              width: isHighlighted ? 3 : 1,
             ),
             boxShadow: [
               BoxShadow(
@@ -244,25 +246,26 @@ class _AppSorterGameState extends State<AppSorterGame>
                   textAlign: TextAlign.center,
                 ),
               ),
-              
+
               const SizedBox(height: 12),
-              
+
               // Apps in category
               Expanded(
                 child: SingleChildScrollView(
                   child: Wrap(
-                    children: apps.map((app) => 
-                      _buildAppIcon(app).animate().scale(
-                        delay: Duration(milliseconds: apps.indexOf(app) * 100),
-                        duration: 300.ms,
-                        begin: const Offset(0.8, 0.8),
-                        end: const Offset(1.0, 1.0),
-                      )
-                    ).toList(),
+                    children: apps
+                        .map((app) => _buildAppIcon(app).animate().scale(
+                              delay: Duration(
+                                  milliseconds: apps.indexOf(app) * 100),
+                              duration: 300.ms,
+                              begin: const Offset(0.8, 0.8),
+                              end: const Offset(1.0, 1.0),
+                            ))
+                        .toList(),
                   ),
                 ),
               ),
-              
+
               // Drop zone indicator
               if (apps.isEmpty)
                 Expanded(
@@ -291,13 +294,14 @@ class _AppSorterGameState extends State<AppSorterGame>
           ),
         );
       },
-    ).animate(target: isHighlighted ? 1 : 0)
-     .shimmer(duration: 1000.ms, color: Colors.blue.withOpacity(0.3));
+    )
+        .animate(target: isHighlighted ? 1 : 0)
+        .shimmer(duration: 1000.ms, color: Colors.blue.withOpacity(0.3));
   }
 
   Widget _buildAvailableApps() {
     if (availableApps.isEmpty) return const SizedBox.shrink();
-    
+
     return Container(
       padding: const EdgeInsets.all(16),
       margin: const EdgeInsets.all(10),
@@ -325,7 +329,8 @@ class _AppSorterGameState extends State<AppSorterGame>
           ),
           const SizedBox(height: 12),
           Wrap(
-            children: availableApps.map((app) => _buildDraggableApp(app)).toList(),
+            children:
+                availableApps.map((app) => _buildDraggableApp(app)).toList(),
           ),
         ],
       ),
@@ -334,18 +339,20 @@ class _AppSorterGameState extends State<AppSorterGame>
 
   Widget _buildResultOverlay() {
     if (!isComplete) return const SizedBox.shrink();
-    
-    final totalApps = correctPlacements + (availableApps.length == 0 
-      ? categoryBoxes.values.fold(0, (sum, list) => sum + list.length) - correctPlacements
-      : 0);
+
+    final totalApps = correctPlacements +
+        (availableApps.length == 0
+            ? categoryBoxes.values.fold(0, (sum, list) => sum + list.length) -
+                correctPlacements
+            : 0);
     final accuracy = (correctPlacements / totalApps * 100).round();
     final isSuccess = accuracy >= 80;
-    
+
     return Positioned.fill(
       child: Container(
-        color: isSuccess 
-          ? Colors.green.withOpacity(0.9)
-          : Colors.orange.withOpacity(0.9),
+        color: isSuccess
+            ? Colors.green.withOpacity(0.9)
+            : Colors.orange.withOpacity(0.9),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -354,15 +361,14 @@ class _AppSorterGameState extends State<AppSorterGame>
                 isSuccess ? Icons.celebration : Icons.lightbulb,
                 size: 100,
                 color: Colors.white,
-              ).animate(controller: _celebrationController)
-               .rotate(begin: 0, end: 0.5)
-               .then()
-               .rotate(begin: 0.5, end: -0.5)
-               .then()
-               .rotate(begin: -0.5, end: 0),
-              
+              )
+                  .animate(controller: _celebrationController)
+                  .rotate(begin: 0, end: 0.5)
+                  .then()
+                  .rotate(begin: 0.5, end: -0.5)
+                  .then()
+                  .rotate(begin: -0.5, end: 0),
               const SizedBox(height: 20),
-              
               Text(
                 isSuccess ? 'Excellent Sorting!' : 'Good Try!',
                 style: const TextStyle(
@@ -371,9 +377,7 @@ class _AppSorterGameState extends State<AppSorterGame>
                   color: Colors.white,
                 ),
               ),
-              
               const SizedBox(height: 10),
-              
               Text(
                 'You sorted $correctPlacements out of $totalApps apps correctly (${accuracy}%)',
                 style: const TextStyle(
@@ -382,7 +386,6 @@ class _AppSorterGameState extends State<AppSorterGame>
                 ),
                 textAlign: TextAlign.center,
               ),
-              
               if (!isSuccess) ...[
                 const SizedBox(height: 10),
                 const Text(
@@ -499,8 +502,8 @@ class _AppSorterGameState extends State<AppSorterGame>
                     ],
                   ),
                   child: Text(
-                    widget.gameData['instructions'] ?? 
-                    'Drag each app icon to the correct category box',
+                    widget.gameData['instructions'] ??
+                        'Drag each app icon to the correct category box',
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
@@ -521,7 +524,9 @@ class _AppSorterGameState extends State<AppSorterGame>
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: categories.map((category) => _buildCategoryBox(category)).toList(),
+                  children: categories
+                      .map((category) => _buildCategoryBox(category))
+                      .toList(),
                 ),
               ],
             ),
